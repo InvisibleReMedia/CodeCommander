@@ -1,0 +1,693 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>o2MateScope</name>
+    </assembly>
+    <members>
+        <member name="T:o2Mate.EnumDataType">
+            <summary>
+            Standard data type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_ANY">
+            <summary>
+            accepte tout type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_WCHAR">
+            <summary>
+            wchar_t type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_STRING">
+            <summary>
+            wchar_t* type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_NUMBER">
+            <summary>
+            int type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_BOOL">
+            <summary>
+            bool type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_STRING_OBJECT">
+            <summary>
+            wstring type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_CONST_STRING_OBJECT">
+            <summary>
+            const wstring type
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_WRITER">
+            <summary>
+            for writing into a file
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_SIMPLETYPE">
+            <summary>
+            SimpleType type (encapsulates a simple data type : bool,int,char_t,wchar_t* and wstring)
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_STRUCTURE">
+            <summary>
+            The data type is a structure
+            </summary>
+        </member>
+        <member name="F:o2Mate.EnumDataType.E_VOID">
+            <summary>
+            Void data type (C++)
+            </summary>
+        </member>
+        <member name="T:o2Mate.IData">
+            <summary>
+            Interface declaration of scope's variables
+            </summary>
+        </member>
+        <member name="M:o2Mate.IData.CopyFrom(o2Mate.IData,System.Boolean)">
+            <summary>
+            Copy from
+            </summary>
+            <param name="from">variable to read</param>
+            <param name="changeScope">true if set the scope object</param>
+            <returns>the modified variable</returns>
+        </member>
+        <member name="M:o2Mate.IData.Commit">
+            <summary>
+            Commit changes
+            </summary>
+        </member>
+        <member name="M:o2Mate.IData.Set(System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Set infos to this variable
+            </summary>
+            <param name="prefix">prefix string form</param>
+            <param name="belongsTo">process in which created</param>
+            <param name="value">string value representation</param>
+            <param name="isComputable">true if computable (gets a value)</param>
+            <param name="dataType">data type</param>
+        </member>
+        <member name="M:o2Mate.IData.UseThis(o2Mate.EnumDataType)">
+            <summary>
+            Use this data type as the current data type value
+            </summary>
+            <param name="dataType">current data type</param>
+        </member>
+        <member name="M:o2Mate.IData.PrefixInfo(o2Mate.EnumDataType)">
+            <summary>
+            Gets the complete infos of this variable, given a data type
+            </summary>
+            <param name="dataType">data type to get infos</param>
+            <returns>prefix info</returns>
+        </member>
+        <member name="M:o2Mate.IData.TypeExists(o2Mate.EnumDataType)">
+            <summary>
+            Returns true if this data type has been already created for this variable
+            </summary>
+            <param name="dataType">data type</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:o2Mate.IData.Name">
+            <summary>
+            Gets or sets the name of the variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.IsSeparator">
+            <summary>
+            True if it's a separator
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.ValueString">
+            <summary>
+            Gets the string value representation
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.ValueInt">
+            <summary>
+            Gets the int value representation
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.Value">
+            <summary>
+            Sets the string value representation
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.BelongsTo">
+            <summary>
+            Gets or sets which process has declared this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.RealName">
+            <summary>
+            Gets or sets the real variable name in an another programming language
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.IsComputable">
+            <summary>
+            Gets or sets the computability of this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.DataType">
+            <summary>
+            Gets or sets the data type of this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.IsGlobal">
+            <summary>
+            Says if this variable is global (known at root of the program)
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.IsDirty">
+            <summary>
+            Says if this variable has changed
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.Prefix">
+            <summary>
+            Gets the prefix of this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.PrefixedName">
+            <summary>
+            Gets the complete name of this variable (with the string prefix)
+            </summary>
+        </member>
+        <member name="P:o2Mate.IData.InnerScope">
+            <summary>
+            Gets the scope where resides this variable (throw an exception when this variable is free)
+            </summary>
+        </member>
+        <member name="T:o2Mate.IDataNotInScope">
+            <summary>
+            Interface to differenciate scope's variable or not
+            </summary>
+        </member>
+        <member name="P:o2Mate.IDataNotInScope.IsInScope">
+            <summary>
+            True if this variable resides in a particular scope
+            </summary>
+        </member>
+        <member name="T:o2Mate.PrefixInfo">
+            <summary>
+            Prefix info
+            </summary>
+        </member>
+        <member name="F:o2Mate.PrefixInfo.Prefix">
+            <summary>
+            Prefix value
+            </summary>
+        </member>
+        <member name="F:o2Mate.PrefixInfo.BelongsTo">
+            <summary>
+            Process name in which a variable is local
+            </summary>
+        </member>
+        <member name="F:o2Mate.PrefixInfo.Value">
+            <summary>
+            String value representation
+            </summary>
+        </member>
+        <member name="F:o2Mate.PrefixInfo.IsComputable">
+            <summary>
+            True if computable
+            </summary>
+        </member>
+        <member name="F:o2Mate.PrefixInfo.IsDirty">
+            <summary>
+            True if modified
+            </summary>
+        </member>
+        <member name="M:o2Mate.PrefixInfo.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="prefix">prefix name</param>
+            <param name="belongsTo">process name</param>
+            <param name="value">string value representation</param>
+            <param name="isComputable">true if computable</param>
+        </member>
+        <member name="M:o2Mate.PrefixInfo.SetDirty">
+            <summary>
+            Sets the dirty bit to 1
+            </summary>
+        </member>
+        <member name="M:o2Mate.PrefixInfo.Commit">
+            <summary>
+            Sets the dirty bit to 0
+            </summary>
+        </member>
+        <member name="T:o2Mate.IScope">
+            <summary>
+            Interface declaration of a scope
+            </summary>
+        </member>
+        <member name="M:o2Mate.IScope.Add(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Add a new variable in this scope
+            </summary>
+            <param name="name">variable name</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <returns>a reference to the newly created variable</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Add(System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Add a new variable in this scope
+            </summary>
+            <param name="name">variable name</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the newly created variable</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Add(System.String,System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Add a new variable in this scope
+            </summary>
+            <param name="prefix">prefix name</param>
+            <param name="name">variable name</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the newly created variable</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Add(o2Mate.IData)">
+            <summary>
+            imports a scope variable
+            </summary>
+            <param name="from">variable object to import</param>
+            <returns>the new added variable</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Update(System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Update variable infos
+            </summary>
+            <param name="name">current name of the variable</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the updated variable</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Update(System.String,System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Update variable infos
+            </summary>
+            <param name="prefix">prefix name</param>
+            <param name="name">current name of the variable</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the updated variable</returns>
+        </member>
+        <member name="M:o2Mate.IScope.CopyFrom(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Copy infos from a variable to an another
+            </summary>
+            <param name="name">current variable name to modify</param>
+            <param name="from">variable object to copy</param>
+            <param name="makeInScope">true if modify scope's variable</param>
+            <returns>the modified variable</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Item(System.Int32)">
+            <summary>
+            Get the nth-item variable
+            </summary>
+            <param name="index">index number</param>
+            <returns>variable data or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.IScope.GetEnumerator">
+            <summary>
+            Returns an iterator for reading all variables
+            </summary>
+            <returns>iterator</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Exists(System.String)">
+            <summary>
+            Returns true if the variable name exists in this scope
+            </summary>
+            <param name="name">name of the variable to search</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.IScope.GetVariable(System.String)">
+            <summary>
+            Returns a variable object from the scope by this name
+            </summary>
+            <param name="name">name of the variable to search</param>
+            <returns>variable object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.IScope.Remove(System.String)">
+            <summary>
+            Remove a variable from the scope
+            </summary>
+            <param name="name">variable name</param>
+        </member>
+        <member name="M:o2Mate.IScope.Push">
+            <summary>
+            This function enqueue a new separator which means to
+            start a new process
+            </summary>
+        </member>
+        <member name="M:o2Mate.IScope.Pop">
+            <summary>
+            This function dequeues all variable object until the first separator (and deletes it)
+            </summary>
+        </member>
+        <member name="P:o2Mate.IScope.Parent">
+            <summary>
+            Gets or sets the parent's scope (in multi-threading model)
+            </summary>
+        </member>
+        <member name="T:o2Mate.Scope">
+            <summary>
+            Implementation of a scope
+            </summary>
+        </member>
+        <member name="F:o2Mate.Scope.GeneralPrefix">
+            <summary>
+            a standard prefix
+            </summary>
+        </member>
+        <member name="F:o2Mate.Scope.TemplatePrefix">
+            <summary>
+            a prefix which serves for template's variable
+            </summary>
+        </member>
+        <member name="M:o2Mate.Scope.#ctor">
+            <summary>
+            Declares a new scope
+            </summary>
+        </member>
+        <member name="M:o2Mate.Scope.ConstructPrefixedName(o2Mate.EnumDataType,System.String)">
+            <summary>
+            Constructs a new string accordingly with standard prefix in a particular type
+            </summary>
+            <param name="type">data type</param>
+            <param name="varName">variable name</param>
+            <returns></returns>
+        </member>
+        <member name="M:o2Mate.Scope.StandardPrefix(o2Mate.EnumDataType)">
+            <summary>
+            Returns a standard prefix by a data type
+            </summary>
+            <param name="dataType">data type</param>
+            <returns>a specific prefix for this data type</returns>
+        </member>
+        <member name="M:o2Mate.Scope.AddReference(System.String,System.String,System.String)">
+            <summary>
+            Adds a new variable reference
+            </summary>
+            <param name="name">name of the variable</param>
+            <param name="reference">name of the variable to reference</param>
+            <param name="belongsTo">current process name</param>
+        </member>
+        <member name="M:o2Mate.Scope.Add(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Add a new variable in this scope
+            </summary>
+            <param name="name">variable name</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <returns>a reference to the newly created variable</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Add(System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Add a new variable in this scope
+            </summary>
+            <param name="name">variable name</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the newly created variable</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Add(System.String,System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Add a new variable in this scope
+            </summary>
+            <param name="prefix">prefix name</param>
+            <param name="name">variable name</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the newly created variable</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Add(o2Mate.IData)">
+            <summary>
+            imports a scope variable
+            </summary>
+            <param name="from">variable object to import</param>
+            <returns>the new added variable</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Update(System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Update variable infos
+            </summary>
+            <param name="name">current name of the variable</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the updated variable</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Update(System.String,System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Update variable infos
+            </summary>
+            <param name="prefix">prefix name</param>
+            <param name="name">current name of the variable</param>
+            <param name="value">string value representation</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="dataType">desired data type</param>
+            <returns>a reference to the updated variable</returns>
+        </member>
+        <member name="M:o2Mate.Scope.CopyFrom(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Copy infos from a variable to an another
+            </summary>
+            <param name="name">current variable name to modify</param>
+            <param name="from">variable object to copy</param>
+            <param name="makeInScope">true if modify scope's variable</param>
+            <returns>the modified variable</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Item(System.Int32)">
+            <summary>
+            Get the nth-item variable
+            </summary>
+            <param name="index">index number</param>
+            <returns>variable data or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Exists(System.String)">
+            <summary>
+            Returns true if the variable name exists in this scope
+            </summary>
+            <param name="name">name of the variable to search</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Scope.GetVariable(System.String)">
+            <summary>
+            Returns a variable object from the scope by this name
+            </summary>
+            <param name="name">name of the variable to search</param>
+            <returns>variable object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Remove(System.String)">
+            <summary>
+            Remove a variable from the scope
+            </summary>
+            <param name="name">variable name</param>
+        </member>
+        <member name="M:o2Mate.Scope.Push">
+            <summary>
+            This function enqueue a new separator which means to
+            start a new process
+            </summary>
+        </member>
+        <member name="M:o2Mate.Scope.Pop">
+            <summary>
+            This function dequeues all variable object until the first separator (and deletes it)
+            </summary>
+        </member>
+        <member name="M:o2Mate.Scope.GetEnumerator">
+            <summary>
+            Returns an iterator for reading all variables
+            </summary>
+            <returns>iterator</returns>
+        </member>
+        <member name="M:o2Mate.Scope.Clone">
+            <summary>
+            Clone object
+            </summary>
+            <returns>a new scope</returns>
+        </member>
+        <member name="P:o2Mate.Scope.Parent">
+            <summary>
+            Gets or sets the parent's scope (in multi-threading model)
+            </summary>
+        </member>
+        <member name="T:o2Mate.Variable">
+            <summary>
+            Implementation of a free variable (does not resides in a scope)
+            </summary>
+        </member>
+        <member name="F:o2Mate.Variable.globalName">
+            <summary>
+            Says it's a global variable
+            </summary>
+        </member>
+        <member name="M:o2Mate.Variable.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor (the data type is a string by default)
+            </summary>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+        </member>
+        <member name="M:o2Mate.Variable.#ctor(System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="type">data type</param>
+        </member>
+        <member name="M:o2Mate.Variable.#ctor(System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="prefix">prefix name</param>
+            <param name="belongsTo">current process name</param>
+            <param name="isComputable">true if computable</param>
+            <param name="type">data type</param>
+        </member>
+        <member name="M:o2Mate.Variable.CopyFrom(o2Mate.IData,System.Boolean)">
+            <summary>
+            Copy from
+            </summary>
+            <param name="from">variable to read</param>
+            <param name="changeScope">true if set the scope object</param>
+            <returns>the modified variable</returns>
+        </member>
+        <member name="M:o2Mate.Variable.Commit">
+            <summary>
+            Commit changes
+            </summary>
+        </member>
+        <member name="M:o2Mate.Variable.Set(System.String,System.String,System.String,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Set infos to this variable
+            </summary>
+            <param name="prefix">prefix string form</param>
+            <param name="belongsTo">process in which created</param>
+            <param name="value">string value representation</param>
+            <param name="isComputable">true if computable (gets a value)</param>
+            <param name="dataType">data type</param>
+        </member>
+        <member name="M:o2Mate.Variable.UseThis(o2Mate.EnumDataType)">
+            <summary>
+            Use this data type as the current data type value
+            </summary>
+            <param name="dataType">current data type</param>
+        </member>
+        <member name="M:o2Mate.Variable.TypeExists(o2Mate.EnumDataType)">
+            <summary>
+            Returns true if this data type has been already created for this variable
+            </summary>
+            <param name="dataType">data type</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Variable.PrefixInfo(o2Mate.EnumDataType)">
+            <summary>
+            Gets the complete infos of this variable, given a data type
+            </summary>
+            <param name="dataType">data type to get infos</param>
+            <returns>prefix info</returns>
+        </member>
+        <member name="P:o2Mate.Variable.Name">
+            <summary>
+            Gets or sets the name of the variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.PrefixedName">
+            <summary>
+            Gets the complete name of this variable (with the string prefix)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.IsSeparator">
+            <summary>
+            True if it's a separator
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.IsComputable">
+            <summary>
+            Gets or sets the computability of this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.ValueString">
+            <summary>
+            Gets the string value representation
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.ValueInt">
+            <summary>
+            Gets the int value representation
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.Value">
+            <summary>
+            Sets the string value representation
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.BelongsTo">
+            <summary>
+            Gets or sets which process has declared this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.RealName">
+            <summary>
+            Gets or sets the real variable name in an another programming language
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.DataType">
+            <summary>
+            Gets or sets the data type of this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.Prefix">
+            <summary>
+            Gets the prefix of this variable
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.IsGlobal">
+            <summary>
+            Says if this variable is global (known at root of the program)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.IsDirty">
+            <summary>
+            Says if this variable has changed
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.InnerScope">
+            <summary>
+            Gets the scope where resides this variable (throw an exception when this variable is free)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Variable.IsInScope">
+            <summary>
+            True if this variable resides in a particular scope
+            </summary>
+        </member>
+    </members>
+</doc>

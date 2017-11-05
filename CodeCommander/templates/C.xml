@@ -1,0 +1,33 @@
+﻿<root><legendes /><infos><creationDate>26/08/2012 09:34:41</creationDate><modificationDate>26/08/2012 12:41:22</modificationDate><revision>9</revision></infos><code><template path="/C" name="ImplWriteFileForText"><legendes/><params><param>create</param></params><code><beginprocess>ImplWriteFileForText</beginprocess><texte>int·WriteFileForText(char·*fileName)·{
+····FILE·*ptrFile·=·NULL;
+····if·((ptrFile·=fopen(fileName,·"</texte><condition><expression>$create</expression><iftrue>create</iftrue><iffalse>write</iffalse></condition><label indent="1">create</label><texte indent="1">w</texte><condition indent="1"><expression>true</expression><iftrue>next</iftrue><iffalse>fake</iffalse></condition><label indent="1">write</label><texte indent="1">a</texte><label indent="1">next</label><texte>"))·!=·NULL)·{
+·······</texte><handler name="write" /><texte>
+·······fclose(ptrFile);
+·······ptrFile·=·NULL;
+·······return·EXIT_SUCCESS;
+····}·else·{
+·······fprintf(stderr,·"%s\n",·strerror(errno));
+·······return·EXIT_FAILURE;
+····}
+}</texte><endprocess>ImplWriteFileForText</endprocess><call>ImplWriteFileForText</call></code></template><template path="/C" name="UseWriteFileForText"><legendes/><params><param>fileName</param></params><code><beginprocess>UseWriteFileForText</beginprocess><texte>if·((result=WriteFileForText(</texte><variable>$fileName</variable><texte>))·==·EXIT_SUCCESS)·{
+····fprintf(stdout,"WriteFileForText·:·Success·(%d)\n",·result);
+}·else·{
+····return·result;
+}</texte><endprocess>UseWriteFileForText</endprocess><call>UseWriteFileForText</call></code></template><template path="/C" name="ImplReadFileOfText"><legendes/><params /><code><beginprocess>ImplReadFileOfText</beginprocess><texte>int·ReadFileOfText(char·*fileName)·{
+····FILE·*ptrFile;
+····char·data[256];
+····memset(data,·0,·256);
+····if·((ptrFile·=·fopen(fileName,·"r"))·!=·NULL)·{
+·······</texte><handler name="read" /><texte>
+·······fclose(ptrFile);
+·······ptrFile·=·NULL;
+·······return·EXIT_SUCCESS;
+····}·else·{
+·······fprintf(stderr,·"%s\n",·strerror(errno));
+·······return·EXIT_FAILURE;
+····}
+}</texte><endprocess>ImplReadFileOfText</endprocess><call>ImplReadFileOfText</call></code></template><template path="/C" name="UseReadFileOfText"><legendes/><params><param>fileName</param></params><code><beginprocess>UseReadFileOfText</beginprocess><texte>if·((result=ReadFileOfText(</texte><variable>$fileName</variable><texte>))·==·EXIT_SUCCESS)·{
+·····fprintf(stdout,·"ReadFileOfText·:·Success\n");
+}·else·{
+·····return·result;
+}</texte><endprocess>UseReadFileOfText</endprocess><call>UseReadFileOfText</call></code></template><template path="/C" name="ConstructFileName"><legendes/><params><param>volume</param><param>directory</param><param>name</param><param>extension</param><param>separator</param><param>out</param></params><code><beginprocess>ConstructFileName</beginprocess><affectation><variable>volume</variable><expression>$volume</expression></affectation><affectation><variable>directory</variable><expression>$directory</expression></affectation><affectation><variable>name</variable><expression>$name</expression></affectation><affectation><variable>extension</variable><expression>$extension</expression></affectation><texte>strcpy($out,·"</texte><variable>volume</variable><variable>$separator</variable><variable>directory</variable><variable>$separator</variable><variable>name</variable><texte>.</texte><variable>extension</variable><texte>");</texte><endprocess>ConstructFileName</endprocess><call>ConstructFileName</call><affectation><variable>$out</variable><expression>$out</expression></affectation></code></template><template path="/C" name="UnixPathSeparator"><legendes/><params><param>out</param></params><code><affectation><variable>$out</variable><expression>SlashChar</expression></affectation></code></template><template path="/C" name="WindowsPathSeparator"><legendes/><params><param>out</param></params><code><affectation><variable>$out</variable><expression>\\</expression></affectation></code></template></code></root>

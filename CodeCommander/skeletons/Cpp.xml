@@ -1,0 +1,67 @@
+﻿<root><legendes><item context="" name="year" type="Date" expression="" commentaire="Indiquer la date de lancement du projet">C'est l'année du copyright</item><item context="" name="author" type="String" expression="" commentaire="Nom de l'auteur">Auteur</item><item context="" name="className" type="String" expression="" commentaire="Saisir le nom de la classe">Nom de la classe</item><item context="" name="herite" type="Array" expression="" commentaire="Liste de classes dérivées">Saisie des classes dérivées</item><item context="herite" name="modifier" type="Enumeration" expression="public,protected,virtual" commentaire="Public : tous les membres hérités sont visibles hors de la classe\r\nProtected : tous les membres hérités sont visibles dans la classe\r\nVirtual : partage de membres hérités">Modifier</item><item context="herite" name="className" type="String" expression="" commentaire="">Nom de la classe dérivée</item></legendes><infos><creationDate>21/10/2013 00:43:24</creationDate><modificationDate>03/11/2013 16:21:19</modificationDate><revision>14</revision></infos><code><beginskeleton path="/C++" name="Header" /><usetemplate name="/CodeCommander/Writer"><params><param name="writer">w</param><param name="extension">hpp</param></params><codings /></usetemplate><texte>/*******************************************************************************¶
+·*·Copyright·(C)·</texte><variable>year</variable><texte>·</texte><variable>author</variable><texte>¶
+¶
+·*·This·program·is··free··software;·you·can··redistribute·it···and/or··modify·it¶
+·*·under·the·terms·of·the··GNU·General·Public·License·as··published··by·the·Free¶
+·*·Free·Software·Foundation;··either··version··2·of·the··License,··or··any·later¶
+·*·version.¶
+·*·¶
+·*·This·program·is··distributed·in··the·hope·that·it·will·be·useful,·but·WITHOUT¶
+·*·ANY·WARRANTY;·without·even·the·implied·warranty·of·MERCHANTABILITY·or·FITNESS¶
+·*·FOR·A·PARTICULAR·PROPOSE.·See·the·GNU·General·Public·License·for·more·details.¶
+·*¶
+·*·You·should·have·receive·a·copy·of·the··GNU·General·Public·License··along·with¶
+·*·this·program;·if·not,·write·to·the··Free·Software·Foundation,·Inc.,·59·Temple¶
+·*·Place,·Suite·330,·Boston,·MA·02111-1307·USA¶
+·*******************************************************************************/¶
+¶
+¶
+¶
+#ifndef·_</texte><affectationchaine><variable>fileName</variable><chaine>file</chaine></affectationchaine><affectation><variable>fileName</variable><expression>upper(fileName)</expression></affectation><variable>fileName</variable><texte>_H_¶
+¶
+¶
+¬#define·_</texte><variable>fileName</variable><texte>_H_¶
+¶</texte><injector name="classes" /><texte>¶
+¶
+#endif¶
+¶</texte><endskeleton path="/C++" name="Header" /><beginskeleton path="/C++" name="Implementation" /><usetemplate name="/CodeCommander/Writer"><params><param name="writer">w</param><param name="extension">cpp</param></params><codings /></usetemplate><texte>/*******************************************************************************¶
+·*·Copyright·(C)·</texte><variable>year</variable><texte>·</texte><variable>author</variable><texte>¶
+¶
+·*·This·program·is··free··software;·you·can··redistribute·it···and/or··modify·it¶
+·*·under·the·terms·of·the··GNU·General·Public·License·as··published··by·the·Free¶
+·*·Free·Software·Foundation;··either··version··2·of·the··License,··or··any·later¶
+·*·version.¶
+·*·¶
+·*·This·program·is··distributed·in··the·hope·that·it·will·be·useful,·but·WITHOUT¶
+·*·ANY·WARRANTY;·without·even·the·implied·warranty·of·MERCHANTABILITY·or·FITNESS¶
+·*·FOR·A·PARTICULAR·PROPOSE.·See·the·GNU·General·Public·License·for·more·details.¶
+·*¶
+·*·You·should·have·receive·a·copy·of·the··GNU·General·Public·License··along·with¶
+·*·this·program;·if·not,·write·to·the··Free·Software·Foundation,·Inc.,·59·Temple¶
+·*·Place,·Suite·330,·Boston,·MA·02111-1307·USA¶
+·*******************************************************************************/¶
+¶
+¶
+¶
+¶</texte><injector name="includes" /><affectationchaine><variable>fileName</variable><chaine>file</chaine></affectationchaine><texte>¶
+#include·"</texte><variable>fileName</variable><texte>.hpp"¶
+¶
+¶
+¶</texte><injector name="classes" /><endskeleton path="/C++" name="Implementation" /><beginskeleton path="/C++" name="Class" /><texte>class·</texte><variable>className</variable><call>heritage</call><texte>·{¶
+¬¶
+¬¶
+¬public:¶
+¬¬//·constructor¶
+¬¬</texte><variable>className</variable><texte>()·</texte><texte>{¶
+¬¬¬//·init¶
+¬¬}¶
+¬¬//·copy·constructor¶
+¬¬</texte><variable>className</variable><texte>(const·</texte><variable>className</variable><texte>&amp;);¶
+¬¬//·copy·assignment¶
+¬¬</texte><variable>className</variable><texte>&amp;·operator=(const·</texte><variable>className</variable><texte>&amp;);¶
+¬¬//·destructor¶
+¬¬~</texte><variable>className</variable><texte>()·{¶
+¬¬¬//·close¶
+¬¬}¶
+¶
+};¶</texte><beginprocess>heritage</beginprocess><size><terme>size</terme><tableau>herite</tableau></size><usetemplate name="/CodeCommander/Condition"><params><param name="name">c2</param><param name="condition">size&amp;gt;0</param></params><codings><coding name="true" indent="1"><code><texte indent="2">·:·</texte></code></coding></codings></usetemplate><usetemplate name="/CodeCommander/ForEach"><params><param name="name">f1</param><param name="tabName">herite</param><param name="init">1</param><param name="counter">index</param></params><codings><coding name="next" indent="1"><code><texte indent="2">,·</texte></code></coding><coding name="body" indent="1"><code><affectationchamp indent="2"><variable>modifier</variable><champ><tableau>herite</tableau><expression>index</expression><variable>modifier</variable></champ></affectationchamp><variable indent="2">modifier</variable><usetemplate name="/CodeCommander/Condition" indent="2"><params><param name="name">c1</param><param name="condition">modifier?EmptyChar</param></params><codings><coding name="false" indent="3"><code><texte indent="4">·</texte></code></coding></codings></usetemplate><champ indent="2"><tableau>herite</tableau><expression>index</expression><variable>className</variable></champ></code></coding></codings></usetemplate><endprocess>heritage</endprocess><endskeleton path="/C++" name="Class" /></code></root>

@@ -1,0 +1,200 @@
+﻿<?xml version='1.0' encoding='utf-8'?><root><legendes /><infos><creationDate>07/12/2014 16:36:22</creationDate><modificationDate>12/12/2014 08:52:51</modificationDate><revision>3</revision></infos><code><texte>#·**************************************************¶
+#·*··copyright·@·2014¶
+#·*··This·file·was·generated¶
+#·*··by·CodeCommander¶
+#·*¶
+#·*··codecommander.codeplex.com¶
+#·*¶
+#·*¶
+#·***************************************************/¶
+¶
+$init·=·{¶
+¶
+¬$ErrorActionPreference·=·"Stop"¶
+¶
+¬$trueValue·=·1¶
+¬$falseValue·=·0¶
+¬$SpaceChar·=·"·"¶
+¬$PlusChar·=·"+"¶
+¬$MinusChar·=·"-"¶
+¬$StarChar·=·"*"¶
+¬$SlashChar·=·"/"¶
+¬$ColonChar·=·":"¶
+¬$CommaChar·=·","¶
+¬$DotChar·=·"."¶
+¬$ExChar·=·"!"¶
+¬$IntChar·=·"?"¶
+¬$EmptyChar·=·""¶
+¬$InfChar·=·"&lt;"¶
+¬$SupChar·=·"&gt;"¶
+¬$OpenParChar·=·"("¶
+¬$CloseParChar·=·")"¶
+¬$OpenBraChar·=·"{"¶
+¬$CloseBraChar·=·"}"¶
+¬$OpenSquaBraChar·=·"["¶
+¬$CloseSquaBraChar·=·"]"¶
+¬$CrLf·=·[System.Environment]::NewLine¶
+¶
+¬$theDict·=·New-Object·-ComObject·o2Mate.Dictionnaire¶
+¬$theDict.Load("</texte><variable>DictionaryFileName</variable><texte>
+  ")¶
+  ¶
+  ¶
+  ¬function·CreateDirectoryIfNotExists($dir)¶
+  ¬{¶
+  ¬¬if·(!·(Test-Path·$dir))¶
+  ¬¬{¶
+  ¬¬¬New-Item·$dir·-type·directory¶
+  ¬¬}¶
+  ¬}¶
+  ¶
+  ¬function·EraseFile($fileName)¶
+  ¬{¶
+  ¬¬if·(Test-Path·$fileName)¶
+  ¬¬{¶
+  ¬¬¬New-Item·$fileName·-type·file·-force¶
+  ¬¬}¶
+  ¬}¶
+  ¶
+  ¬function·Indent($writer)¶
+  ¬{¶
+  ¬¬++$writer[1];¶
+  ¬}¶
+  ¶
+  ¬function·Unindent($writer)¶
+  ¬{¶
+  ¬¬if·($writer[1]·-gt·0)¶
+  ¬¬{¶
+  ¬¬¬--$writer[1];¶
+  ¬¬}¶
+  ¬}¶
+  ¶
+  ¬function·WriteToFile($writer,·$text)¶
+  ¬{¶
+  ¬¬if·($text·-is·[Boolean])·{¶
+  ¬¬¬if·($text)·{·$text·=·$trueValue·}¶
+  ¬¬¬else·{·$text·=·$falseValue·}¶
+  ¬¬}¶
+  ¶
+  ¬¬$m·=·$text·|·select-string·("((.*"·+·$Crlf·+·")|.*$)")·-allmatches¶
+  ¬¬foreach($k·in·$m.matches)¶
+  ¬¬{¶
+  ¬¬¬if·($writer[3])¶
+  ¬¬¬{¶
+  ¬¬¬¬if·($k.Value)¶
+  ¬¬¬¬{¶
+  ¬¬¬¬¬for($i=0;·$i·-lt·$writer[1];·++$i)·{·$writer[2]·+=·"····"·}¶
+  ¶
+  ¬¬¬¬¬if·($k.Value.Length·-gt·1)·{¶
+  ¶
+  ¬¬¬¬¬¬if·($k.Value.Substring($k.Value.Length·-·2,·2)·-ne·$Crlf)¶
+  ¬¬¬¬¬¬{¶
+  ¬¬¬¬¬¬¬$writer[2]·+=·$k.Value¶
+  ¬¬¬¬¬¬¬$writer[3]·=·$false¶
+  ¬¬¬¬¬¬}¶
+  ¬¬¬¬¬¬else¶
+  ¬¬¬¬¬¬{¶
+  ¬¬¬¬¬¬¬$writer[2]·+=·$k.Value.Substring(0,·$k.Value.Length·-·2)¶
+  ¬¬¬¬¬¬¬$writer[2]·|·Out-File·$writer[0]·-Append¶
+  ¬¬¬¬¬¬¬$writer[2]·=·""¶
+  ¬¬¬¬¬¬}¶
+  ¬¬¬¬¬}¶
+  ¬¬¬¬¬else¶
+  ¬¬¬¬¬{¶
+  ¬¬¬¬¬¬$writer[2]·+=·$k.Value¶
+  ¬¬¬¬¬¬$writer[3]·=·$false¶
+  ¬¬¬¬¬}¶
+  ¬¬¬¬}¶
+  ¬¬¬}¶
+  ¬¬¬else¶
+  ¬¬¬{¶
+  ¬¬¬¬if·($k.Value)¶
+  ¬¬¬¬{¶
+  ¬¬¬¬¬if·($k.Value.Length·-gt·1·-and·$k.Value.Substring($k.Value.Length·-·2,·2)·-eq·$Crlf)¶
+  ¬¬¬¬¬{¶
+  ¬¬¬¬¬¬$writer[2]·+=·$k.Value.Substring(0,·$k.Value.Length·-·2)¶
+  ¬¬¬¬¬¬$writer[2]·|·Out-File·$writer[0]·-Append¶
+  ¬¬¬¬¬¬$writer[2]·=·""¶
+  ¬¬¬¬¬¬$writer[3]·=·$true¶
+  ¬¬¬¬¬}¶
+  ¬¬¬¬¬else¶
+  ¬¬¬¬¬{¶
+  ¬¬¬¬¬¬$writer[2]·+=·$k.Value¶
+  ¬¬¬¬¬}¶
+  ¬¬¬¬}¶
+  ¬¬¬}¶
+  ¬¬}¶
+  ¬}¶
+  ¶
+  ¶
+  ¬#·Thanks·to·Boe·Prox¶
+  ¬#·http://learn-powershell.net/2013/04/19/sharing-variables-and-live-objects-between-powershell-runspaces/¶
+  ¶
+  ¬Function·New-SharedMemoryThread·{¶
+  ¬¬[cmdletbinding()]¶
+  ¬¬param(¶
+  ¬¬¬[scriptblock]·$InitializationScript,¶
+  ¬¬¬[scriptblock]·$ScriptBlock,¶
+  ¬¬¬[hashtable]·$Hash¶
+  ¬¬)¶
+  ¶
+  ¬¬if·(!$runspaces)·{¶
+  ¬¬¬$Script:runspaces·=·New-Object·System.Collections.ArrayList¶
+  ¬¬¬Invoke-Command·$initializationScript·-NoNewScope¶
+  ¬¬¬$Script:sessionstate·=·[system.management.automation.runspaces.initialsessionstate]::CreateDefault()¶
+  ¬¬¬$Script:runspacepool·=·[runspacefactory]::CreateRunspacePool(1,·10,·$sessionstate,·$Host)¶
+  ¬¬¬$runspacepool.Open()¶
+  ¬¬}¶
+  ¶
+  ¬¬#Create·the·powershell·instance·and·supply·the·scriptblock·with·the·other·parameters·¶
+  ¬¬$powershell·=·[powershell]::Create($sessionstate).AddScript($initializationScript).AddScript($scriptBlock).AddArgument($hash)¶
+  ¶
+  ¬¬#Add·the·runspace·into·the·powershell·instance¶
+  ¬¬$powershell.RunspacePool·=·$runspacepool¶
+  ¶
+  ¬¬#Create·a·temporary·collection·for·each·runspace¶
+  ¬¬$temp·=·""·|·Select-Object·PowerShell,Runspace¶
+  ¬¬$temp.PowerShell·=·$powershell¶
+  ¶
+  ¬¬#Save·the·handle·output·when·calling·BeginInvoke()·that·will·be·used·later·to·end·the·runspace¶
+  ¬¬$temp.Runspace·=·$powershell.BeginInvoke()¶
+  ¬¬$runspaces.Add($temp) | Out-Null¶
+  ¶
+  ¬}¶
+  ¶
+  ¶
+  ¬Function·Get-RunspaceData·{¶
+  ¬¬[cmdletbinding()]¶
+  ¬¬param(¶
+  ¬¬¬[switch]$Wait¶
+  ¬¬)¶
+  ¬¬Do·{¶
+  ¬¬¬$more·=·$false¶
+  ¬¬¬Foreach($runspace·in·$runspaces)·{¶
+  ¬¬¬¬If·($runspace.Runspace.isCompleted)·{¶
+  ¬¬¬¬¬$runspace.powershell.EndInvoke($runspace.Runspace)¶
+  ¬¬¬¬¬$runspace.powershell.dispose()¶
+  ¬¬¬¬¬$runspace.Runspace·=·$null¶
+  ¬¬¬¬¬$runspace.powershell·=·$null·················¶
+  ¬¬¬¬}·ElseIf·($runspace.Runspace·-ne·$null)·{¶
+  ¬¬¬¬¬$more·=·$true¶
+  ¬¬¬¬}¶
+  ¬¬¬}¶
+  ¶
+  ¶
+  ¬¬¬If·($more·-AND·$PSBoundParameters['Wait'])·{¶
+  ¬¬¬¬Start-Sleep·-Milliseconds·100¶
+  ¬¬¬}¶
+  ¬¬¬#Clean·out·unused·runspace·jobs¶
+  ¬¬¬$temphash·=·$runspaces.clone()¶
+  ¬¬¬$temphash·|·Where·{¶
+  ¬¬¬¬$_.runspace·-eq·$Null¶
+  ¬¬¬}·|·ForEach·{¶
+  ¬¬¬¬$Runspaces.remove($_)¶
+  ¬¬¬}¶
+  ¬¬}·while·($more·-AND·$PSBoundParameters['Wait'])¶
+  ¬}¶
+  ¶
+  ¶</texte><variable>ImplementedFunctions</variable><texte>¶
+¶
+}¶</texte></code></root>

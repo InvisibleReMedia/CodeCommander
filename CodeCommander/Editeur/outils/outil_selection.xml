@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+	<code>
+		<texte>&lt;div onselectstart='javascript:return false;' id='selection</texte>
+		<variable>toolName</variable>
+		<texte>' style='margin-top:4px;cursor:arrow;border:3px solid gray' onmouseup='javascript:clickSelectionObject(this);' onmouseenter='javascript:activeSelectionObject(this);' onmousedown='javascript:clickSelectionObject(this);'&gt;&lt;/div&gt;</texte>
+	</code>
+</root>

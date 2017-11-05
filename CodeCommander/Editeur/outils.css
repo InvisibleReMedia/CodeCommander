@@ -1,0 +1,234 @@
+﻿.sourceCode {
+	overflow:auto;
+	display:block;
+	float:left;
+}
+
+.toolClass {
+				border: 1px solid white;
+				font-family: "Courier New", Courier, monospace;
+				font-size: 14pt;
+                line-height: 16pt;
+				font-weight: normal;
+				font-style: normal;
+				font-variant: normal;
+				text-transform: none;
+				color: #000000;
+				text-align: left;
+				white-space: normal;
+				word-spacing: normal;
+				visibility: visible;
+				display: block;
+				cursor: auto;
+				margin-top:1px;
+				margin-bottom:1px;
+}
+
+.imgSize {
+    width:11px;
+    height:11px;
+}
+
+.lineSize {
+    height:11px;
+}
+
+.groupClass {
+				font-family: "Courier New", Courier, monospace;
+				font-size: xx-small;
+				font-weight: normal;
+				font-style: normal;
+				font-variant: normal;
+				text-transform: none;
+				color: #000000;
+				text-align: center;
+				white-space: normal;
+				word-spacing: normal;
+				visibility: visible;
+				display: block;
+				cursor: auto;
+				padding-left:40px;
+}
+
+#para {
+				line-height:0px;
+				padding:0px 0px 0px 0px;
+				margin:0px 11px 0px 0px;
+}
+
+.template
+{
+	z-index:1000;
+	overflow:scroll;
+	display:none;
+	position:absolute;
+	left:10px;
+	top:50px;
+	height:167px;
+	background-color:gray;
+}
+
+.syntax
+{
+	z-index:1000;
+	overflow:scroll;
+	display:none;
+	position:absolute;
+	left:10px;
+	top:50px;
+	height:200px;
+	width:290px;
+	background-color:gray;
+}
+
+.syntaxRow
+{
+	background-color:#F2F2B3;
+	cursor:pointer;
+}
+
+.syntaxRowOver
+{
+	background-color:#66E182;
+	cursor:pointer;
+}
+
+.pasteAndStore
+{
+	z-index:1000;
+	overflow:y-scroll;
+	display:none;
+	position:absolute;
+	left:10px;
+	top:50px;
+	height:500px;
+	width:470px;
+	background-color:gray;
+}
+
+.pasteAndStoreRow
+{
+	background-color:#66E182;
+	cursor:pointer;
+}
+
+.pasteAndStoreRowOver
+{
+	background-color:#66E182;
+	cursor:pointer;
+}
+
+.templateRow
+{
+	background-color:#F2F2B3;
+	cursor:pointer;
+}
+
+.templateRowOver
+{
+	background-color:#66E182;
+	cursor:pointer;
+}
+
+.popup
+{
+	z-index:99;
+	display:none;
+	background-color: #D3ECFA;
+}
+
+.pasteOver
+{
+	font-size:7pt;
+	filter:alpha(opacity=10);
+	border:1px inset gray;
+	background-color:gray;
+	color:white;
+}
+
+.paste
+{
+	font-size:7pt;
+	filter:alpha(opacity=10);
+	color:black;
+	height:15pt;
+}
+
+.gap
+{
+	font-size:7pt;
+	filter:alpha(opacity=0);
+	border:1px inset white;
+	height:12pt;
+}
+
+.windowContent
+{
+	color:black;
+	background-color:#D3ECFA;
+	display:block;
+	float:left;
+}
+
+.menuInsertTools 
+{
+	z-index:1000;
+	filter:alpha(opacity=0);
+	background:#F1F1FF;
+	float:left;
+	clear:none;
+	display:none;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+
+.legende 
+{
+	z-index:1000;
+	filter:alpha(opacity=100);
+	background:#FFFFFF;
+	float:center;
+	clear:none;
+	display:none;
+	position:absolute;
+	align:center;
+	top:0px;
+	border:2px outset black;
+}
+
+.active
+{
+	display:block;
+}
+
+.active-inline
+{
+	display:inline;
+}
+
+.inactive
+{
+	display:none;
+}
+
+.syntaxDraggable
+{
+}
+
+.pasteDraggable
+{
+}
+
+.pasteDroppable
+{
+}
+
+.syntaxDroppable
+{
+}
+
+.somethingover
+{
+	border:1px ridge blue;
+}

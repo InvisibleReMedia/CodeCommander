@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<root><legendes /><infos><creationDate>21/11/2014 14:11:14</creationDate><modificationDate>21/11/2014 14:12:33</modificationDate><revision>2</revision></infos><code><texte>
+  //·******************************************¶
+  //·this·file·was·generated·with·CodeCommander¶
+  //·codecommander.codeplex.com¶
+  //·******************************************¶
+  ¶
+  ¶</texte><indent /><variable>structures</variable><unindent /><texte>¶¶¶
+    ref·class·Compiled·:·Loader·{¶
+    ¶
+    private:¶</texte><indent /><variable>prototypes</variable><unindent /><texte>
+¶
+public:¶
+¬Compiled(wstring&amp;·s)·:·Loader(s)·{·};¶
+¶
+¬int·main(array&lt;System::String·^&gt;·^args);¶
+¶
+};</texte></code></root>

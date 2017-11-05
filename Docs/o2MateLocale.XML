@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>o2MateLocale</name>
+    </assembly>
+    <members>
+        <member name="T:o2Mate.ILocale">
+            <summary>
+            Interface declaration of a locale
+            </summary>
+        </member>
+        <member name="P:o2Mate.ILocale.Name">
+            <summary>
+            Key name
+            </summary>
+        </member>
+        <member name="P:o2Mate.ILocale.Language">
+            <summary>
+            Language
+            </summary>
+        </member>
+        <member name="P:o2Mate.ILocale.Value">
+            <summary>
+            Content
+            </summary>
+        </member>
+        <member name="T:o2Mate.ILocaleGroup">
+            <summary>
+            Interface declaration of a locale group
+            </summary>
+        </member>
+        <member name="M:o2Mate.ILocaleGroup.ExtractGroupAndName(System.String,System.String@,System.String@)">
+            <summary>
+            Checks and returns parts
+            </summary>
+            <param name="text">text to parse</param>
+            <param name="groupName">returned group name</param>
+            <param name="name">returned locale name</param>
+            <returns>true if well-formed</returns>
+        </member>
+        <member name="M:o2Mate.ILocaleGroup.Exists(System.String)">
+            <summary>
+            Says if a locale group by name exists
+            </summary>
+            <param name="name">the group name to search</param>
+            <returns>true if exists</returns>
+        </member>
+        <member name="M:o2Mate.ILocaleGroup.Create(System.String)">
+            <summary>
+            Creates a new locale group
+            </summary>
+            <param name="name">the group name to create</param>
+        </member>
+        <member name="M:o2Mate.ILocaleGroup.Remove(System.String)">
+            <summary>
+            Suppress an existing locale group
+            </summary>
+            <param name="name">the group name to suppress</param>
+        </member>
+        <member name="M:o2Mate.ILocaleGroup.Get(System.String)">
+            <summary>
+            Reads the group name and returns a reference to it
+            </summary>
+            <param name="name">group name</param>
+            <returns>a locale set</returns>
+        </member>
+        <member name="P:o2Mate.ILocaleGroup.Groups">
+            <summary>
+            Search for all group names
+            </summary>
+        </member>
+        <member name="T:o2Mate.LocaleGroup">
+            <summary>
+            Implementation of a locale group
+            </summary>
+        </member>
+        <member name="M:o2Mate.LocaleGroup.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.LocaleGroup.#ctor(System.String)">
+            <summary>
+            Creates a locale group (a defined directory where to search)
+            </summary>
+            <param name="dir">directory string</param>
+        </member>
+        <member name="M:o2Mate.LocaleGroup.ExtractGroupAndName(System.String,System.String@,System.String@)">
+            <summary>
+            Checks and returns parts
+            </summary>
+            <param name="text">text to parse</param>
+            <param name="groupName">returned group name</param>
+            <param name="name">returned locale name</param>
+            <returns>true if well-formed</returns>
+        </member>
+        <member name="M:o2Mate.LocaleGroup.Exists(System.String)">
+            <summary>
+            Says if a locale group by name exists
+            </summary>
+            <param name="name">the group name to search</param>
+            <returns>true if exists</returns>
+        </member>
+        <member name="M:o2Mate.LocaleGroup.Create(System.String)">
+            <summary>
+            Creates a new locale group
+            </summary>
+            <param name="name">the group name to create</param>
+        </member>
+        <member name="M:o2Mate.LocaleGroup.Remove(System.String)">
+            <summary>
+            Suppress an existing locale group
+            </summary>
+            <param name="name">the group name to suppress</param>
+        </member>
+        <member name="M:o2Mate.LocaleGroup.Get(System.String)">
+            <summary>
+            Reads the locale group and returns a reference to it
+            </summary>
+            <param name="name">group name</param>
+            <returns>a locale set</returns>
+        </member>
+        <member name="P:o2Mate.LocaleGroup.Groups">
+            <summary>
+            Search for all group names
+            </summary>
+        </member>
+        <member name="T:o2Mate.ILocaleSet">
+            <summary>
+            Interface declaration for a set of locale values
+            </summary>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.ExistsOne(System.String,System.String)">
+            <summary>
+            Says if a locale exists by name and language
+            </summary>
+            <param name="name">name to search</param>
+            <param name="language">language switch</param>
+            <returns>true if exists</returns>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.Exists(System.String)">
+            <summary>
+            Says if a locale exists by name (for any language)
+            </summary>
+            <param name="name">name to search</param>
+            <returns>true if exists</returns>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.Add(System.String,System.String,System.String)">
+            <summary>
+            Adds a newly locale with name, language and value
+            </summary>
+            <param name="name">locale key</param>
+            <param name="language">language switch</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.Modify(System.String,System.String,System.String)">
+            <summary>
+            Modify an existing locale with name, language and value
+            </summary>
+            <param name="name">locale key</param>
+            <param name="language">language switch</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.DeleteOne(System.String,System.String)">
+            <summary>
+            Supress an existing locale by name and language
+            </summary>
+            <param name="name">locale key</param>
+            <param name="language">language switch</param>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.Delete(System.String)">
+            <summary>
+            Deletes all existing locale by name (for any language)
+            </summary>
+            <param name="name">locale key</param>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.RenameOne(System.String,System.String,System.String)">
+            <summary>
+            Rename an existing locale with name, language and value
+            </summary>
+            <param name="oldName">locale key to search</param>
+            <param name="name">new locale key name</param>
+            <param name="language">language switch</param>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.Rename(System.String,System.String)">
+            <summary>
+            Rename all existing locale by name (for any language)
+            </summary>
+            <param name="oldName">locale key to search</param>
+            <param name="name">new locale key name</param>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.Get(System.String,System.String)">
+            <summary>
+            Gets an existing locale by name and language
+            </summary>
+            <param name="name">locale key</param>
+            <param name="language">language switch</param>
+        </member>
+        <member name="M:o2Mate.ILocaleSet.GetValues(System.String)">
+            <summary>
+            Returns all locales values (all languages) by name
+            </summary>
+            <param name="name">locale key name to search</param>
+            <returns>a list of all values</returns>
+        </member>
+        <member name="P:o2Mate.ILocaleSet.GroupName">
+            <summary>
+            Gets or sets the group name (the group name is a file name)
+            </summary>
+        </member>
+        <member name="P:o2Mate.ILocaleSet.Names">
+            <summary>
+            Returns a list of all names
+            </summary>
+        </member>
+        <member name="T:o2Mate.ITab">
+            <summary>
+            List of locale object
+            </summary>
+        </member>
+        <member name="M:o2Mate.ITab.Item(System.Int32)">
+            <summary>
+            Gets a particular locale
+            </summary>
+            <param name="index">index number (zero-based index)</param>
+            <returns>a locale instance</returns>
+        </member>
+        <member name="P:o2Mate.ITab.Count">
+            <summary>
+            Gets the count locale
+            </summary>
+        </member>
+    </members>
+</doc>

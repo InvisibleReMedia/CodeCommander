@@ -1,0 +1,6 @@
+﻿<root><legendes /><infos><creationDate>20/08/2012 12:48:22</creationDate><modificationDate>20/08/2012 13:41:07</modificationDate><revision>6</revision></infos><code><usetemplate name="/dict/racine"><params><param name="title">Saisie du dictionnaire  </param></params><codings><coding name="body" indent="1"><code><texte indent="2">Bienvenue·sur·la·page·de·saisie·du·dictionnaire.&lt;/br&gt;
+Vous·pouvez·créer·un·nouveau·dictionnaire·ou·bien,·charger·un·dictionnaire·existant·et,·si·besoin·le·modifier.&lt;br/&gt;
+Cliquez·sur·le·bouton·de·votre·choix.&lt;p/&gt;</texte><texte indent="2">
+&lt;input·type='button'·value='Créer·un·nouveau·dictionnaire'·name='createDict'·id='createDict'/&gt;
+&lt;p/&gt;
+&lt;input·type='button'·value='Charger·un·dictionnaire·existant'·name='loadDict'·id='loadDict'/&gt;</texte></code></coding></codings></usetemplate></code></root>

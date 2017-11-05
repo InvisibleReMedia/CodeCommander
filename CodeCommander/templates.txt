@@ -1,0 +1,226 @@
+On développe plusieurs templates différents:
+
+Le premier groupe correspond aux templates pour CodeCommander:
+ - Loop(name,counter,value)
+	name est un nom unique dans le fichier d'exécution
+	counter est le nom de la variable du compteur
+	permet de lancer une boucle N fois (de 1 à N)
+	Le paramètre value est une constante ou une variable.
+	codings: body
+ - LoopInverse(name,counter,value)
+    name est un nom unique dans le fichier d'éxécution
+    counter est le nom de la variable du compteur
+    permet de lancer une boucle N fois mais à l'envers (de N à 1)
+    Le paramètre value est une constante ou une variable
+    codings : body
+ - LoopWhile(name, counter, init, limit)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    init est la valeur d'initialisation du compteur
+    limit est une expression booléenne
+    permet de lancer une boucle tant que limit est vrai
+    Le coding first permet de faire quelque chose la première fois
+    codings : first, body
+ - LoopConditionalWhile(name, counter, init, limit, condition)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    init est la valeur d'initialisation du compteur
+    limit est une expression booléenne
+    condition est une variable booléenne
+    permet de lancer une boucle tant que limit est vrai et appele body si condition est vrai
+	Le coding condition calcule la condition. La condition est vraie par défaut
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+    codings : condition, next, body
+ - LoopUntil(name, counter, limit)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    limit est une expression booléenne
+    permet de lancer une boucle jusqu'à ce que limit soit vrai
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+    codings : next, body
+ - LoopConditionalUntil(name, counter, init, limit)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    init est la valeur d'initialisation du compteur
+    limit est une expression booléenne
+    condition est une variable booléenne
+    permet de lancer une boucle jusqu'à ce que limit soit vrai et appele body si condition est vrai
+	Le coding condition calcule la condition. La condition est vraie par défaut
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+    codings : condition, next, body
+ -LoopWithWhile(name, counter, init, limit)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    init est la valeur d'initialisation du compteur
+    limit est une variable booléenne
+    permet de lancer une boucle tant que limit est vrai
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+    Le coding limit est appelé pour calculer la variable limit
+    Le coding increment est appelé pour calculer le compteur
+    codings : next, limit, increment, body
+ -LoopWithConditionalWhile(name, counter, init, limit, condition)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    init est la valeur d'initialisation du compteur
+    limit est une variable booléenne
+    condition est une variable booléenne
+    permet de lancer une boucle tant que limit est vrai et appelle body si condition est vrai
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+	Le coding condition calcule la condition. La condition est vraie par défaut
+    Le coding limit est appelé pour calculer la variable limit
+    Le coding increment est appelé pour calculer le compteur
+    codings : next, condition, limit, increment, body
+ -LoopWithUntil(name, counter, init, limit)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    init est la valeur d'initialisation du compteur
+    limit est une expression booléenne
+    permet de lancer une boucle jusqu'à ce que limit soit vrai
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+    Le coding limit est appelé pour calculer la variable limit
+    Le coding increment est appelé pour calculer le compteur
+    codings : next, limit, increment, body
+ -LoopWithConditionalUntil(name, counter, init, limit, condition)
+    name est un nom unique dans le fichier d'exécution
+    counter est le nom de la variable du compteur
+    init est la valeur d'initialisation du compteur
+    limit est une variable booléenne
+    condition est une variable booléenne
+    permet de lancer une boucle jusqu'à ce que limit soit vrai et appelle body si condition est vrai
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+	Le coding condition calcule la condition. La condition est vraie par défaut
+    Le coding limit est appelé pour calculer la variable limit
+    codings : next, condition, limit, body
+ -ForEach(name, tabName, init, counter)
+	name est un nom unique dans le fichier d'exécution
+	tabName est le nom du tableau
+    init est la valeur d'initialisation du compteur
+	counter est le nom de la variable du compteur
+	itère tous les éléments d'un tableau
+    Le coding next permet de faire quelque chose les fois suivantes mais pas la première fois
+	codings: next, body
+ -ForEachConditional(name, tabName, init, counter, condition)
+	name est un nom unique dans le fichier d'exécution
+	tabName est le nom du tableau
+	counter est le nom de la variable du compteur
+	condition est une variable booléenne
+	itère tous les éléments d'un tableau et appele body uniquement si la condition est vraie
+	Le coding condition calcule la condition. La condition est vraie par défaut
+    Le coding first permet de faire quelque chose la première fois
+	codings: condition, first, body
+ -Search(name, tabName, start, fieldSearch, valueToSearch, result)
+    name est un nom unique dans le fichier d'exécution
+    tabName est le nom du tableau
+    start est la valeur d'initialisation du compteur
+    fieldSearch est le nom du champ où chercher
+    valueToSearch est la valeur à chercher
+    result est la variable contenant le résultat
+    Recherche dans un tableau selon la valeur d'un champ du tableau et retourne la position
+ -Condition(name, condition)
+    name est un nom unique dans le fichier d'exécution
+    condition est une expression booléenne
+    effectue une condition et appelle le coding true ou false selon le résultat de la condition
+    codings : true, false
+ -WithCondition(name, condition)
+    name est un nom unique dans le fichier d'exécution
+    condition est une variable booléenne
+    effectue une condition en appelant le coding condition et appelle le coding true ou false selon le résultat de la condition
+    codings : condition, true, false
+
+    
+
+Le second groupe est pour le C:
+ -TypedefStruct(name, tabName, typedefName)
+	name est un nom unique dans le fichier d'exécution
+	tabName est le nom d'un tableau
+	typedefName est le typedef de la structure créée
+    Construit une structure typedef ainsi que les fonctions d'allocations sur la base d'un tableau
+ -Malloc(name, varName, type, size)
+    name est un nom unique dans le fichier d'exécution
+    varName est le nom de la variable allouée
+    type est le type d'objet à allouer
+    size est le nombre d'objets à allouer. C'est une variable ou une constante
+    Alloue de la mémoire dans le tas
+ -Function(name, returnType, returnName, functionName, parameters)
+    name est un nom unique dans le fichier d'exécution
+    returnType est le type de retour de la fonction (void si aucun retour)
+    returnName est le nom de la variable de retour
+    functionName est le nom de la fonction
+    parameters sont les paramètres de la fonction
+    Code une fonction
+    codings: body
+ -Prototype(name, returnType, functionName, parameters)
+    name est un nom unique dans le fichier d'exécution
+    returnType est le type de retour de la fonction (void si aucun retour)
+    functionName est le nom de la fonction
+    parameters sont les paramètres de la fonction
+    Code le prototype d'une fonction
+ -IfElse(name, condition)
+    name est un nom unique dans le fichier d'exécution
+    condition est une expression booléenne
+    Code un if then else
+    codings : true, false
+
+Le second groupe est pour le C++:
+ -Class(name, tabVar, tabFunc, className)
+    name est un nom unique dans le fichier d'exécution
+    tabVar est le nom d'un tableau contenant les variables
+    tabFunc est le nom d'un tableau contenant les fonctions
+    className est le nom de la classe créée
+    Construit une classe, ses accesseurs, et ses fonctions
+ -PrototypeClass(name, modifiers, returnType, functionName, parameters)
+    name est un nom unique dans le fichier d'exécution
+    modifiers indique si static ou privé, protected ou public
+    returnType est le type de retour de la fonction (void si aucun retour)
+    functionName est le nom de la fonction
+    parameters sont les paramètres de la fonction
+    Code le prototype d'une fonction
+ -ImplementationClass(name, modifiers, returnType, returnName, className, functionName, parameters)
+    name est un nom unique dans le fichier d'exécution
+    modifiers indique si static ou privé, protected ou public
+    returnType est le type de retour de la fonction (void si aucun retour)
+    returnName est le nom de la variable de retour
+    className est le nom de la classe
+    functionName est le nom de la fonction
+    parameters sont les paramètres de la fonction
+    Code le corps d'une fonction
+	codings : body
+
+Le troisième groupe est pour le C#
+ -Class(name, tabVar, tabFunc, namespace, className)
+    name est un nom unique dans le fichier d'exécution
+    tabVar est le nom d'un tableau contenant les variables
+    tabFunc est le nom d'un tableau contenant les fonctions
+    namespace est le nom du namespace
+    className est le nom de la classe créée
+    Construit une classe, ses accesseurs, et ses fonctions
+ -Function(name, modifiers, returnType, returnName, functionName, parameters)
+    name est un nom unique dans le fichier d'exécution
+    modifiers indique si static ou privé, protected ou public
+    returnType est le type de retour de la fonction (void si aucun retour)
+    returnName est le nom de la variable de retour
+    functionName est le nom de la fonction
+    parameters sont les paramètres de la fonction
+    Code le corps d'une fonction
+	codings : body
+
+Le quatrième groupe est pour Java:
+ -Class(name, tabVar, tabFunc, className)
+    name est un nom unique dans le fichier d'exécution
+    tabVar est le nom d'un tableau contenant les variables
+    tabFunc est le nom d'un tableau contenant les fonctions
+    className est le nom de la classe créée
+    Construit une classe, ses accesseurs, et ses fonctions
+ -Function(name, modifiers, returnType, returnName, functionName, parameters)
+    name est un nom unique dans le fichier d'exécution
+    modifiers indique si static ou privé, protected ou public
+    returnType est le type de retour de la fonction (void si aucun retour)
+    returnName est le nom de la variable de retour
+    functionName est le nom de la fonction
+    parameters sont les paramètres de la fonction
+    Code le corps d'une fonction
+	codings : body
+
+Le cinquième groupe est pour HTML:
+
+Le sixième groupe est pour JavaScript:

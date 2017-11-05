@@ -1,0 +1,22 @@
+= vidéo de présentation du logiciel
+ - lancer l'application : choisir la langue, accepter le paramètrage, accepter l'exécution des scripts
+ - interface générale : les menus, la toolbox, le resize, les modèles, les langues, les vidéos d'aide
+ - la création d'un fichier
+ - le renommage du fichier
+ - la sauvegarde
+ - l'exécution + conversion VBScript ou PowerShell
+ - l'enregistrer sous
+ - le quitter
+ 
+ 
+= vidéo de présentation du langage:
+ - la création d'un élément (avant, après, dans un texte)
+ - l'ensemble des éléments (leur signification et leur utilisation)
+ - l'utilisation d'un modèle, la recherche du modèle, la lecture d'un modèle existant, l'indication des paramètres, l'ajout d'un coding
+ - l'exécution + conversion VBScript ou PowerShell
+
+= vidéo avançée:
+ - ouverture d'un exemple
+ - passage en revue des actions
+ - exécution + VBScript + PowerShell
+ 

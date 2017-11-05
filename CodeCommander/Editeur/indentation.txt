@@ -1,0 +1,47 @@
+Il faut indenter les objets afin de pouvoir déterminer lesquels objets sont dans un noeud (un coding).
+Il faut indenter les codings afin de pouvoir déterminer lesquels codings sont dans l'utilisation du template.
+
+Je ne veux pas que l'on puisse modifier l'indentation manuellement et je ne veux pas que l'on ait besoin de la modifier manuellement
+afin de déterminer les sous-objets dans l'utilisation des templates et des codings.
+Je souhaite que ce soit automatique mais il faut également que:
+ - on puisse ajouter manuellement un coding
+ - on puisse insérer autant de coding que l'on souhaite
+ - on puisse insérer des objets à l'intérieur du noeud coding (détécté par l'indentation)
+ 
+L'indentation est sauvegardée dans l'objet et elle est reproduite sur l'écran. L'indentation permet de déterminer
+quels objets sont dans un coding ou bien dans l'utilisation d'un template.
+
+Mode de représentation d'une utilisation d'un template: 
+	- utiliser template
+		- coding 1
+			- code du coding....
+			- code du coding....
+			- ...
+		- coding 2
+			- ...
+		- coding 3
+		- ....
+		- coding N
+- autre objet (hors du template)
+
+
+Lorsque l'on crée un objet "utiliser template", on doit pouvoir réaliser deux opérations au choix:
+  - ajouter un coding indenté (donc à l'intérieur de l'utilisation du template)
+  - ajouter un objet en dessous qui ne fasse pas partie de l'utilisation du template (autre objet)
+  
+Pour cela, il faut 2 boutons (et on va cacher le second bouton) :
+   - un bouton pour insérer un autre objet
+   - un bouton pour insérer uniquement un coding.
+
+On pensera également à ajouter un bouton lorsque l'on veut insérer automatiquement les codings corrects en fonction du template choisi.
+
+Sur l'utilisation d'un template, le bouton à gauche et le bouton à droite va pouvoir créer tous les objets 
+que l'on souhaite mais hors de l'utilisation du template.
+
+Sur un coding, le bouton à gauche et le bouton à droite ne va pouvoir créer que des codings.
+On ajoute un second bouton (que l'on cache) pour pouvoir insérer un objet dans le coding et à ce moment-là, cet objet est indenté de +1
+par rapport au coding et fait donc partie du coding.
+
+Tous les autres objets prennent la même indentation que l'objet sur lequel on pointe.
+
+

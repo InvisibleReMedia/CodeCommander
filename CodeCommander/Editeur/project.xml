@@ -1,0 +1,352 @@
+﻿<root><legendes /><infos><creationDate>05/11/2013 01:21:37</creationDate><modificationDate>08/11/2013 20:47:55</modificationDate><revision>42</revision></infos><code><texte>
+&lt;html&gt;¶
+&lt;head&gt;¶
+&lt;title&gt;Projects&lt;/title&gt;¶
+&lt;script·language="JavaScript"·type="text/javascript"·src="jquery-1.10.2.min.js"&gt;&lt;/script&gt;¶
+&lt;script·language="JavaScript"·type="text/javascript"&gt;¶
+var·json·=·{¶
+//&lt;!--¶</texte><indent /><usemop language="JavaScript" command="forEach" expression="affectation, affectation"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="dictionary string, dictionaryString"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach"  expression="dictionary field, dictionaryField"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach"  expression="call process, callProcess"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach"  expression="call skeleton, callSkeleton"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach"  expression="print field, printField"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach"  expression="goto, goto"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="create mop, createMop"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="create writer, createWriter"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="default writer, useWriter"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="injector, injector"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="label, label"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="size, size"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="declare template, declareTemplate"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="use mop, useMop"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="use template, useTemplate"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="print variable, printVariable"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="print string, printString"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="project, project"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="processes, proc"><file /></usemop><texte>,¶</texte><usemop language="JavaScript" command="forEach" expression="statements, statements"><file /></usemop><unindent /><texte>
+¶
+};¶
+function·draw(key,·obj)¶
+{¶
+¬switch(key)¶
+¬{¶
+¬¬case·"affectation":¶
+¬¬¬return·"assign·"·+·obj["varName"];¶
+¬¬case·"dictionary·field":¶
+¬¬¬return·"";¶
+¬¬case·"dictionary·string":¶
+¬¬¬return·"";¶
+¬¬case·"call·process":¶
+¬¬¬return·"call·"·+·obj["callProcessName"];¶
+¬¬case·"begin·process":¶
+¬¬¬return·"begin·process·"·+·obj["beginProcessName"];¶
+¬¬case·"end·process":¶
+¬¬¬return·"end·process·"·+·obj["endProcessName"];¶
+¬¬case·"begin·skeleton":¶
+¬¬¬return·"begin·skeleton·"·+·obj["beginSkeletonName"];¶
+¬¬case·"end·skeleton":¶
+¬¬¬return·"end·skeleton·"·+·obj["endSkeletonName"];¶
+¬¬case·"call·skeleton":¶
+¬¬¬return·"call·"·+·obj["callSkeletonName"];¶
+¬¬case·"print·field":¶
+¬¬¬return·obj["tabName"]·+·"."·+·obj["fieldName"];¶
+¬¬case·"goto":¶
+¬¬¬return·obj["label"];¶
+¬¬case·"create·mop":¶
+¬¬¬return·obj["languageName"]·+·"-&gt;"·+·obj["createMopName"];¶
+¬¬case·"create·write":¶
+¬¬¬return·obj["fileName"];¶
+¬¬case·"injector":¶
+¬¬¬return·obj["injectorName"];¶
+¬¬case·"label":¶
+¬¬¬return·obj["processName"]·+·":"·+·obj["labelName"];¶
+¬¬case·"size":¶
+¬¬¬return·obj["varName"]·=·"sizeof("·+·obj["tabName"]·+·")";¶
+¬¬case·"declare·template":¶
+¬¬¬return·obj["templatePath"]·+·"/"·+·obj["templateName"]·+·"("·+·obj["parameters"]·+·")";¶
+¬¬case·"use·mop":¶
+¬¬¬return·obj["languageName"]·+·"-&gt;"·+·obj["command"];¶
+¬¬case·"use·template":¶
+¬¬¬return·obj["templateName"];¶
+¬¬case·"print·variable":¶
+¬¬¬return·obj["varName"];¶
+¬¬case·"print·string":¶
+¬¬¬return·obj["stringName"];¶
+¬¬case·"project":¶
+¬¬¬return·obj["name"];¶
+¬¬case·"processes":¶
+¬¬¬return·obj["processName"];¶
+¬¬case·"print":¶
+¬¬¬return·"print";¶
+¬}¶
+}¶
+¶
+function·image(key)¶
+{¶
+¬switch(key)¶
+¬{¶
+¬¬case·"affectation":¶
+¬¬¬return·"affectation.bmp";¶
+¬¬case·"dictionary·field":¶
+¬¬¬return·"affectationChamp.bmp";¶
+¬¬case·"dictionary·string":¶
+¬¬¬return·"affectationChaine.bmp";¶
+¬¬case·"begin·process":¶
+¬¬¬return·"beginProcess.bmp";¶
+¬¬case·"end·process":¶
+¬¬¬return·"endProcess.bmp";¶
+¬¬case·"begin·skeleton":¶
+¬¬¬return·"beginSkeleton.bmp";¶
+¬¬case·"end·skeleton":¶
+¬¬¬return·"endSkeleton.bmp";¶
+¬¬case·"call·process":¶
+¬¬¬return·"call.bmp";¶
+¬¬case·"call·skeleton":¶
+¬¬¬return·"callSkeleton.bmp";¶
+¬¬case·"print·field":¶
+¬¬¬return·"editchamp.bmp";¶
+¬¬case·"goto":¶
+¬¬¬return·"condition.bmp";¶
+¬¬case·"create·mop":¶
+¬¬¬return·"createmop.bmp";¶
+¬¬case·"create·write":¶
+¬¬¬return·"createWriter.bmp";¶
+¬¬case·"default·writer":¶
+¬¬¬return·"writer.bmp";¬¶
+¬¬case·"injector":¶
+¬¬¬return·"injector.bmp";¶
+¬¬case·"label":¶
+¬¬¬return·"label.bmp";¶
+¬¬case·"size":¶
+¬¬¬return·"size.bmp";¶
+¬¬case·"declare·template":¶
+¬¬¬return·"template.bmp";¶
+¬¬case·"use·mop":¶
+¬¬¬return·"useMop.bmp";¶
+¬¬case·"use·template":¶
+¬¬¬return·"useTemplate.bmp";¶
+¬¬case·"print·variable":¶
+¬¬¬return·"editvar.bmp";¶
+¬¬case·"print·string":¶
+¬¬¬return·"editvar.bmp";¶
+¬¬case·"project":¶
+¬¬¬return·"project.bmp";¶
+¬¬case·"processes":¶
+¬¬¬return·"process.bmp";¶
+¬¬case·"print":¶
+¬¬¬return·"text.bmp";¶
+¬}¶
+}¶
+¶
+function·deploy(obj)¶
+{¶
+¬if·($(obj).text()·==·"+")¶
+¬{¶
+¬¬$(obj).text("-");¶
+¬¬var·key·=·$(obj).parent().text().substring(1);¶
+¬¬$(obj).parent().next().children().each(function(e)·{·$(this).remove();·});¶
+¬¬for(var·index·in·json[key])¶
+¬¬{¶
+¬¬¬var·$item·=·$("&lt;div·style='list-style-type:none;display:list-item;white-space:nowrap;'&gt;&lt;img·class='object'·valign='center'·src='"·+·image(key)·+·"'·width='20px'·height='20px'/&gt;"·+·draw(key,json[key][index])·+·"&lt;/div&gt;");¶
+	¬¬¬$(obj).parent().next().append($item);¶
+	¬¬}¶
+	¬¬$(obj).parent().next().show();¶
+	¬}¶
+	¬else¶
+	¬{¶
+	¬¬$(obj).text("+");¶
+	¬¬$(obj).parent().next().hide();¶
+	¬}¶
+	}¶
+	function·searchProcess(process)¶
+	{¶
+	¬for(var·index·in·json["processes"])·{¶
+	¬¬if·(json["processes"][index]["processName"]·==·":" + process)·{¶
+	¬¬¬return·json["processes"][index];¶
+	¬¬}¶
+	¬}¶
+	}¶
+	function·searchSkeleton(skeleton)¶
+	{¶
+	¬for(var·index·in·json["processes"])·{¶
+	¬¬if·(json["processes"][index]["processName"]·==·"Skeleton:" + skeleton)·{¶
+	¬¬¬return·json["processes"][index];¶
+	¬¬}¶
+	¬}¶
+	}¶
+	function·callProcess(process,·obj)¶
+	{¶
+	¬if·($(obj).text()·==·"+")¶
+	¬{¶
+	¬¬$(obj).text("-");¶
+	¬¬if·($(obj).parent().next().children().length·==·0)·{¶
+	¬¬¬var·index·=·parseInt(searchProcess(process)["first"])·-·1;¶
+	¬¬¬while(index·&lt;·json["statements"].length)¶
+	¬¬¬{¶
+	¬¬var·$btn·=·"&lt;span class='empty'&gt;&lt;/span&gt;";¶
+	¬¬if·(json["statements"][index]["type"]·==·"call·process")¶
+	¬¬{¶
+	¬¬¬var·$btn·=·"&lt;span·class='deploy'·onclick='javascript:callProcess(json[\"statements\"]["·+·index·+·"][\"callProcessName\"],·this);'&gt;+&lt;/span&gt;";¶
+	¬¬}·else·if·(json["statements"][index]["type"]·==·"call·skeleton")¶
+	¬¬{¶
+	¬¬¬var·$btn·=·"&lt;span·class='deploy'·onclick='javascript:callSkeleton(json[\"statements\"]["·+·index·+·"][\"callSkeletonName\"],·this);'&gt;+&lt;/span&gt;";¶
+	¬¬}¶
+	¬¬¬¬var·$item·=·$("&lt;div·style='white-space:nowrap'&gt;" + $btn + "&lt;img·class='element'·valign='center'·src='"·+·image(json["statements"][index]["type"])·+·"'·width='20px'·height='20px'/&gt;"·+·draw(json["statements"][index]["type"],json["statements"][index])·+·"&lt;/div&gt;&lt;div style='display:none;margin-left:30px'&gt;&lt;/div&gt;");¶
+	¬¬¬¬$(obj).parent().next().append($item);¶
+	¬¬¬¬index·=·parseInt(json["statements"][index]["next"]) - 1;¶
+	¬¬¬¬if·(index·===·-1)·{¶
+	¬¬¬¬¬break;¶
+	¬¬¬¬}¶
+	¬¬¬}¶
+	¬¬}¶
+	¬¬$(obj).parent().next().show();¶
+	¬}¶
+	¬else¶
+	¬{¶
+	¬¬$(obj).text("+");¶
+	¬¬$(obj).parent().next().hide();¶
+	¬}¶
+	}¶
+	function·callSkeleton(skeleton,·obj)¶
+	{¶
+	¬if·($(obj).text()·==·"+")¶
+	¬{¶
+	¬¬$(obj).text("-");¶
+	¬¬if·($(obj).parent().next().children().length·==·0)·{¶
+	¬¬¬var·index·=·parseInt(searchSkeleton(skeleton)["first"])·-·1;¶
+	¬¬¬while(index·&lt;·json["statements"].length)¶
+	¬¬¬{¶
+	¬¬var·$btn·=·"&lt;span class='empty'&gt;&lt;/span&gt;";¶
+	¬¬if·(json["statements"][index]["type"]·==·"call·process")¶
+	¬¬{¶
+	¬¬¬var·$btn·=·"&lt;span·class='deploy'·onclick='javascript:callProcess(json[\"statements\"]["·+·index·+·"][\"callProcessName\"], this);'&gt;+&lt;/span&gt;";¶
+	¬¬}·else·if·(json["statements"][index]["type"]·==·"call·skeleton")¶
+	¬¬{¶
+	¬¬¬var·$btn·=·"&lt;span·class='deploy'·onclick='javascript:callSkeleton(json[\"statements\"]["·+·index·+·"][\"callSkeletonName\"], this);'&gt;+&lt;/span&gt;";¶
+	¬¬}¶
+	¬¬¬¬var·$item·=·$("&lt;div·style='white-space:nowrap'&gt;" + $btn + "&lt;img·class='element'·valign='center'·src='"·+·image(json["statements"][index]["type"])·+·"'·width='20px'·height='20px'/&gt;"·+·draw(json["statements"][index]["type"],json["statements"][index])·+·"&lt;/div&gt;&lt;div style='display:none;margin-left:30px'&gt;&lt;/div&gt;");¶
+	¬¬¬¬$(obj).parent().next().append($item);¶
+	¬¬¬¬index·=·parseInt(json["statements"][index]["next"]) - 1;¶
+	¬¬¬¬if·(index·===·-1)·{¶
+	¬¬¬¬¬break;¶
+	¬¬¬¬}¶
+	¬¬¬}¶
+	¬¬}¶
+	¬¬$(obj).parent().next().show();¶
+	¬}¶
+	¬else¶
+	¬{¶
+	¬¬$(obj).text("+");¶
+	¬¬$(obj).parent().next().hide();¶
+	¬}¶
+	}¶
+	¶
+	function·fill()¶
+	{¶
+	¬for(var·key·in·json)¶
+	¬{¶
+	¬¬if·(key·!=·"statements")¶
+	¬¬{¶
+	¬¬¬var·$root·=·$("&lt;div·style='list-style-type:none;display:list-item;white-space:nowrap;'&gt;&lt;span·class='deploy'·onclick='javascript:deploy(this);'&gt;+&lt;/span&gt;"·+·key·+·"&lt;/div&gt;&lt;div·style='display:none'/&gt;");¶
+¬¬¬$('#statements').append($root);¶
+¬¬¬if·(json[key].length·==·0)¶
+¬¬¬{¶
+¬¬¬¬$root.hide();¶
+¬¬¬}¶
+¬¬}¶
+¬}¶
+¬index·=·0;¶
+¬while(index·&lt;·json["statements"].length)¶
+¬{¶
+¬¬var·$btn·=·"&lt;span class='empty'&gt;&lt;/span&gt;";¶
+¬¬if·(json["statements"][index]["type"]·==·"call·process")¶
+¬¬{¶
+¬¬¬var·$btn·=·"&lt;span·class='deploy'·onclick='javascript:callProcess(json[\"statements\"]["·+·index·+·"][\"callProcessName\"],·this);'&gt;+&lt;/span&gt;";¶
+¬¬}·else·if·(json["statements"][index]["type"]·==·"call·skeleton")¶
+¬¬{¶
+¬¬¬var·$btn·=·"&lt;span·class='deploy'·onclick='javascript:callSkeleton(json[\"statements\"]["·+·index·+·"][\"callSkeletonName\"],·this);'&gt;+&lt;/span&gt;";¶
+¬¬}¶
+¬¬var·$root·=·$("&lt;div·style='display:block;white-space:nowrap;'&gt;"·+·$btn·+·"&lt;img·class='element'·valign='center'·src='"·+·image(json["statements"][index]["type"])·+·"'·width='20px'·height='20px'/&gt;"·+·draw(json["statements"][index]["type"],json["statements"][index])·+·"&lt;/div&gt;&lt;div·style='display:none;margin-left:30px'/&gt;");¶
+¬¬$('#debug').append($root);¶
+¬¬index·=·parseInt(json["statements"][index]["next"])·-·1;¶
+¬¬if·(index·===·-1)¶
+¬¬{¶
+¬¬¬break;¶
+¬¬}¶
+¬}¶
+}¶
+¶
+function·goto_statements()¶
+{¶
+¬$('#btnDebug').css('border:1px·inset·black');¶
+¬$('#btnStatements').css('border:1px·outset·black');¶
+¬$('#debug').hide();¶
+¬$('#statements').show();¶
+}¶
+¶
+function·goto_debug()¶
+{¶
+¬$('#btnStatements').css('border:1px·inset·black');¶
+¬$('#btnDebug').css('border:1px·outset·black');¶
+¬$('#statements').hide();¶
+¬$('#debug').show();¶
+}¶
+¶
+//--&gt;¶
+&lt;/script&gt;¶
+¬&lt;style&gt;¶
+¬¬.root·{·width:auto;·overflow:hidden;·margin-top:1px;·margin-bottom:1px;·height:20px;·padding-top:1px;·padding-bottom:1px;·border:1px·ridge·black;·display:list-item;}¶
+¬¬.empty·{·vertical-align:middle;font-size:8pt;·margin-right:3px;·margin-top:4px;·margin-bottom:4px;·height:8px;display:inline;width:8px;}¶
+¬¬.deploy·{·vertical-align:middle;background-color:black;·color:white;·cursor:pointer;·font-size:8pt;·margin-right:3px;·margin-top:4px;·margin-bottom:4px;·height:8px;border:1px·ridge·black;display:inline;width:8px;}¶
+¬¬.node·{·width:auto;·overflow:hidden;·margin-top:1px;·margin-bottom:1px;·height:20px;·padding-top:1px;·padding-bottom:1px;·border:1px·ridge·black;·display:list-item;}¶
+¬¬.object·{·vertical-align:middle;width:20px;·height:17px;·margin-top:2px;·margin-left:30px;·padding-top:5px;·padding-right:5px;·}¶
+¬¬.element·{·vertical-align:middle;width:20px;·height:17px;·margin-top:2px;·padding-top:5px;·padding-right:5px;·}¶
+¬&lt;/style&gt;¶
+&lt;/head&gt;¶
+¶
+¶
+&lt;body·onload="javascript:fill();"&gt;¶
+¬&lt;table·cols="2"·width="100%"·height="90%"·border="0"·cellpadding="0"·cellspacing="7"·style="font-size:xx-small;font-family:Arial"&gt;¶
+¬¬&lt;tr·valign="middle"·height="20px"&gt;¶
+¬¬¬&lt;td·align="center"·colspan="2"·style="background-color:blue;color:white;border:1px·ridge·blue3"&gt;Projets&lt;/td&gt;¶
+¬¬&lt;/tr&gt;¶
+¬¬&lt;tr·valign="middle"·height="50px"&gt;¶
+¬¬¬&lt;td·align="center"&gt;¶
+¬¬¬¬&lt;span·id="btnDebug"·onclick="goto_debug();"·style="cursor:pointer;background-color:black;color:white;display:block;height:50px;width:100%;border:1px·outset·black"·align="center"&gt;Debug&lt;/span&gt;&lt;/td&gt;¶
+¬¬¬&lt;td·align="center"&gt;¶
+¬¬¬¬&lt;span·id="btnStatements"·onclick="goto_statements();"·style="cursor:pointer;background-color:black;color:white;display:block;height:50px;width:100%;border:1px·inset·black"·align="center"&gt;Statements&lt;/span&gt;&lt;/td&gt;¶
+¬¬&lt;/tr&gt;¶
+¬¬&lt;tr·valign="top"·height="95%"&gt;¶
+¬¬¬&lt;td·colspan="2"&gt;¶
+¬¬¬¬&lt;div·style="background-color:wheat;border:1px·solid·black;width:100%;height:100%;display:inline;overflow:scroll"·id="debug"&gt;&lt;/div&gt;&lt;div·style="background-color:wheat;border:1px·solid·black;width:100%;height:100%;display:none;overflow:scroll"··id="statements"&gt;&lt;/div&gt;&lt;/td&gt;¶
+¬¬&lt;/tr&gt;¶
+¬¬&lt;tr·valign="bottom"·height="20px"&gt;¶
+¬¬¬&lt;span·style="display:block;height:100%;width:100%"&gt;&lt;/span&gt;¶
+¬¬&lt;/tr&gt;¶
+¬&lt;/table&gt;¶
+&lt;/body&gt;¶
+&lt;/html&gt;¶</texte><createmop language="JavaScript" name="forEach"><legendes /><references><ref>forEach</ref><ref>subMop</ref></references><code><texte>"$forEach"·:·[¶</texte><indent /><usetemplate name="/CodeCommander/ForEach"><params><param name="name">forEach</param><param name="tabName">$forEach</param><param name="init">1</param><param name="counter">index</param></params><codings><coding name="next" indent="1"><code><texte indent="2">,¶</texte></code></coding><coding name="body" indent="1"><code><texte indent="2">{¶</texte><indent indent="2" /><usemop language="JavaScript" command="$subMop" expression="$forEach, index" indent="2"><file /></usemop><unindent indent="2" /><texte indent="2">}</texte></code></coding></codings></usetemplate><unindent /><texte>]</texte></code></createmop><createmop language="JavaScript" name="affectation"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"varName":"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>varName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="dictionaryString"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"varName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>varName</variable></champ><texte>
+					",¶
+					"stringName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>stringName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="dictionaryField"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"varName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>varName</variable></champ><texte>
+					",¶
+					"tabName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>tabName</variable></champ><texte>
+					",¶
+					"fieldName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>fieldName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="callProcess"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"callProcessName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>callProcessName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="callSkeleton"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"callSkeletonName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>callSkeletonName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="beginProcess"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"beginProcessName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>beginProcessName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="endProcess"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"endProcessName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>endProcessName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="beginSkeleton"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"beginSkeletonName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>beginSkeletonName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="endSkeleton"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"endSkeletonName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>endSkeletonName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="printField"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"tabName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>tabName</variable></champ><texte>
+					",¶
+					"fieldName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>fieldName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="goto"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"label"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>label</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="createMop"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"languageName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>languageName</variable></champ><texte>
+					",¶
+					"createMopName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>createMopName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="createWriter"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"writerName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>writerName</variable></champ><texte>
+					",¶
+					"fileName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>fileName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="useWriter"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"varName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>varName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="injector"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"injectorName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>injectorName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="label"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"labelName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>labelName</variable></champ><texte>
+					",¶
+					"processName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>processName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="size"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"varName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>varName</variable></champ><texte>
+					",¶
+					"tabName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>tabName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="declareTemplate"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"templatePath"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>templatePath</variable></champ><texte>
+					",¶
+					"templateName"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>templateName</variable></champ><texte>
+					",¶
+					"parameters"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>parameters</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="useMop"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"languageName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>languageName</variable></champ><texte>
+					",¶
+					"command"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>command</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="useTemplate"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"templateName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>templateName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="printVariable"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"varName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>varName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="printString"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"stringName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>stringName</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="project"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"name"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>name</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="proc"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"processName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>processName</variable></champ><texte>
+					",¶
+					"first"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>first</variable></champ><texte>"</texte></code></createmop><createmop language="JavaScript" name="statements"><legendes /><references><ref>forEach</ref><ref>index</ref></references><code><texte>"processName"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>processName</variable></champ><texte>
+					",¶
+					"position"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>position</variable></champ><texte>
+					",¶
+					"type"·:·"
+				</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>type</variable></champ><texte>",¶</texte><affectationchamp><variable>type</variable><champ><tableau>$forEach</tableau><expression>$index</expression><variable>type</variable></champ></affectationchamp><template path="" name="redirectIf"><legendes /><params><param>name</param><param>tabName</param><param>pos</param><param>statement</param></params><code><usetemplate name="/CodeCommander/Condition"><params><param name="name">$name</param><param name="condition">type?$tabName</param></params><codings><coding name="true" indent="1"><code><usemop language="JavaScript" command="$statement" expression="$forEach, $pos" indent="2"><file /></usemop></code></coding></codings></usetemplate></code></template><usetemplate name="/redirectIf"><params><param name="name">C1</param><param name="tabName">affectation</param><param name="pos">$index</param><param name="statement">affectation</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C2</param><param name="tabName">dictionary string</param><param name="pos">$index</param><param name="statement">dictionaryString</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C3</param><param name="tabName">dictionary field</param><param name="pos">$index</param><param name="statement">dictionaryField</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C4</param><param name="tabName">call process</param><param name="pos">$index</param><param name="statement">callProcess</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C21</param><param name="tabName">begin process</param><param name="pos">$index</param><param name="statement">beginProcess</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C22</param><param name="tabName">end process</param><param name="pos">$index</param><param name="statement">endProcess</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C5</param><param name="tabName">call skeleton</param><param name="pos">$index</param><param name="statement">callSkeleton</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C23</param><param name="tabName">begin skeleton</param><param name="pos">$index</param><param name="statement">beginSkeleton</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C24</param><param name="tabName">end skeleton</param><param name="pos">$index</param><param name="statement">endSkeleton</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C6</param><param name="tabName">print field</param><param name="pos">$index</param><param name="statement">printField</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C7</param><param name="tabName">goto</param><param name="pos">$index</param><param name="statement">goto</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C8</param><param name="tabName">create mop</param><param name="pos">$index</param><param name="statement">createMop</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C9</param><param name="tabName">create writer</param><param name="pos">$index</param><param name="statement">createWriter</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C10</param><param name="tabName">default writer</param><param name="pos">$index</param><param name="statement">useWriter</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C11</param><param name="tabName">injector</param><param name="pos">$index</param><param name="statement">injector</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C12</param><param name="tabName">label</param><param name="pos">$index</param><param name="statement">label</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C13</param><param name="tabName">size</param><param name="pos">$index</param><param name="statement">size</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C14</param><param name="tabName">declare template</param><param name="pos">$index</param><param name="statement">declareTemplate</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C15</param><param name="tabName">use mop</param><param name="pos">$index</param><param name="statement">useMop</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C16</param><param name="tabName">use template</param><param name="pos">$index</param><param name="statement">useTemplate</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C17</param><param name="tabName">print variable</param><param name="pos">$index</param><param name="statement">printVariable</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C18</param><param name="tabName">print string</param><param name="pos">$index</param><param name="statement">printString</param></params><codings /></usetemplate><usetemplate name="/redirectIf"><params><param name="name">C19</param><param name="tabName">project</param><param name="pos">$index</param><param name="statement">project</param></params><codings /></usetemplate><usetemplate name="/CodeCommander/Condition"><params><param name="name">C20</param><param name="condition">type?print</param></params><codings><coding name="false" indent="1"><code><texte indent="2">,¶</texte></code></coding></codings></usetemplate><texte>"next"·:·"</texte><champ><tableau>$forEach</tableau><expression>$index</expression><variable>next</variable></champ><texte>"</texte></code></createmop></code></root>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+  <code>
+    <texte>&lt;table·cellspacing='0'·cellpadding='0'·type="affectationChaine"·class='toolClass'·onresize='javascript:resizeSelection("table</texte>
+    <variable>Number</variable>
+    <texte>");'·indent="</texte>
+    <variable>Indent</variable>
+    <texte>"·style='margin-left:</texte>
+    <affectationchaine>
+      <variable>indentValue</variable>
+      <chaine>Indent</chaine>
+    </affectationchaine>
+    <affectation>
+      <variable>indentSize</variable>
+      <expression>30 + indentValue * 21</expression>
+    </affectation>
+    <variable>indentSize</variable>
+    <texte>px;border-left:1px·solid·black'·border='0'·cellpadding='0'·cellspacing='0'·id='table</texte>
+    <variable>Number</variable>
+    <texte>'&gt;&lt;tr·valign='center'·class='lineSize'&gt;&lt;td·align='left'·width='auto'&gt;&lt;div·id='divtable</texte>
+    <variable>Number</variable>
+    <texte>'&gt;&lt;span·style='color:green'&gt;&lt;b&gt;[&lt;span·style='color:black'&gt;</texte>
+    <variable>VariableName</variable>
+    <texte>&lt;/span&gt;]=·[&lt;span·style='color:black'&gt;</texte>
+    <variable>StringName</variable>
+    <texte>&lt;/span&gt;]&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte>
+  </code>
+</root>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>o2MateExpression</name>
+    </assembly>
+    <members>
+        <member name="T:o2Mate.IExpression">
+            <summary>
+            Interface declaration of expression translator
+            </summary>
+        </member>
+        <member name="M:o2Mate.IExpression.Evaluate(System.String,System.Object)">
+            <summary>
+            Evaluates a string expression and compute it
+            </summary>
+            <param name="expr">a string arithmetic or boolean expression representation</param>
+            <param name="scope">the current scope where to find others variable</param>
+            <returns>a new data object (which doesn't reside in scope)</returns>
+        </member>
+        <member name="T:o2Mate.Expression">
+            <summary>
+            Class implementation to evaluate (compute or convert) a string expression
+            </summary>
+        </member>
+        <member name="M:o2Mate.Expression.Convert(Converters.ICodeConverter,System.String,System.Object,System.Boolean)">
+            <summary>
+            Converts an expression to the destination programming language
+            The converted expression is saved into the string CacheSource
+            AdditionalSource is a string used to complete conversion with intermediate variable declaration
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="expression">expression string</param>
+            <param name="obj">the scope object</param>
+            <param name="addToSource">boolean for add immediately into the source code</param>
+        </member>
+        <member name="M:o2Mate.Expression.Convert(Converters.ICodeConverter,System.String,System.Object,System.Boolean,System.Boolean)">
+            <summary>
+            Converts an expression to the destination programming language
+            The converted expression is saved into the string CacheSource
+            AdditionalSource is a string used to complete conversion with intermediate variable declaration
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="expression">expression string</param>
+            <param name="obj">the scope object</param>
+            <param name="addToSource">boolean for add immediately into the source code</param>
+            <param name="withVariables">true for just writing variables names and not their values in the result expression</param>
+        </member>
+        <member name="M:o2Mate.Expression.Convert(Converters.ICodeConverter,System.String,System.Object,System.Boolean,o2Mate.EnumDataType)">
+            <summary>
+            Converts an expression to the destination programming language
+            The converted expression is saved into the string CacheSource
+            AdditionalSource is a string used to complete conversion with intermediate variable declaration
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="expression">expression string</param>
+            <param name="obj">the scope object</param>
+            <param name="addToSource">boolean for add immediately into the source code</param>
+            <param name="desiredType">data type of the resulted expression (it writes conversion expression)</param>
+        </member>
+        <member name="M:o2Mate.Expression.Convert(Converters.ICodeConverter,System.String,System.Object,System.Boolean,o2Mate.EnumDataType,System.Boolean)">
+            <summary>
+            Converts an expression to the destination programming language
+            The converted expression is saved into the string CacheSource
+            AdditionalSource is a string used to complete conversion with intermediate variable declaration
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="expression">expression string</param>
+            <param name="obj">the scope object</param>
+            <param name="addToSource">boolean for add immediately into the source code</param>
+            <param name="desiredType">data type of the resulted expression (it writes conversion expression)</param>
+            <param name="withVariables">true for just writing variables names and not their values in the result expression</param>
+        </member>
+        <member name="M:o2Mate.Expression.Evaluate(System.String,System.Object)">
+            <summary>
+            Parse and compute an expression string
+            </summary>
+            <param name="expr">expression string</param>
+            <param name="obj">scope object</param>
+            <returns>result value</returns>
+        </member>
+    </members>
+</doc>

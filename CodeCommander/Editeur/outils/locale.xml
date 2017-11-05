@@ -1,0 +1,527 @@
+<root>
+  <code>
+    <template path="/CodeCommander" name="LoopWithWhile">
+      <legendes />
+      <params>
+        <param>name</param>
+        <param>counter</param>
+        <param>init</param>
+        <param>limit</param>
+      </params>
+      <code>
+        <beginprocess>$name</beginprocess>
+        <affectation>
+          <variable>$counter</variable>
+          <expression>$init</expression>
+        </affectation>
+        <affectation>
+          <variable>$nameFirst</variable>
+          <expression>true</expression>
+        </affectation>
+        <affectation>
+          <variable>$limit</variable>
+          <expression>true</expression>
+        </affectation>
+        <handler name="limit" />
+        <condition>
+          <expression>$limit</expression>
+          <iftrue>continue</iftrue>
+          <iffalse>end</iffalse>
+        </condition>
+        <label>continue</label>
+        <condition>
+          <expression>$nameFirst</expression>
+          <iftrue>first</iftrue>
+          <iffalse>next</iffalse>
+        </condition>
+        <label>next</label>
+        <handler name="next" />
+        <label>first</label>
+        <handler name="body" />
+        <handler name="increment" />
+        <affectation>
+          <variable>$nameFirst</variable>
+          <expression>false</expression>
+        </affectation>
+        <affectation>
+          <variable>$limit</variable>
+          <expression>true</expression>
+        </affectation>
+        <handler name="limit" />
+        <condition>
+          <expression>$limit</expression>
+          <iftrue>continue</iftrue>
+          <iffalse>end</iffalse>
+        </condition>
+        <label>end</label>
+        <endprocess>$name</endprocess>
+        <call>$name</call>
+      </code>
+    </template>
+    <template path="/CodeCommander" name="Condition">
+      <legendes />
+      <params>
+        <param>name</param>
+        <param>condition</param>
+      </params>
+      <code>
+        <beginprocess>$name</beginprocess>
+        <condition>
+          <expression>$condition</expression>
+          <iftrue>then</iftrue>
+          <iffalse>else</iffalse>
+        </condition>
+        <label>then</label>
+        <handler name="true" />
+        <condition>
+          <expression>true</expression>
+          <iftrue>end</iftrue>
+          <iffalse>fake</iffalse>
+        </condition>
+        <label>else</label>
+        <handler name="false" />
+        <label>end</label>
+        <endprocess>$name</endprocess>
+        <call>$name</call>
+      </code>
+    </template>
+    <template path="/String" name="length">
+      <legendes />
+      <params>
+        <param>name</param>
+        <param>value</param>
+        <param>out</param>
+      </params>
+      <code>
+        <beginprocess>$name</beginprocess>
+        <usetemplate name="/CodeCommander/LoopWithWhile">
+          <params>
+            <param name="name">$nameLoop</param>
+            <param name="counter">$nameIndex</param>
+            <param name="init">1</param>
+            <param name="limit">siVide</param>
+          </params>
+          <codings>
+            <coding name="limit" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>$namestr</variable>
+                  <expression>$value : $nameIndex</expression>
+                </affectation>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameCondition</param>
+                    <param name="condition">$namestr?EmptyChar</param>
+                  </params>
+                  <codings>
+                    <coding name="true" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>siVide</variable>
+                          <expression>false</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                    <coding name="false" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>siVide</variable>
+                          <expression>true</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+              </code>
+            </coding>
+            <coding name="increment" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>$nameIndex</variable>
+                  <expression>$nameIndex + 1</expression>
+                </affectation>
+              </code>
+            </coding>
+            <coding name="body" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>$out</variable>
+                  <expression>$out + 1</expression>
+                </affectation>
+              </code>
+            </coding>
+          </codings>
+        </usetemplate>
+        <endprocess>$name</endprocess>
+        <affectation>
+          <variable>$out</variable>
+          <expression>0</expression>
+        </affectation>
+        <call>$name</call>
+      </code>
+    </template>
+    <template path="/String" name="substring">
+      <legendes />
+      <params>
+        <param>name</param>
+        <param>value</param>
+        <param>start</param>
+        <param>length</param>
+        <param>out</param>
+      </params>
+      <code>
+        <beginprocess>$name</beginprocess>
+        <usetemplate name="/CodeCommander/LoopWithWhile">
+          <params>
+            <param name="name">$nameLoop</param>
+            <param name="counter">$nameIndex</param>
+            <param name="init">1</param>
+            <param name="limit">siVide</param>
+          </params>
+          <codings>
+            <coding name="limit" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>$namestr</variable>
+                  <expression>$value : $nameIndex</expression>
+                </affectation>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameCondition</param>
+                    <param name="condition">$namestr?EmptyChar</param>
+                  </params>
+                  <codings>
+                    <coding name="true" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>siVide</variable>
+                          <expression>false</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                    <coding name="false" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>siVide</variable>
+                          <expression>true</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+              </code>
+            </coding>
+            <coding name="increment" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>$nameIndex</variable>
+                  <expression>$nameIndex + 1</expression>
+                </affectation>
+              </code>
+            </coding>
+            <coding name="body" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>write</variable>
+                  <expression>false</expression>
+                </affectation>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameEgalStart</param>
+                    <param name="condition">$nameIndex=$start</param>
+                  </params>
+                  <codings>
+                    <coding name="true" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>write</variable>
+                          <expression>true</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameSupStart</param>
+                    <param name="condition">$nameIndex&amp;gt;$start</param>
+                  </params>
+                  <codings>
+                    <coding name="true" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>write</variable>
+                          <expression>true</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameInfEnd</param>
+                    <param name="condition">$nameIndex&amp;lt;($start+$length)</param>
+                  </params>
+                  <codings>
+                    <coding name="false" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>write</variable>
+                          <expression>false</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameWrite</param>
+                    <param name="condition">write</param>
+                  </params>
+                  <codings>
+                    <coding name="true" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>$out</variable>
+                          <expression>$out . $namestr</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+              </code>
+            </coding>
+          </codings>
+        </usetemplate>
+        <endprocess>$name</endprocess>
+        <affectation>
+          <variable>$out</variable>
+          <expression>EmptyChar</expression>
+        </affectation>
+        <call>$name</call>
+      </code>
+    </template>
+    <template path="/String" name="replace">
+      <legendes />
+      <params>
+        <param>name</param>
+        <param>value</param>
+        <param>search</param>
+        <param>replacement</param>
+        <param>out</param>
+      </params>
+      <code>
+        <beginprocess>$name</beginprocess>
+        <usetemplate name="/CodeCommander/LoopWithWhile">
+          <params>
+            <param name="name">$nameLoop</param>
+            <param name="counter">$nameIndex</param>
+            <param name="init">1</param>
+            <param name="limit">siVide</param>
+          </params>
+          <codings>
+            <coding name="limit" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>$namestr</variable>
+                  <expression>$value : $nameIndex</expression>
+                </affectation>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameCondition</param>
+                    <param name="condition">$namestr?EmptyChar</param>
+                  </params>
+                  <codings>
+                    <coding name="true" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>siVide</variable>
+                          <expression>false</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                    <coding name="false" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>siVide</variable>
+                          <expression>true</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+              </code>
+            </coding>
+            <coding name="increment" indent="1">
+              <code>
+                <affectation indent="2">
+                  <variable>$nameIndex</variable>
+                  <expression>$nameIndex + 1</expression>
+                </affectation>
+              </code>
+            </coding>
+            <coding name="body" indent="1">
+              <code>
+                <usetemplate name="/CodeCommander/Condition" indent="2">
+                  <params>
+                    <param name="name">$nameFirst</param>
+                    <param name="condition">$namestr?($search:0)</param>
+                  </params>
+                  <codings>
+                    <coding name="true" indent="3">
+                      <code>
+                        <usetemplate name="/String/length" indent="4">
+                          <params>
+                            <param name="name">$nameLength</param>
+                            <param name="value">$search</param>
+                            <param name="out">$nameSearchLength</param>
+                          </params>
+                          <codings />
+                        </usetemplate>
+                        <usetemplate name="/String/substring" indent="4">
+                          <params>
+                            <param name="name">$nameSub</param>
+                            <param name="value">$value</param>
+                            <param name="start">$nameIndex</param>
+                            <param name="length">$nameSearchLength</param>
+                            <param name="out">sub</param>
+                          </params>
+                          <codings />
+                        </usetemplate>
+                        <usetemplate name="/CodeCommander/Condition" indent="4">
+                          <params>
+                            <param name="name">$nameSearch</param>
+                            <param name="condition">sub?$search</param>
+                          </params>
+                          <codings>
+                            <coding name="false" indent="5">
+                              <code>
+                                <affectation indent="6">
+                                  <variable>$out</variable>
+                                  <expression>$out . $namestr</expression>
+                                </affectation>
+                              </code>
+                            </coding>
+                            <coding name="true" indent="5">
+                              <code>
+                                <affectation indent="6">
+                                  <variable>$out</variable>
+                                  <expression>$out . $replacement</expression>
+                                </affectation>
+                                <affectation indent="6">
+                                  <variable>$nameIndex</variable>
+                                  <expression>$nameIndex + $nameSearchLength - 1</expression>
+                                </affectation>
+                              </code>
+                            </coding>
+                          </codings>
+                        </usetemplate>
+                      </code>
+                    </coding>
+                    <coding name="false" indent="3">
+                      <code>
+                        <affectation indent="4">
+                          <variable>$out</variable>
+                          <expression>$out . $namestr</expression>
+                        </affectation>
+                      </code>
+                    </coding>
+                  </codings>
+                </usetemplate>
+              </code>
+            </coding>
+          </codings>
+        </usetemplate>
+        <endprocess>$name</endprocess>
+        <affectation>
+          <variable>$out</variable>
+          <expression>EmptyChar</expression>
+        </affectation>
+        <call>$name</call>
+      </code>
+    </template>
+    <beginprocess>item</beginprocess>
+    <texte>&lt;tr·valign='top'·height='34px'&gt;</texte>
+    <texte>&lt;td·class='imgSize'·align='center'&gt;&lt;img·style='cursor:pointer'·valign='middle'·src='sup.jpg'·class='imgSize'·onclick='javascript:deleteRow(</texte>
+    <variable>Number</variable>
+    <texte>);'/&gt;&lt;/td&gt;&lt;td·width='100px'·align='left'&gt;&lt;span·style='font-weight:bold'·id='nameValue</texte>
+    <variable>Number</variable>
+    <texte>'&gt;</texte>
+    <champ>
+      <tableau>tab</tableau>
+      <expression>Number</expression>
+      <variable>name</variable>
+    </champ>
+    <texte>&lt;/span&gt;&lt;/td&gt;</texte>
+    <texte>&lt;td·width='50px'·align='left'&gt;&lt;span·style='font-weight:bold'·id='languageValue</texte>
+    <variable>Number</variable>
+    <texte>'&gt;</texte>
+    <champ>
+      <tableau>tab</tableau>
+      <expression>Number</expression>
+      <variable>language</variable>
+    </champ>
+    <texte>&lt;/span&gt;&lt;/td&gt;</texte>
+    <texte>&lt;td·width='auto'·align='left'&gt;</texte>
+    <texte>&lt;div·tabindex='-1'·style='background-color:white;color:green;font-weight:bold;height:34px;width:100%'·contenteditable='true'·id='areaValue</texte>
+    <variable>Number</variable>
+    <texte>'·onfocusout='javascript:changeValue("areaValue</texte>
+    <variable>Number</variable>
+    <texte>",·"languageValue</texte>
+    <variable>Number</variable>
+    <texte>",·"nameValue</texte>
+    <variable>Number</variable>
+    <texte>");'&gt;</texte>
+    <affectationchamp>
+      <variable>value</variable>
+      <champ>
+        <tableau>tab</tableau>
+        <expression>Number</expression>
+        <variable>value</variable>
+      </champ>
+    </affectationchamp>
+    <usetemplate name="/String/replace">
+      <params>
+        <param name="name">L1</param>
+        <param name="value">value</param>
+        <param name="search">CrLf</param>
+        <param name="replacement">(InfChar . p. SlashChar . SupChar)</param>
+        <param name="out">result</param>
+      </params>
+      <codings />
+    </usetemplate>
+    <variable>result</variable>
+    <texte>&lt;/div&gt;</texte>
+    <texte>&lt;/td&gt;</texte>
+    <texte>&lt;/tr&gt;</texte>
+    <endprocess>item</endprocess>
+    <texte>&lt;table·id='tabData'·width='100%'·height='100%'·border='1px·outset·black'·style='font-size:xx-small'&gt;</texte>
+    <affectation>
+      <variable>Number</variable>
+      <expression>0</expression>
+    </affectation>
+    <size>
+      <terme>max</terme>
+      <tableau>tab</tableau>
+    </size>
+    <condition>
+      <expression>Number &lt; max</expression>
+      <iftrue>continue</iftrue>
+      <iffalse>end</iffalse>
+    </condition>
+    <label>continue</label>
+    <affectation>
+      <variable>Number</variable>
+      <expression>Number + 1</expression>
+    </affectation>
+    <call>item</call>
+    <condition>
+      <expression>Number &lt; max</expression>
+      <iftrue>continue</iftrue>
+      <iffalse>end</iffalse>
+    </condition>
+    <label>end</label>
+    <texte>&lt;tr·valign='bottom'&gt;&lt;td·colspan='3'&gt;&lt;/td&gt;&lt;/tr&gt;</texte>
+    <texte>&lt;/table&gt;</texte>
+  </code>
+</root>

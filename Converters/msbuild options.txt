@@ -1,0 +1,3 @@
+﻿MSBuild MyApp.sln /t:Clean /p:Configuration=Debug;Platform=x64;TargetFrameworkVersion=v3.5
+MSBuild MyApp.csproj /t:Rebuild
+                     /p:Configuration=Debug;Platform=x64;TargetFrameworkVersion=v3.5

@@ -1,0 +1,108 @@
+"Name"	"fr-FR"	Nom
+"Name"	"en-US"	Name
+"Edit"	"fr-FR"	éditer
+"BeginProcess"	"fr-FR"	débuter processus
+"CallProcess"	"fr-FR"	appeler processus
+"Coding"	"fr-FR"	codage
+"Handler"	"fr-FR"	poignée
+"If"	"fr-FR"	si
+"ElseGoTo"	"fr-FR"	sinon aller à
+"Template"	"fr-FR"	déclarer modèle
+"UseTemplate"	"fr-FR"	utiliser modèle
+"Path"	"fr-FR"	Chemin
+"SearchMode"	"fr-FR"	mode recherche de
+"Size"	"fr-FR"	calculer taille
+"StartInParallel"	"fr-FR"	démarrer en parallèle
+"CreateWriter"	"fr-FR"	créer écrivain
+"UseWriter"	"fr-FR"	écrire dans
+"Edit"	"en-US"	print
+"BeginProcess"	"en-US"	start process
+"CallProcess"	"en-US"	call process
+"Coding"	"en-US"	coding
+"Handler"	"en-US"	handler
+"If"	"en-US"	if
+"ElseGoTo"	"en-US"	else goto
+"Template"	"en-US"	declare template
+"UseTemplate"	"en-US"	use template
+"Path"	"en-US"	Path
+"SearchMode"	"en-US"	search mode for
+"Size"	"en-US"	compute size
+"StartInParallel"	"en-US"	start in parallel
+"CreateWriter"	"en-US"	create writer
+"UseWriter"	"en-US"	write into
+"EndProcess"	"fr-FR"	terminer processus
+"EndProcess"	"en-US"	terminate process
+"ThenGoTo"	"en-US"	else goto
+"ThenGoTo"	"fr-FR"	alors aller à
+"BeginSkeleton"	"fr-FR"	démarrer squelette 
+"EndSkeleton"	"fr-FR"	terminer squelette 
+"CallSkeleton"	"fr-FR"	lancer squelette 
+"BeginSkeleton"	"en-US"	start skeleton 
+"EndSkeleton"	"en-US"	terminate skeleton 
+"CallSkeleton"	"en-US"	run skeleton 
+"Syntax"	"fr-FR"	syntaxe 
+"Syntax"	"en-US"	syntax 
+"Clipboard"	"fr-FR"	Presse-papier
+"Clipboard"	"en-US"	Clipboard
+"Injector"	"fr-FR"	injecter 
+"In"	"fr-FR"	en langage
+"CreateMOP"	"fr-FR"	créer un mop 
+"UseMOP"	"fr-FR"	utiliser mop
+"Injector"	"en-US"	inject 
+"In"	"en-US"	in
+"CreateMOP"	"en-US"	create mop 
+"UseMOP"	"en-US"	use mop
+"DocumentName"	"fr-FR"	Nom du document
+"CreationDate"	"fr-FR"	Date de création
+"ModificationDate"	"fr-FR"	Date de modification
+"Revision"	"fr-FR"	Version
+"DocumentName"	"en-US"	Document name
+"CreationDate"	"en-US"	Creation date
+"ModificationDate"	"en-US"	Modification date
+"Revision"	"en-US"	Revision
+"WriteText"	"fr-FR"	écrire un texte
+"EditVariable"	"fr-FR"	éditer une variable
+"EditField"	"fr-FR"	éditer un champ
+"Condition"	"fr-FR"	écrire une opération conditionnelle
+"AssignmentOperator"	"fr-FR"	créer une variable
+"StringAssignment"	"fr-FR"	lire un paramètre
+"FieldAssignment"	"fr-FR"	lire un champ
+"SizeAssignment"	"fr-FR"	calculer la taille d\'un tableau
+"Label"	"fr-FR"	label de branchement
+"Indent"	"fr-FR"	indenter +
+"Unindent"	"fr-FR"	indenter -
+"WriteText"	"en-US"	write a single text
+"EditVariable"	"en-US"	edit a variable
+"EditField"	"en-US"	édit a field
+"Condition"	"en-US"	write a conditional operator
+"AssignmentOperator"	"en-US"	assign a variable
+"StringAssignment"	"en-US"	assign from a parameter
+"FieldAssignment"	"en-US"	assign from a field
+"SizeAssignment"	"en-US"	compute the size of an array
+"Label"	"en-US"	label
+"Indent"	"en-US"	indent
+"Unindent"	"en-US"	unindent
+"Cut"	"fr-FR"	couper
+"Cut"	"en-US"	cut
+"For"	"fr-FR"	pour
+"For"	"en-US"	for
+"TextExample"	"fr-FR"	Ecrire un code source cible
+"TextExample"	"en-US"	Write the final source code
+"Summary"	"fr-FR"	Légendes
+"Description"	"fr-FR"	Description
+"Comment"	"fr-FR"	Commentaire
+"String"	"fr-FR"	String
+"Number"	"fr-FR"	Nombre
+"Date"	"fr-FR"	Date
+"Enumeration"	"fr-FR"	Enumération
+"Array"	"fr-FR"	Tableau
+"Expression"	"fr-FR"	Expression
+"Summary"	"en-US"	Summary
+"Description"	"en-US"	Description
+"Comment"	"en-US"	Comment
+"String"	"en-US"	String
+"Number"	"en-US"	Number
+"Date"	"en-US"	Date
+"Enumeration"	"en-US"	Enumeration
+"Array"	"en-US"	Array
+"Expression"	"en-US"	Expression

@@ -1,0 +1,47 @@
+﻿<root><legendes><item context="" name="year" type="Date" expression="" commentaire="Indiquez la date du copyright">Année en cours</item><item context="" name="author" type="String" expression="" commentaire="Indiquez le nom de l'auteur">Auteur</item></legendes><infos><creationDate>20/10/2013 22:21:58</creationDate><modificationDate>01/11/2013 17:27:26</modificationDate><revision>15</revision></infos><code><beginskeleton path="/C" name="Implementation" /><usetemplate name="/CodeCommander/Writer"><params><param name="writer">w</param><param name="extension">c</param></params><codings /></usetemplate><texte>/********************************************************************************¶
+·*·¶
+·*·Copyright·(C)·</texte><variable>year</variable><texte>·</texte><variable>author</variable><texte>¶
+¶
+·*·This·program·is··free··software;·you·can··redistribute·it···and/or··modify·it¶
+·*·under·the·terms·of·the··GNU·General·Public·License·as··published··by·the·Free¶
+·*·Free·Software·Foundation;··either··version··2·of·the··License,··or··any·later¶
+·*·version.¶
+·*·¶
+·*·This·program·is··distributed·in··the·hope·that·it·will·be·useful,·but·WITHOUT¶
+·*·ANY·WARRANTY;·without·even·the·implied·warranty·of·MERCHANTABILITY·or·FITNESS¶
+·*·FOR·A·PARTICULAR·PROPOSE.·See·the·GNU·General·Public·License·for·more·details.¶
+·*¶
+·*·You·should·have·receive·a·copy·of·the··GNU·General·Public·License··along·with¶
+·*·this·program;·if·not,·write·to·the··Free·Software·Foundation,·Inc.,·59·Temple¶
+·*·Place,·Suite·330,·Boston,·MA·02111-1307·USA¶
+·*******************************************************************************/¶
+¶
+¶
+¶</texte><injector name="includes" /><affectationchaine><variable>fileName</variable><chaine>file</chaine></affectationchaine><texte>¶
+#include·"</texte><variable>fileName</variable><texte>.h"¶</texte><injector name="functions" /><endskeleton path="/C" name="Implementation" /><beginskeleton path="/C" name="Header" /><usetemplate name="/CodeCommander/Writer"><params><param name="writer">w</param><param name="extension">h</param></params><codings /></usetemplate><texte>/********************************************************************************¶
+·*·Copyright·(C)·</texte><variable>year</variable><texte>·</texte><variable>author</variable><texte>¶
+¶
+·*·This·program·is··free··software;·you·can··redistribute·it···and/or··modify·it¶
+·*·under·the·terms·of·the··GNU·General·Public·License·as··published··by·the·Free¶
+·*·Free·Software·Foundation;··either··version··2·of·the··License,··or··any·later¶
+·*·version.¶
+·*·¶
+·*·This·program·is··distributed·in··the·hope·that·it·will·be·useful,·but·WITHOUT¶
+·*·ANY·WARRANTY;·without·even·the·implied·warranty·of·MERCHANTABILITY·or·FITNESS¶
+·*·FOR·A·PARTICULAR·PROPOSE.·See·the·GNU·General·Public·License·for·more·details.¶
+·*¶
+·*·You·should·have·receive·a·copy·of·the··GNU·General·Public·License··along·with¶
+·*·this·program;·if·not,·write·to·the··Free·Software·Foundation,·Inc.,·59·Temple¶
+·*·Place,·Suite·330,·Boston,·MA·02111-1307·USA¶
+·*******************************************************************************/¶
+¶
+¶
+¶
+#ifndef·_</texte><affectationchaine><variable>fileName</variable><chaine>file</chaine></affectationchaine><affectation><variable>fileName</variable><expression>upper(fileName)</expression></affectation><variable>fileName</variable><texte>_H_¶
+¶
+¶
+¬#define·_</texte><variable>fileName</variable><texte>_H_¶
+¶</texte><injector name="prototypes" /><texte>¶
+¶
+#endif¶
+¶</texte><endskeleton path="/C" name="Header" /></code></root>

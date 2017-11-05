@@ -1,0 +1,13 @@
+"ProductVersion"	""	1.3.75.49
+"FileVersion"	""	75.49.6.9
+"AssemblyVersion"	""	115.9.75.49
+"IsCOM"	""	true
+"Title"	""	"o2MateScope"
+"Description"	""	"o2MateScope is a .NET assembly which registers a COM object and the ProgID is o2Mate.Scope
+You can call that COM object to host variables during compilation. This program stands for The CodeCommander Project"
+"Configuration"	""	"Windows .NET 4.0/x64 CPU/Debug Mode"
+"Company"	""	"Invisible Media"
+"Product"	""	"CodeCommander"
+"Copyright"	""	"Invisible Media © copyright 2014-2016"
+"Trademark"	""	"Invisible Media"
+"Culture"	""	"fr"

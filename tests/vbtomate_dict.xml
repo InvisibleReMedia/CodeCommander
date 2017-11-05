@@ -1,0 +1,17 @@
+<Dictionnaire>
+  <value name="test" type="string">testValue4</value>
+  <value name="array1" type="array">
+    <item>
+      <field name="test2">
+      </field>
+      <field name="test3">
+      </field>
+    </item>
+  </value>
+  <value name="array2" type="array">
+    <item>
+      <field name="test2">testValue5</field>
+      <field name="test3">testValue6</field>
+    </item>
+  </value>
+</Dictionnaire>

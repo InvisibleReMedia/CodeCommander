@@ -1,0 +1,464 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>o2MateDict</name>
+    </assembly>
+    <members>
+        <member name="T:o2Mate.IArray">
+            <summary>
+            An array object
+            </summary>
+        </member>
+        <member name="M:o2Mate.IArray.Item(System.Int32)">
+            <summary>
+            Gets the nth-item
+            </summary>
+            <param name="index">number (starts with 1)</param>
+            <returns>an array</returns>
+        </member>
+        <member name="M:o2Mate.IArray.Add(System.Object)">
+            <summary>
+            Add a new element
+            </summary>
+            <param name="fields">fields list</param>
+        </member>
+        <member name="M:o2Mate.IArray.Load(System.Xml.XmlNode)">
+            <summary>
+            Load from an xml node
+            </summary>
+            <param name="node">xml node</param>
+        </member>
+        <member name="M:o2Mate.IArray.Save(System.Xml.XmlDocument)">
+            <summary>
+            Saves the array into an xml document
+            </summary>
+            <param name="doc">xml document</param>
+            <returns>array's items at xml format</returns>
+        </member>
+        <member name="P:o2Mate.IArray.Count">
+            <summary>
+            Gives the count of elements in the array
+            </summary>
+        </member>
+        <member name="T:o2Mate.Array">
+            <summary>
+            Array class
+            </summary>
+        </member>
+        <member name="M:o2Mate.Array.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Array.Item(System.Int32)">
+            <summary>
+            Get the item object
+            </summary>
+            <param name="index">position (from 1 to N)</param>
+            <returns>fields object</returns>
+        </member>
+        <member name="M:o2Mate.Array.Add(System.Object)">
+            <summary>
+            Add a new item into the array
+            </summary>
+            <param name="fields">fields object</param>
+        </member>
+        <member name="M:o2Mate.Array.Load(System.Xml.XmlNode)">
+            <summary>
+            Load array from an XML node
+            </summary>
+            <param name="node">XML node</param>
+        </member>
+        <member name="M:o2Mate.Array.Save(System.Xml.XmlDocument)">
+            <summary>
+            Save array data in a XML node
+            </summary>
+            <param name="doc">XML document</param>
+            <returns>xml node list</returns>
+        </member>
+        <member name="P:o2Mate.Array.Count">
+            <summary>
+            Gets the count list
+            </summary>
+        </member>
+        <member name="T:o2Mate.IChaine">
+            <summary>
+            Just a string
+            </summary>
+        </member>
+        <member name="P:o2Mate.IChaine.Value">
+            <summary>
+            Gets or sets the string value
+            </summary>
+        </member>
+        <member name="T:o2Mate.Chaine">
+            <summary>
+            Keeps a string value
+            </summary>
+        </member>
+        <member name="M:o2Mate.Chaine.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:o2Mate.Chaine.Value">
+            <summary>
+            Gets or sets the string value
+            </summary>
+        </member>
+        <member name="T:o2Mate.IDictionnaire">
+            <summary>
+            Dictionary interface
+            </summary>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.IsEmpty">
+            <summary>
+            Says if the dictionary is empty
+            </summary>
+            <returns>true if empty, else false</returns>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.IsString(System.String)">
+            <summary>
+            Says if that name exists and is a string
+            </summary>
+            <param name="name">name</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.IsArray(System.String)">
+            <summary>
+            Says if that name exists and is an array
+            </summary>
+            <param name="name">name</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.Exists(System.String)">
+            <summary>
+            Says just if that name exists
+            </summary>
+            <param name="name">name</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.LoadXml(System.String)">
+            <summary>
+            Load an XML string
+            </summary>
+            <param name="xml">XML string</param>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.Load(System.String)">
+            <summary>
+            Load an XML file
+            </summary>
+            <param name="fileName">file name</param>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.Save(System.String)">
+            <summary>
+            Save data to an XML file
+            </summary>
+            <param name="fileName">file name</param>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.AddString(System.String,System.String)">
+            <summary>
+            Add a new string
+            replace if string already exists
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.AddArray(System.String,System.Object)">
+            <summary>
+            Add a new array
+            replace if array already exists
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.GetString(System.String)">
+            <summary>
+            Gets a string from a name
+            </summary>
+            <param name="name">name</param>
+            <returns>the string or null if not found</returns>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.SetString(System.String,System.String)">
+            <summary>
+            Sets the value of an existing string
+            Do nothing if not exists or is not a string
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.GetArray(System.String)">
+            <summary>
+            Gets an array
+            </summary>
+            <param name="name">name</param>
+            <returns>the array or null if not found</returns>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.ParseExpression(o2Mate.ILegende)">
+            <summary>
+            Parse expression to insert into a summary
+            </summary>
+            <param name="legende">summary object</param>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.TestDependsOn(o2Mate.ILegende)">
+            <summary>
+            Test depends on
+            </summary>
+            <param name="legende">summary object</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.IDictionnaire.GetInConnection(o2Mate.ILegende,System.String,System.Int32,System.String@,System.String@)">
+            <summary>
+            Gets a relation with an another name
+            </summary>
+            <param name="legende">summary object</param>
+            <param name="keyTab">tabular name</param>
+            <param name="index">position in the tabular</param>
+            <param name="arr">array name</param>
+            <param name="field">field name</param>
+            <returns>true if found</returns>
+        </member>
+        <member name="P:o2Mate.IDictionnaire.StringKeys">
+            <summary>
+            Gets the list of string keys
+            </summary>
+        </member>
+        <member name="P:o2Mate.IDictionnaire.ArrayKeys">
+            <summary>
+            Gets the list of array keys
+            </summary>
+        </member>
+        <member name="P:o2Mate.IDictionnaire.Legendes">
+            <summary>
+            Summary
+            </summary>
+        </member>
+        <member name="T:o2Mate.Dictionnaire">
+            <summary>
+            Dictionary implementation
+            </summary>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.IsEmpty">
+            <summary>
+            Says if the dictionary is empty
+            </summary>
+            <returns>true if empty, else false</returns>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.IsString(System.String)">
+            <summary>
+            Says if that name exists and is a string
+            </summary>
+            <param name="name">name</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.IsArray(System.String)">
+            <summary>
+            Says if that name exists and is an array
+            </summary>
+            <param name="name">name</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.Exists(System.String)">
+            <summary>
+            Says just if that name exists
+            </summary>
+            <param name="name">name</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.LoadXml(System.String)">
+            <summary>
+            Load an XML string
+            </summary>
+            <param name="xml">XML string</param>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.Load(System.String)">
+            <summary>
+            Load an XML file
+            </summary>
+            <param name="fileName">file name</param>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.Save(System.String)">
+            <summary>
+            Save data to an XML file
+            </summary>
+            <param name="fileName">file name</param>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.AddString(System.String,System.String)">
+            <summary>
+            Add a new string
+            replace if string already exists
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.AddArray(System.String,System.Object)">
+            <summary>
+            Add a new array
+            replace if array already exists
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.GetString(System.String)">
+            <summary>
+            Gets a string from a name
+            </summary>
+            <param name="name">name</param>
+            <returns>the string or null if not found</returns>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.SetString(System.String,System.String)">
+            <summary>
+            Sets the value of an existing string
+            Do nothing if not exists or is not a string
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.GetArray(System.String)">
+            <summary>
+            Gets an array
+            </summary>
+            <param name="name">name</param>
+            <returns>the array or null if not found</returns>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.ParseExpression(o2Mate.ILegende)">
+            <summary>
+            Parse expression to insert into a summary
+            </summary>
+            <param name="legende">summary object</param>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.TestDependsOn(o2Mate.ILegende)">
+            <summary>
+            Test depends on
+            </summary>
+            <param name="legende">summary object</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Dictionnaire.GetInConnection(o2Mate.ILegende,System.String,System.Int32,System.String@,System.String@)">
+            <summary>
+            Gets a relation with an another name
+            </summary>
+            <param name="legende">summary object</param>
+            <param name="keyTab">tabular name</param>
+            <param name="index">position in the tabular</param>
+            <param name="arr">array name</param>
+            <param name="field">field name</param>
+            <returns>true if found</returns>
+        </member>
+        <member name="P:o2Mate.Dictionnaire.Legendes">
+            <summary>
+            Summary
+            </summary>
+        </member>
+        <member name="P:o2Mate.Dictionnaire.StringKeys">
+            <summary>
+            Gets the list of string keys
+            </summary>
+        </member>
+        <member name="P:o2Mate.Dictionnaire.ArrayKeys">
+            <summary>
+            Gets the list of array keys
+            </summary>
+        </member>
+        <member name="T:o2Mate.IFields">
+            <summary>
+            Fields interface (into each item array)
+            </summary>
+        </member>
+        <member name="M:o2Mate.IFields.Exists(System.String)">
+            <summary>
+            Says if field name exists
+            </summary>
+            <param name="name"></param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.IFields.Load(System.Xml.XmlNode)">
+            <summary>
+            Load from an xml node
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:o2Mate.IFields.Save(System.Xml.XmlDocument)">
+            <summary>
+            Save to an xml document
+            </summary>
+            <param name="doc"></param>
+            <returns>xml node</returns>
+        </member>
+        <member name="M:o2Mate.IFields.AddString(System.String,System.String)">
+            <summary>
+            Add a field name/value
+            replace if already exists
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.IFields.GetString(System.String)">
+            <summary>
+            Get a field value
+            </summary>
+            <param name="name">name</param>
+            <returns>field value or empty string</returns>
+        </member>
+        <member name="P:o2Mate.IFields.Keys">
+            <summary>
+            Gets the list of keys
+            </summary>
+        </member>
+        <member name="T:o2Mate.Fields">
+            <summary>
+            Fields class (into each item array)
+            </summary>
+        </member>
+        <member name="M:o2Mate.Fields.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Fields.Exists(System.String)">
+            <summary>
+            Says if field name exists
+            </summary>
+            <param name="name"></param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Fields.Load(System.Xml.XmlNode)">
+            <summary>
+            Load from an xml node
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:o2Mate.Fields.Save(System.Xml.XmlDocument)">
+            <summary>
+            Save to an xml document
+            </summary>
+            <param name="doc"></param>
+            <returns>xml node</returns>
+        </member>
+        <member name="M:o2Mate.Fields.AddString(System.String,System.String)">
+            <summary>
+            Add a field name/value
+            replace if already exists
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:o2Mate.Fields.GetString(System.String)">
+            <summary>
+            Get a field value
+            </summary>
+            <param name="name">name</param>
+            <returns>field value or empty string</returns>
+        </member>
+        <member name="P:o2Mate.Fields.Keys">
+            <summary>
+            Gets the list of keys
+            </summary>
+        </member>
+    </members>
+</doc>

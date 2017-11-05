@@ -1,0 +1,71 @@
+﻿Pour convertir la commande de lancement en parallèle, j'ai été forcé de créer une nouvelle classe
+contenant pour chaque élément le nom de la variable accompagné du nom d'instance d'une structure
+créée qui doit contenir l'ensemble des paramètres passés à chaque thread lancée pour chaque ligne
+de la commande parallèle.
+
+Si la structure obtenue est passée en paramètre mutable, les valeurs de chaque élément de la
+structure sont partagées pour toutes les threads lancée à partir de la commande de lancement
+en parallèle.
+
+Les difficultés pour obtenir un fonctionnement correct de l'utilisation des structures sont :
+
+	- dans une fonction, il y a les variables locales et les paramètres. Le nom d'un paramètre et
+	  le nom d'une variable locale ont le même nom que le nom de la variable existante dans le scope
+	  au moment de la conversion.
+	  Au moment de convertir chaque nom de variable, je dois observer si cette variable réside
+	  dans une structure ou si elle est libre.
+
+	  Afin de contrôler le cas mutable et non mutable d'un paramètre et en sachant que c'est au
+	  moment de l'écriture finale que j'écris chaque variable dans le format adapté pour chaque cas,
+	  je dois appliquer l'état du paramètre et cela est effectué avec la fonction UpdateParameters()
+	  de la classe Compilateur.
+
+	- l'appel d'une fonction avec des paramètres requiert d'avoir traité toutes les fonctions
+	  appellées par celle-ci. Cela assure de connaître l'ensemble des variables utilisées.
+
+	- la définition de la fonction avec les paramètres indiqués. C'est la conséquence de l'appel
+	  d'une fonction pendant la conversion qui détermine que cette fonction doit avoir une implémentation
+	  puisqu'elle fait partie des fonctions appellées.
+
+	- Si une opération de traitement parallèle est également lancée dans une fonction en traitement
+	  parallèle alors :
+		- l'ensemble des paramètres nécessaires de la première structure sont recopiées dans la nouvelle structure.
+
+Lors de la conversion d'une commande de lancement en parallèle, chaque thread a une unique fonction de départ.
+Un seul paramètre à cette fonction est indiqué : c'est le paramètre (mutable) de la structure. Ce paramètre
+remplace tous les anciens paramètres déterminés par l'implémentation de cette fonction. Une fois dans cette
+fonction, les paramètres des fonctions appellées sont transmis pour chacun avec leur valeur indiquée dans
+la structure. Ces paramètres étaient présents dans la première fonction et il y était indiqué mutable ou pas.
+
+Si dans les fonctions appellées le paramètre n'est pas mutable alors, le passage du paramètre se fait par
+valeur et si le paramètre fourni est mutable, je dois donc en indiquer uniquement la valeur. En revanche, si
+le paramètre est mutable tandis que dans la structure il n'est pas mutable, je dois donc transmettre le
+paramètre par pointeur sur le paramètre de la structure.
+
+Je note également qu'une fois la terminaison de toutes les threads, les valeurs indiquées dans la structure
+qui ont pu être modifiées sont recopiées aux variables (excepté si ces variables étaient définies 
+comme mutable).
+
+
+D'après ces informations, les modifications à prendre en compte sont qu'un paramètre contient
+la liste des objets de structure qui sont initialement copiés afin de pouvoir retrouver d'une part
+le nom de la variable à rechercher et le cas échéant si elle est mutable ou non.
+
+Au moment de convertir une instruction de lancement en parallèle, je dois :
+
+	- déclarer une nouvelle instance d'une nouvelle structure qui contiendra l'ensemble des paramètres
+	  demandés par la fonction appellée lors de l'exécution de la thread.
+	  Pour  chaque processus mis en parallèle :
+		- si la variable du scope est globale, je dois retranscrire le nom de la variable directement,
+		- si la variable du scope n'est pas globale, je peux retarder l'écriture du terme,
+		- je supprime dans la seule fonction appellée dans la thread tous ses paramètres et je fournis
+		  un pointeur sur la structure à l'aide d'un nouveau paramètre. J'y ajoute alors dans ce paramètre
+		  l'ensemble des variables incluses dans la structure,
+		- j'écris l'appel de la fonction
+	- recopier toutes les valeurs indiquées dans la structure (excepté celles mutable) dans les variables.
+	  Je note que je dois faire attention à ce que les paramètres ne soient pas des structures sinon,
+	  je dois recopier toutes les valeurs indiquées dans la structure en paramètre.
+
+
+
+

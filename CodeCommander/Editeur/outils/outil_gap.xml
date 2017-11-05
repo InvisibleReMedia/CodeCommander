@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+	<code>
+		<texte>&lt;div style='padding-top:2px' id='gap</texte>
+		<variable>Number</variable>
+		<texte>'&gt;&lt;span class='gap'&gt;&lt;/span&gt;&lt;/div&gt;</texte>
+	</code>
+</root>

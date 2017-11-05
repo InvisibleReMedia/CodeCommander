@@ -1,0 +1,93 @@
+﻿<root><legendes /><infos><creationDate>23/10/2013 15:03:17</creationDate><modificationDate>02/11/2013 10:42:49</modificationDate><revision>19</revision></infos><code><syntax name="C header file"><legendes><item context="" name="author" type="String" expression="" commentaire="Prénom">Auteur</item><item context="tab1" name="col1" type="String" expression="" commentaire="test">Colonne de test</item><item context="" name="tab1" type="Array" expression="" commentaire="test">Tableau de test</item><item context="" name="file" type="String" expression="" commentaire="Saisir le nom du fichier source sans l'extension">Nom du fichier source</item><item context="" name="year" type="Date" expression="" commentaire="Saisir la date de réalisation">Année de développement</item></legendes><code><texte>/********************************************************************************¶
+·*·¶
+·*·Copyright·(C)·</texte><variable>year</variable><texte>·</texte><variable>author</variable><texte>¶
+¶
+·*·This·program·is··free··software;·you·can··redistribute·it···and/or··modify·it¶
+·*·under·the·terms·of·the··GNU·General·Public·License·as··published··by·the·Free¶
+·*·Free·Software·Foundation;··either··version··2·of·the··License,··or··any·later¶
+·*·version.¶
+·*·¶
+·*·This·program·is··distributed·in··the·hope·that·it·will·be·useful,·but·WITHOUT¶
+·*·ANY·WARRANTY;·without·even·the·implied·warranty·of·MERCHANTABILITY·or·FITNESS¶
+·*·FOR·A·PARTICULAR·PROPOSE.·See·the·GNU·General·Public·License·for·more·details.¶
+·*¶
+·*·You·should·have·receive·a·copy·of·the··GNU·General·Public·License··along·with¶
+·*·this·program;·if·not,·write·to·the··Free·Software·Foundation,·Inc.,·59·Temple¶
+·*·Place,·Suite·330,·Boston,·MA·02111-1307·USA¶
+·*******************************************************************************/¶
+¶
+¶
+¶</texte><affectationchaine><variable>fileName</variable><chaine>file</chaine></affectationchaine><texte>¶
+#include·"</texte><variable>fileName</variable><texte>.h"¶
+¶
+¶
+¶
+¶</texte></code></syntax><syntax name="C header function"><legendes><item context="" name="return" type="String" expression="" commentaire="Saisir le type de retour de la fonction">Type de retour</item><item context="" name="functionName" type="String" expression="" commentaire="Saisir le nom de la fonction">Nom de la fonction</item><item context="" name="paramètres" type="String" expression="" commentaire="Lister les paramètres de la fonction">Paramètres</item></legendes><code><texte>/*·¶
+·*·Nom·de·la·fonction¶
+·*·Indiquer·ce·que·fait·la·fonction¶
+·*·¶
+·*·¶
+·*·Valeur·de·retour:·¶
+·*·Paramètres:·¶
+·*·¬param1·:·description·du·paramètre·1¶
+·*·¬param2·:·description·du·paramètre·2¶
+·*·¬param3·:·description·du·paramètre·3¶
+·*·¶
+·*·¶
+·*·¶
+*/¶</texte><variable>return</variable><texte>·</texte><variable>functionName</variable><texte>(</texte><variable>paramètres</variable><texte>)·{¶
+}¶
+¶
+¶
+¶
+¶
+¶</texte></code></syntax><syntax name="C function"><legendes><item context="" name="parameters" type="String" expression="" commentaire="Saisir les paramètres avec leur type">Paramètres</item><item context="" name="functionName" type="String" expression="" commentaire="Saisir le nom de la fonction">Nom de la fonction</item><item context="" name="return" type="String" expression="" commentaire="Saisir le type de retour">Type de retour</item></legendes><code><variable>return</variable><texte>·</texte><variable>functionName</variable><texte>(</texte><variable>parameters</variable><texte>)·{¶
+}¶
+¶
+¶
+¶
+¶
+¶</texte></code></syntax><syntax name="C call"><legendes><item context="" name="functionName" type="String" expression="" commentaire="">Nom de la fonction à appeler</item></legendes><code><texte /><variable>functionName</variable><texte>(values);¶</texte></code></syntax><syntax name="C comment"><legendes /><code><texte>/*¶
+·*·commentaire¶
+·*/¶</texte></code></syntax><syntax name="C return"><legendes /><code><texte>return;¶</texte></code></syntax><syntax name="C main"><legendes /><code><texte>int·main(int·argc,·char*·argv[])·{¶
+¬¶
+¬return·EXIT_SUCCESS;¶
+}¶</texte></code></syntax><syntax name="C assign"><legendes><item context="" name="varName" type="String" expression="" commentaire="Saisir le nom de la variable">Nom de la variable</item><item context="" name="value" type="String" expression="" commentaire="Saisir la valeur actuelle de la variable">Valeur de la variable</item></legendes><code><texte /><variable>varName</variable><texte>·=·</texte><variable>value</variable><texte>;¶</texte></code></syntax><syntax name="C variable"><legendes><item context="" name="type" type="String" expression="" commentaire="Saisir le type complet de la variable (par exemple, char*)">Type de la variable</item><item context="" name="varName" type="String" expression="" commentaire="Saisir le nom de la variable">Nom de la variable</item></legendes><code><variable>type</variable><texte>·</texte><variable>varName</variable><texte>;¶
+·</texte></code></syntax><syntax name="C int"><legendes /><code><texte>int·iVar;¶</texte></code></syntax><syntax name="C long"><legendes /><code><texte>long·lVar;¶</texte></code></syntax><syntax name="C float"><legendes /><code><texte>float·fVar;¶</texte></code></syntax><syntax name="C double"><legendes /><code><texte>double·dVar;¶</texte></code></syntax><syntax name="C long double"><legendes /><code><texte>long·double·ldVar;¶</texte></code></syntax><syntax name="C char"><legendes /><code><texte>char·cVar;¶</texte></code></syntax><syntax name="C string"><legendes><item context="" name="allocSize" type="String" expression="" commentaire="Indiquer la taille de l'allocation de la chaîne. Toujours compter le caractère supplémentaire \0.">Taille de la chaîne</item></legendes><code><texte>char[</texte><variable>allocSize</variable><texte>]·strVar;¶</texte></code></syntax><syntax name="C static array"><legendes><item context="" name="type" type="String" expression="" commentaire="Saisir le type d'élément dans le tableau">Nom du type</item><item context="" name="varName" type="String" expression="" commentaire="">Nom de la variable</item><item context="" name="n" type="String" expression="" commentaire="Saisir le nombre d'éléments dans le tableau">Nombre d'éléments</item></legendes><code><texte /><variable>type</variable><texte>·</texte><variable>varName</variable><texte>[</texte><variable>n</variable><texte>];¶</texte></code></syntax><syntax name="C assign array"><legendes><item context="" name="type" type="String" expression="" commentaire="">Type des éléments du tableau</item><item context="" name="tabName" type="String" expression="" commentaire="">Nom de la variable tableau</item></legendes><code><texte /><variable>type</variable><texte>·</texte><variable>tabName</variable><texte>·=·{¶
+¬};¶</texte></code></syntax><syntax name="C multi array"><legendes><item context="" name="type" type="String" expression="" commentaire="">Type des éléments du tableau multidimensionnel</item><item context="" name="tabName" type="String" expression="" commentaire="">Nom du tableau</item><item context="" name="n" type="String" expression="" commentaire="Nombre d'éléments maximum sur la première dimension">Première dimension</item><item context="" name="m" type="String" expression="" commentaire="Nombre d'éléments maximum sur la seconde dimension">Seconde dimension</item></legendes><code><variable>type</variable><texte>·</texte><variable>tabName</variable><texte>[</texte><variable>n</variable><texte>][</texte><variable>m</variable><texte>];¶</texte></code></syntax><syntax name="C sizeof"><legendes><item context="" name="varName" type="String" expression="" commentaire="Calcule la taille de la variable">Nom de la variable à calculer</item></legendes><code><texte>sizeof(</texte><variable>varName</variable><texte>)</texte></code></syntax><syntax name="C typedef"><legendes><item context="" name="type" type="String" expression="" commentaire="Saisir le type de données signifié">Type source</item><item context="" name="newType" type="String" expression="" commentaire="Saisir le nom du nouveau type">Nouveau type</item></legendes><code><texte>typedef·</texte><variable>type</variable><texte>·</texte><variable>newType</variable><texte>;¶</texte></code></syntax><syntax name="C typedef struct"><legendes><item context="" name="newType" type="String" expression="" commentaire="Nom du nouveau type de données">Nouveau type</item></legendes><code><texte>typedef·struct·{¶
+¬¶
+}·</texte><variable>newType</variable><texte>;¶</texte></code></syntax><syntax name="C typedef enum"><legendes><item context="" name="newType" type="String" expression="" commentaire="Saisir le nom de l'énumération">Nouveau type</item></legendes><code><texte>typedef·enum·{¶
+¬E_NONE¶
+}·</texte><variable>newType</variable><texte>;¶</texte></code></syntax><syntax name="C union"><legendes /><code><texte>union·{¶
+¬¶
+};</texte></code></syntax><syntax name="C cast"><legendes><item context="" name="type" type="String" expression="" commentaire="Saisir le type de conversion">Type converti</item></legendes><code><texte>(</texte><variable>type</variable><texte>)expression;¶</texte></code></syntax><syntax name="C address"><legendes><item context="" name="ptrName" type="String" expression="" commentaire="Retourne le pointeur de cette variable">Nom de la variable</item></legendes><code><texte>&amp;</texte><variable>ptrName</variable></code></syntax><syntax name="C pointer"><legendes><item context="" name="ptrName" type="String" expression="" commentaire="Retourne la valeur pointée">Nom de la variable pointeur</item></legendes><code><texte>*</texte><variable>ptrName</variable></code></syntax><syntax name="C pointer field"><legendes><item context="" name="ptrName" type="String" expression="" commentaire="">Nom de la variable pointeur</item><item context="" name="field" type="String" expression="" commentaire="Champ dans la structure pointée">Nom du champ</item></legendes><code><texte /><variable>ptrName</variable><texte>-&gt;</texte><variable>field</variable></code></syntax><syntax name="C index"><legendes><item context="" name="index" type="String" expression="" commentaire="Le premier élément du tableau est 0">Position dans le tableau</item><item context="" name="tabName" type="String" expression="" commentaire="">Nom du tableau</item></legendes><code><texte /><variable>tabName</variable><texte>[</texte><variable>index</variable><texte>]</texte></code></syntax><syntax name="C operator ++"><legendes><item context="" name="varName" type="String" expression="" commentaire="">Nom de la variable à incrémenter</item></legendes><code><texte /><variable>varName</variable><texte>++;¶</texte></code></syntax><syntax name="C operator --"><legendes><item context="" name="varName" type="String" expression="" commentaire="">Nom de la variable à décrementer</item></legendes><code><texte /><variable>varName</variable><texte>--;¶</texte></code></syntax><syntax name="C operator &gt;&gt;"><legendes><item context="" name="varName" type="String" expression="" commentaire="Saisir une valeur ou une variable">Valeur ou variable</item><item context="" name="n" type="String" expression="" commentaire="Divise le nombre par 2">Nombre de décalage à gauche</item></legendes><code><texte>(</texte><variable>varName</variable><texte>·&gt;&gt;·</texte><variable>n</variable><texte>)</texte></code></syntax><syntax name="C operator &lt;&lt;"><legendes><item context="" name="varName" type="String" expression="" commentaire="Décalage à droite">Nom de la variable ou valeur</item><item context="" name="n" type="String" expression="" commentaire="Multiplier le nombre par 2">Saisir le nombre d'occurences</item></legendes><code><texte>(</texte><variable>varName</variable><texte>·&lt;&lt;·</texte><variable>n</variable><texte>)</texte></code></syntax><syntax name="C if ternaire"><legendes /><code><texte>((condition)·?·(1)·:·(0))</texte></code></syntax><syntax name="C if"><legendes /><code><texte>if·(expression)·{¶
+¬¶
+}¶</texte></code></syntax><syntax name="C if else"><legendes /><code><texte>if·(expression)·{¶
+¬¶
+}·else·{¶
+¬¶
+}¶</texte></code></syntax><syntax name="C switch"><legendes /><code><texte>switch(varName)·{¶
+¬case·value:¶
+¬¬{¶
+¬¬¬break;¶
+¬¬}¶
+¬default:¶
+¬¬break;¶
+}¶</texte></code></syntax><syntax name="C for"><legendes /><code><texte>for(init;·limite;·increment)·{¶
+¬¶
+}¶</texte></code></syntax><syntax name="C for array"><legendes><item context="" name="index" type="String" expression="" commentaire="">Nom de la variable d'index</item><item context="" name="tabName" type="String" expression="" commentaire="">Nom du tableau à itérer</item><item context="" name="type" type="String" expression="" commentaire="">Type des éléments du tableau</item></legendes><code><texte>int·</texte><variable>index</variable><texte>;¶
+for(</texte><variable>index</variable><texte>·=·0;·</texte><variable>index</variable><texte>·&lt;·sizeof(</texte><variable>tabName</variable><texte>);·</texte><variable>index</variable><texte>++)·{¶
+¬</texte><variable>type</variable><texte>·value·=·</texte><variable>tabName</variable><texte>[</texte><variable>index</variable><texte>];¶
+}</texte></code></syntax><syntax name="C for multi array"><legendes><item context="" name="index" type="String" expression="" commentaire="Index de la première dimension">Nom de la variable d'index</item><item context="" name="tabName" type="String" expression="" commentaire="">Nom du tableau à itérer</item><item context="" name="type" type="String" expression="" commentaire="">Type des éléments du tableau</item><item context="" name="n" type="String" expression="" commentaire="">Dimension 1</item><item context="" name="m" type="String" expression="" commentaire="">Dimension 2</item><item context="" name="iSubindex" type="String" expression="" commentaire="Index de la seconde dimension">Nom de la variable d'index</item></legendes><code><texte>int·</texte><variable>index</variable><texte>;¶
+for(</texte><variable>index</variable><texte>·=·0;·</texte><variable>index</variable><texte>·&lt;·</texte><variable>n</variable><texte>;·</texte><variable>index</variable><texte>++)·{¶
+¬int·</texte><variable>iSubindex</variable><texte>;¶
+¬for(</texte><variable>iSubindex</variable><texte>·=·0;·</texte><variable>iSubindex</variable><texte>·&lt;·</texte><variable>m</variable><texte>;·</texte><variable>iSubindex</variable><texte>++)·{¶
+¬¬</texte><variable>type</variable><texte>·value·=·</texte><variable>tabName</variable><texte>[</texte><variable>index</variable><texte>][</texte><variable>iSubindex</variable><texte>];¶
+¬¬¶
+¬}¶
+}</texte></code></syntax><syntax name="C while"><legendes /><code><texte>while(limite)·{¶
+¬¶
+}¶</texte></code></syntax><syntax name="C do while"><legendes /><code><texte>do·{¶
+¬¶
+}·while(limite);¶</texte></code></syntax><syntax name="C define"><legendes /><code><texte>#define·</texte><variable>name</variable><texte>·</texte><variable>value</variable><texte>;¶</texte></code></syntax><syntax name="C include"><legendes><item context="" name="includeFile" type="String" expression="" commentaire="Saisir le nom du fichier, par exemple, stdio.h">Nom du fichier d'inclusion</item></legendes><code><texte>#include·&lt;</texte><variable>includeFile</variable><texte>&gt;¶</texte></code></syntax><syntax name="C include stdio"><legendes /><code><texte>#include·&lt;stdio.h&gt;¶
+#include·&lt;stdlib.h&gt;¶</texte></code></syntax><syntax name="C printf"><legendes /><code><texte>printf("%d\n",·1);¶</texte></code></syntax></code></root>

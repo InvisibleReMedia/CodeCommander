@@ -1,0 +1,13 @@
+"ProductVersion"	""	1.3.76.54
+"FileVersion"	""	76.54.5.77
+"AssemblyVersion"	""	65.77.76.54
+"IsCOM"	""	true
+"Title"	""	"o2MateLocale"
+"Description"	""	"o2MateLocale is a .NET assembly which registers a COM object and the ProgID is o2Mate.LocaleGroup
+You can call that COM object to create a new globalization file. This program stands for The CodeCommander Project"
+"Configuration"	""	"Windows .NET 4.0/x64 CPU/Debug Mode"
+"Company"	""	"Invisible Media"
+"Product"	""	"CodeCommander"
+"Copyright"	""	"Invisible Media © copyright 2014-2016"
+"Trademark"	""	"Invisible Media"
+"Culture"	""	"fr"

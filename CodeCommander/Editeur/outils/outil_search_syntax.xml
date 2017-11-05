@@ -1,0 +1,65 @@
+﻿<root>
+	<legendes />
+	<infos>
+		<creationDate>19/08/2012 16:37:40</creationDate>
+		<modificationDate>21/08/2012 14:36:24</modificationDate>
+		<revision>2</revision>
+	</infos>
+	<code>
+		<texte>&lt;table id="tableSyntaxSearch" style="font-size:xx-small;background-color:#B2F2B3" border="1" cellpadding="0" cellspacing="0" width="100%"  height="150px" cols="1"&gt;</texte>
+		<texte>&lt;tr height='12px' valign='top'&gt;&lt;td width='90%'&gt;&lt;b&gt;</texte>
+		<locale>CodeCommander.Name</locale>
+		<texte>&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;</texte>
+		<call>syntaxes</call>
+		<texte>&lt;tr&gt;&lt;td valign='bottom'&gt;&lt;/td&gt;&lt;tr&gt;&lt;/table&gt;</texte>
+		<beginprocess>syntaxes</beginprocess>
+		<affectation>
+			<variable>index</variable>
+			<expression>0</expression>
+		</affectation>
+		<size>
+			<terme>max</terme>
+			<tableau>syntax</tableau>
+		</size>
+		<condition>
+			<expression>index &lt; max</expression>
+			<iftrue>continue</iftrue>
+			<iffalse>end</iffalse>
+		</condition>
+		<label>continue</label>
+		<affectation>
+			<variable>index</variable>
+			<expression>index + 1</expression>
+		</affectation>
+		<texte>&lt;tr data='</texte>
+		<champ>
+			<tableau>syntax</tableau>
+			<expression>index</expression>
+			<variable>name</variable>
+		</champ>
+		<texte>' class='syntaxRow syntaxDraggable' height='12px' ondblclick='javascript:selectSyntax("</texte>
+		<champ>
+			<tableau>syntax</tableau>
+			<expression>index</expression>
+			<variable>name</variable>
+		</champ>
+		<texte>");' onmouseover='javascript:this.className="syntaxRowOver";onChangeSelectionSyntaxSearch(this);' onmouseout='javascript:this.className="syntaxRow";' index='</texte>
+		<variable>index</variable>
+		<texte>'&gt;&lt;td id='syntax</texte>
+		<variable>index</variable>
+		<texte>'&gt;</texte>
+		<champ>
+			<tableau>syntax</tableau>
+			<expression>index</expression>
+			<variable>name</variable>
+		</champ>
+		<texte>&lt;/td&gt;&lt;/tr&gt;</texte>
+		<condition>
+			<expression>index &lt; max</expression>
+			<iftrue>continue</iftrue>
+			<iffalse>end</iffalse>
+		</condition>
+		<label>end</label>
+		<endprocess>syntaxes</endprocess>
+	</code>
+</root>

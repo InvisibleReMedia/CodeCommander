@@ -1,0 +1,23 @@
+﻿<root><legendes /><infos><creationDate>26/08/2012 10:41:29</creationDate><modificationDate>26/08/2012 15:06:25</modificationDate><revision>18</revision></infos><code><texte>#include·&lt;stdio.h&gt;
+#include·&lt;string.h&gt;
+#include·&lt;stdlib.h&gt;
+
+
+·</texte><usetemplate name="/C/ImplWriteFileForText"><params><param name="create">true</param></params><codings><coding name="write" indent="1"><code><texte indent="2">fprintf(ptrFile,·"Bonjour\n");</texte></code></coding></codings></usetemplate><texte>
+
+
+·</texte><usetemplate name="/C/ImplReadFileOfText"><params /><codings><coding name="read" indent="1"><code><texte indent="2">fscanf(ptrFile,·"%s\n",·data);
+fprintf(stdout,·"%s\n",·data);</texte></code></coding></codings></usetemplate><texte>
+
+
+int·main(int·argc,·char·*argv[])·{
+
+···int·result;
+···char·file[MAX_PATH];
+
+···</texte><usetemplate name="/C/UnixPathSeparator"><params><param name="out">sep</param></params><codings /></usetemplate><usetemplate name="/C/ConstructFileName"><params><param name="volume">~.SlashChar</param><param name="directory" /><param name="name">test</param><param name="extension">txt</param><param name="separator">sep</param><param name="out">file</param></params><codings /></usetemplate><texte>
+·</texte><usetemplate name="/C/UseWriteFileForText"><params><param name="fileName">file</param></params><codings /></usetemplate><texte>
+
+·</texte><usetemplate name="/C/UseReadFileOfText"><params><param name="fileName">file</param></params><codings /></usetemplate><texte>
+···return·EXIT_SUCCESS;
+}</texte></code></root>

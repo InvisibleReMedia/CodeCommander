@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Documents</name>
+    </assembly>
+    <members>
+        <member name="T:CodeCommander.Documents">
+            <summary>
+            All documents files and directory references
+            for the project
+            </summary>
+        </member>
+        <member name="M:CodeCommander.Documents.LanguageConvertersDirectory(System.String)">
+            <summary>
+            Directory containing some files for specific language conversion
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ProgramName">
+            <summary>
+            Program Name
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.Author">
+            <summary>
+            Author
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.HostVersions">
+            <summary>
+            Directory versions
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.OutilsDirectory">
+            <summary>
+            Directory which contains tools to displaying html object
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.OutilSearchTemplate">
+            <summary>
+            Tool to search a template
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.OutilSearchSyntax">
+            <summary>
+            Tool to search a syntax
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.OutilCutter">
+            <summary>
+            Tool to cut and paste data
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SearchResult">
+            <summary>
+            File Name which store results
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.OutilsVBSXML">
+            <summary>
+            Source VBScript file (requires to set the application directory)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.EditorPageXML">
+            <summary>
+            Source Html file (requires to set the application directory)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.OutilsVBS">
+            <summary>
+            VBScript file (created on the fly)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.LocalesVBSXML">
+            <summary>
+            Source VBScript file (requires to set the application directory)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.LocalesVBS">
+            <summary>
+            VBScript file (created on the fly)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.DictionaryTemplate">
+            <summary>
+            File containing Templates for displaying the dictionary related pages
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.DictionarySyntax">
+            <summary>
+            Dictionary for the syntax tool
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.LocalizationPage">
+            <summary>
+            Html page to display locale words list
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.EditorPage">
+            <summary>
+            Html page for the principal window
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ProjectSourceCode">
+            <summary>
+            File needed for displaying the objects of the current project
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ProjectPage">
+            <summary>
+            Html page to display the objects of the current project
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ReadOnlyViewPage">
+            <summary>
+            Html page to display read only documents
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.BienvenuePage">
+            <summary>
+            First Html page for the dictionary creation
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ExecutePage">
+            <summary>
+            Last Html page for the dictionary creation (you just choice the execution)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SaisieLibrePage">
+            <summary>
+            File for displaying free fields (dictionary)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SaisieTableauPage">
+            <summary>
+            File for displaying array (dictionary)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SaisieChampsPage">
+            <summary>
+            File for displaying array's fields (dictionary)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.VideoPage">
+            <summary>
+            Html page to display Help (videos)
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ImageTabUp">
+            <summary>
+            Image
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ImageTabDown">
+            <summary>
+            Image
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ImageEdit">
+            <summary>
+            Image
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ImageAdd">
+            <summary>
+            Image
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.GeneratedDictionariesDirectory">
+            <summary>
+            Directory containing dictionary pages data
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.GeneratedDictionariesTemplatesDirectory">
+            <summary>
+            Directory containing templates for dictionary pages data
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.EditeurDirectory">
+            <summary>
+            Directory which resides the editor page and so on
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.TemplatesDirectory">
+            <summary>
+            Directory containing your templates
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SrcTemplatesDirectory">
+            <summary>
+            Directory containing standard templates
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.CodeCommanderDirectory">
+            <summary>
+            Directory of your files
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.DictionariesDirectory">
+            <summary>
+            Directory containing your dictionaries
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.ExamplesDirectory">
+            <summary>
+            Directory containing standard examples
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SourcesDirectory">
+            <summary>
+            Directory containing your sources
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SkeletonsDirectory">
+            <summary>
+            Directory containing your skeletons
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SrcSkeletonsDirectory">
+            <summary>
+            Directory containing standard skeletons
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SyntaxDirectory">
+            <summary>
+            Directory containing your syntax
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SrcSyntaxDirectory">
+            <summary>
+            Directory containing standard syntax
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.BuildDirectory">
+            <summary>
+            Directory containing your build
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.TempDirectory">
+            <summary>
+            Directory containing temporary files
+            It's cleaned before quit
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.LocalesDirectory">
+            <summary>
+            Directory containing your localization files
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.SrcLocalesDirectory">
+            <summary>
+            Directory containing standard localization files
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.TempDictFile">
+            <summary>
+            File name of a temporary dictionary
+            </summary>
+        </member>
+        <member name="P:CodeCommander.Documents.UnusedFile">
+            <summary>
+            File name where redirect something
+            </summary>
+        </member>
+    </members>
+</doc>

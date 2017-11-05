@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<script language="javascript" type="text/javascript">
+//<!--
+			function init() {
+				jQuery.support.cors = true;
+				$("#msg").ajaxError(function(event, xqr, settings, thrown) {if (settings.url == 'http://vimeo.com/api/v2/user8978758/videos.json') { $(this).innerText = thrown.toString(); }});
+				$.ajax({
+					url: "http://vimeo.com/api/v2/user8978758/videos.json",
+					type: "GET",
+					dataType: "json"
+				}).done(function(data) {
+					$('body').append('<div id="container">');
+					$('#container').style = 'font-family:Arial;font-size:1em';
+					$('#container').height = "500px";
+					$('#container').append('<div id="accordion">');
+					for(index=0;index < data.length; ++index) {
+						var video = data[index];
+						$("#accordion").append('<h3><a href="videos.htm?id=' + video.id + '">' + video.title + '</a></h3>');
+						$("#accordion").append('<div><p>' + video.description + '</p></div>');
+					}
+				});
+			}
+//-->
+		</script>
+	</head>
+<body onload="init();">
+</body>
+</html>

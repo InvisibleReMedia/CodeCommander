@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>o2MateVersion</name>
+    </assembly>
+    <members>
+        <member name="T:o2Mate.IVersion">
+            <summary>
+            Interface to store a number version
+            </summary>
+        </member>
+        <member name="P:o2Mate.IVersion.Major">
+            <summary>
+            Major number
+            </summary>
+        </member>
+        <member name="P:o2Mate.IVersion.Minor">
+            <summary>
+            Minor number
+            </summary>
+        </member>
+        <member name="P:o2Mate.IVersion.Build">
+            <summary>
+            Build number
+            </summary>
+        </member>
+        <member name="P:o2Mate.IVersion.Revision">
+            <summary>
+            Revision number
+            </summary>
+        </member>
+        <member name="T:o2Mate.Version">
+            <summary>
+            Implementation for storing version number
+            </summary>
+        </member>
+        <member name="M:o2Mate.Version.Parse(System.String)">
+            <summary>
+            Parses a string and returs a Version class
+            </summary>
+            <param name="s">string to parse</param>
+            <returns>the version class if succeeded (else throw an exception)</returns>
+        </member>
+        <member name="M:o2Mate.Version.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Constructor with each parts of a version
+            </summary>
+            <param name="major">major version number</param>
+            <param name="minor">minor version number</param>
+            <param name="build">build version number</param>
+            <param name="revision">revision version number</param>
+        </member>
+        <member name="M:o2Mate.Version.#ctor(System.String)">
+            <summary>
+            Constructs a new version number from a string
+            </summary>
+            <param name="str">version string format</param>
+        </member>
+        <member name="M:o2Mate.Version.#ctor">
+            <summary>
+            il faut un constructeur sans paramètre
+            pour satisfaire la création d'un un objet COM
+            </summary>
+        </member>
+        <member name="M:o2Mate.Version.GetSoftwareVersion">
+            <summary>
+            Returns the current software version
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:o2Mate.Version.ToString">
+            <summary>
+            Transform the object's data to a string format
+            </summary>
+            <returns>the version string format</returns>
+        </member>
+        <member name="P:o2Mate.Version.Major">
+            <summary>
+            Major number
+            </summary>
+        </member>
+        <member name="P:o2Mate.Version.Minor">
+            <summary>
+            Minor number
+            </summary>
+        </member>
+        <member name="P:o2Mate.Version.Build">
+            <summary>
+            Build number
+            </summary>
+        </member>
+        <member name="P:o2Mate.Version.Revision">
+            <summary>
+            Revision number
+            </summary>
+        </member>
+        <member name="T:o2Mate.IVersionUpdater">
+            <summary>
+            Interface to jump all versions for each projects
+            </summary>
+        </member>
+        <member name="M:o2Mate.IVersionUpdater.SetParameters(System.String,System.String,System.String)">
+            <summary>
+            Initialize parameters
+            </summary>
+            <param name="dir">path where the solution projects starts</param>
+            <param name="programName">program name set</param>
+            <param name="language">culture language</param>
+        </member>
+        <member name="M:o2Mate.IVersionUpdater.Commit">
+            <summary>
+            Commit : confirms all changes
+            </summary>
+        </member>
+        <member name="M:o2Mate.IVersionUpdater.UpdateFile(System.String,System.String,System.String,System.String)">
+            <summary>
+            Update a file and change all found keys with their values
+            </summary>
+            <param name="fileName">fileName to read</param>
+            <param name="extension">extension to add to the file name</param>
+            <param name="progName">program name set</param>
+            <param name="language">culture language</param>
+        </member>
+        <member name="M:o2Mate.IVersionUpdater.UpdateAssemblyVersion">
+            <summary>
+            The solution's principal project is going to be built
+            </summary>
+        </member>
+        <member name="M:o2Mate.IVersionUpdater.GetSoftwareVersion">
+            <summary>
+            Gets the short version of this software
+            </summary>
+            <returns>a version object</returns>
+        </member>
+        <member name="T:o2Mate.FetchedVersion">
+            <summary>
+            Class implementation to update files and computes version number
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor with explicit parameters (only used for update versions)
+            </summary>
+            <param name="src">directory path of the solution</param>
+            <param name="programName">Dll or Exe name</param>
+            <param name="language">CultureInfo name</param>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.#ctor(System.String)">
+            <summary>
+            Constructor for update sources files
+            <param name="src">source path</param>
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.#ctor">
+            <summary>
+            Constructor with no prameters
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.GetProductVersion">
+            <summary>
+            Calcule la version du produit
+            (voir le fichier numérotation.txt pour les détails)
+            
+            </summary>
+            <returns>le numéro de version</returns>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.SetParameters(System.String,System.String,System.String)">
+            <summary>
+            Initialize parameters (used for COM object initializing)
+            </summary>
+            <param name="dir">directory path of the solution</param>
+            <param name="progName">Dll or Exe name</param>
+            <param name="language">CultureInfo name</param>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.ComputeProductVersion">
+            <summary>
+            Computes the product version
+            The product version is the user comprehensive version
+            and next numbers are the number of files and the number of lines in all files
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.ComputeFileVersion">
+            <summary>
+            Computes the file version
+            The file version are the number of files and the number of lines in all files
+            and the next numbers are the number of modified files and a number of compilation execution
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.ComputeAssemblyVersion">
+            <summary>
+            Computes the assembly version
+            The file version are the number of modified files and a number of compilation execution
+            and the next numbers are the number of files and the number of lines in all files
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.Commit">
+            <summary>
+            This function updates version values associated with the program name
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.UpdateFile(System.String,System.String,System.String,System.String)">
+            <summary>
+            This function reads a file and rewrites it with reported values
+            </summary>
+            <param name="fileName">file to rewrite</param>
+            <param name="extension">new file extension (ex: .cs)</param>
+            <param name="progName">Dll or Exe name</param>
+            <param name="language">CultureInfo name</param>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.UpdateAssemblyVersion">
+            <summary>
+            Update assemblies and recompile
+            </summary>
+        </member>
+        <member name="M:o2Mate.FetchedVersion.GetSoftwareVersion">
+            <summary>
+            Gets the software version
+            </summary>
+            <returns>an IVersion interface</returns>
+        </member>
+        <member name="P:o2Mate.FetchedVersion.ProgramName">
+            <summary>
+            Dll or Exe Name
+            </summary>
+        </member>
+        <member name="P:o2Mate.FetchedVersion.Language">
+            <summary>
+            CultureInfo language (two letters format)
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?><root>
+<template path="Languages/C#/" name="GetSet">
+	<params>
+		<param>data</param>
+		<param>data1</param>
+	</params>
+	<code>
+		<texte>c'est un test de $template :$data,$data1</texte>
+		<br/>
+		<handler name="h"/>
+		<br/>
+		<texte>fin du template</texte>
+	</code>
+</template>
+<usetemplate name="Languages/C#/GetSet">
+	<params>
+		<param name="data">exemple</param>
+		<param name="data1">ex2</param>
+	</params>
+	<codings>
+		<coding name="h">
+			<code>
+				<texte>appel du handler</texte>
+				<br/>
+			</code>
+		</coding>
+	</codings>
+</usetemplate>
+</root>

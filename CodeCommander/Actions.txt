@@ -1,0 +1,62 @@
+Version 1.1:
+
+= modification de la version 1.0 en 1.1 dans o2Mate.Version plutôt que dans le projet CodeCommander
+= correctif programClass2.xml
+= correctif Expression dans run(), suppression du if words.Count > 0 et String.Join(words)
+= correctif gros bug sur expression dans la suppression du séparateur
+= correctif dans AffectationChaine : pas de Exists() avant IsString()
+= correctif dans AffectationChamp : pas besoin de tester si arr est null.
+= gros bug dans déclaration des paramètres (defParams) (corrigé)
+= gros bug dans expression avec des parenthèses (corrigé)
+= compilation vers VBScript et PowerShell OK (à terminer: les modèles codecommander ainsi que le code PowerShell à tester)
+= start in parallel, create Writer et use Writer OK
+= ajouter ? dans expression pour comparer des chaînes OK
+= modèles String/length,replace et substring OK
+
+Reste à corriger
+= bug sur ouverture successives de popup & modification de la première popup => pas de sauvegarde des modifications (résolu)
+= erreur sur form_Closing focus src quand un template est ouvert (résolu)
+= modification de outil_popup.xml (résolu)
+= sélection sur toute la page dans la popup (résolu)
+= gérer onresize en largeur et en longueur sur body pour s'aligner avec la taille de la fenêtre (scrollbars sur la fenêtre) (résolu)
+= controler la taille minimum de la form (résolu)
+= gérer onresize dans les popups, gérer l'affichage de la popup dans le document (résolu)
+= fermer toutes les popups à l'ouverture d'un nouveau document (résolu)
+= gérer Yes,No,Cancel sur création nouveau document ou charger un document alors que celui en cours n'est pas sauvegardé (résolu)
+= légendes non chargées sur un nouveau document (résolu)
+= la légende défile même si la page est plus longue (scrollTop)
+= la sélection (résolu)
+= la fermeture des popups si modifié lors de l'ouverture d'un fichier ou la création ou la génération (résolu)
+= l'undo/redo dans les popups (résolu)
+= l'alignement dans les popups (résolu)
+= le resize des popups (résolu)
+= le copié/collé (résolu)
+= le problème d'affichage des li dans stack (non reproduit)
+= trouvé un décalage selection/objet sur le bouton Nouveau (résolu)
+= bouton Nouveau : pas de .xml à la fin du nom de fichier (résolu)
+= bouton save : isFinished n'était pas créé dans progress (résolu)
+= l'ajout d'une locale ne devrait pas se faire si elle existe déjà (développer le Rename et insere)
+= touche CTRL-N ne vérifie pas la modification du fichier (résolu)
+= touche TAB ne fonctionne pas dans le texte à saisir (résolu)
+= touche CTRL-C/CTRL-X/CTRL-V ne fonctionnent pas dans le texte à saisir (résolu)
+= indent dans menu contextuel de texte n'est pas utilisé (résolu)
+= coller avec l'indentation de l'objet sélectionné (résolu)
+= caractères retour chariot (résolu)
+
+tests:
+= expressions
+= create writer/use writer
+= version anglaise et française
+= l'écriture de texte avec des \" et des "
+
+Reste à faire:
+= la suite des modèles pour VBScript et PowerShell
+= une version Java et C#
+= de jolis boutons pour convertir dans un langage
+= l'écriture dans un fichier du programme converti (ok sauf la vérification des noms de fichiers)
+= des vidéos (aide) : l'affichage d'une vidéo mpg
+= la saisie des locales
+= l'affichage des modèles en mode lecture seule (ok)
+= L'affichage des creationDate/modificationDate/révision dans la boîte Open
+= le bouton Arrêter lors de l'exécution du code
+

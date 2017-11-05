@@ -1,0 +1,43 @@
+﻿Pour calculer chaque numéro de version de chaque projet, je distinguerai
+ - la version du produit
+ - la version du fichier
+ - la version de l'assembly
+
+La version du produit
+---------------------
+Il s'agit d'une version unique pour tous les sous-projets.
+
+Afin que ce soit clair pour les utilisateurs, je peux décider que
+le premier nombre correspond aux évolutions majeures et que le second nombre
+correspond aux évolutions mineures. Ces nombres seront enregistrés dans un des projets
+et sera recopié dans les DLL.
+
+Les deux derniers nombres feront le lien avec les autres nomenclatures des versions :
+ce seront les deux premiers nombres de la version du fichier exécutable du logiciel.
+
+La version du fichier
+---------------------
+Deux situations à prendre en compte : 
+ - les sources associés ont été modifiés,
+ - ou bien il y a eu recompilation après un effacement des exécutables.
+
+Je peux décider que la version du fichier correspond à :
+ - pour les deux premiers nombres :
+        je calcule le nombre de fichiers M ainsi que le nombre total de lignes N
+		puis, je calcule M*(N+1)^2 + N et je convertis ce nombre en binaire.
+		puis, j'étale ce nombre binaire pour former 2 nombres entiers qui
+		correspondront aux deux premiers nombres de la version.
+ - pour les deux derniers nombres :
+        Il s'agira donc d'incrémenter simplement le premier nombre quand
+		les sources associés ont été modifiés et d'incrémenter ensuite
+		le second nombre s'il y a eu recompilation (ce qui est toujours le cas).
+
+La version de l'assembly
+------------------------
+
+Les deux premiers nombres de la version de l'assembly seront les deux derniers
+nombres de la version du fichier.
+
+Les deux derniers nombres de la version de l'assembly seront les deux premiers
+nombres de la version du fichier.
+

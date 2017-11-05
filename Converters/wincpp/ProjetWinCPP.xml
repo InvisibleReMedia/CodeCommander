@@ -1,0 +1,30 @@
+﻿<root preserve-whitespace="no"><legendes /><infos><creationDate>27/06/2014 00:40:47</creationDate><modificationDate>27/06/2014 00:43:09</modificationDate><revision>2</revision></infos><code><texte>Microsoft·Visual·Studio·Solution·File,·Format·Version·10.00¶
+#·Visual·C++·Express·2008¶
+Project("{</texte><variable>GUIDItem</variable><texte>}")·=·"</texte><variable>SolutionName</variable><texte>",·"</texte><variable>SolutionName</variable><texte>\</texte><variable>SolutionName</variable><texte>.vcproj",·"{</texte><variable>GUIDProject</variable><texte>
+	}"¶
+	EndProject¶
+	Global¶
+	¬GlobalSection(SolutionConfigurationPlatforms)·=·preSolution¶
+	¬¬Debug|Win32·=·Debug|Win32¶
+	¬¬Release|Win32·=·Release|Win32¶
+	¬EndGlobalSection¶
+	¬GlobalSection(ProjectConfigurationPlatforms)·=·postSolution¶
+	¬¬{
+</texte><variable>GUIDProject</variable>
+	<texte>}.Debug|Win32.ActiveCfg·=·Debug|Win32¶
+		¬¬{</texte>
+<variable>GUIDProject</variable>
+<texte>}.Debug|Win32.Build.0·=·Debug|Win32¶
+		¬¬{</texte>
+<variable>GUIDProject</variable>
+<texte>}.Release|Win32.ActiveCfg·=·Release|Win32¶
+		¬¬{</texte>
+<variable>GUIDProject</variable>
+<texte>}.Release|Win32.Build.0·=·Release|Win32¶
+		¬EndGlobalSection¶
+		¬GlobalSection(SolutionProperties)·=·preSolution¶
+		¬¬HideSolutionNode·=·FALSE¶
+		¬EndGlobalSection¶
+		EndGlobal¶
+	</texte>
+</code></root>

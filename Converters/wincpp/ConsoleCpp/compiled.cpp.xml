@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<root><legendes /><infos><creationDate>21/11/2014 14:05:48</creationDate><modificationDate>21/11/2014 14:10:12</modificationDate><revision>2</revision></infos><code><texte>¶
+//·****************************************¶
+//¶
+//·This·file·was·generated·by·CodeCommander¶
+//·codecommander.codeplex.com¶
+//¶
+//·****************************************¶
+¶
+#include·"stdafx.h"¶
+¶
+¶
+¶
+¶
+writer·w_defaultWriter(wstring(L"</texte><variable>FinalFileName</variable><texte>.txt"));¶
+¶
+</texte><variable>functions</variable><texte>¶
+¶
+int·Compiled::main(cli::array&lt;System::String^&gt;^·args)·{¶
+····w_defaultWriter.Start();¶</texte><indent /><variable>mainCode</variable><unindent /><texte>¶
+····return·EXIT_SUCCESS;¶
+}¶
+¶
+¶
+¶
+¶
+¶
+¶</texte></code></root>

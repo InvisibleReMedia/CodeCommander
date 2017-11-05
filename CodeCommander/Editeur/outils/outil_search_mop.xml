@@ -1,0 +1,75 @@
+﻿<root>
+	<legendes />
+	<infos>
+		<creationDate>19/08/2012 16:37:40</creationDate>
+		<modificationDate>21/08/2012 14:36:24</modificationDate>
+		<revision>2</revision>
+	</infos>
+	<code>
+		<texte>&lt;table id="tableMOPSearch"  style="font-size:xx-small;background-color:#F2F2B3" border="1" cellpadding="0" cellspacing="0" width="100%"  height="150px" cols="2"&gt;</texte>
+		<texte>&lt;tr height='12px' valign='top'&gt;&lt;td width='80%'&gt;&lt;b&gt;</texte>
+		<locale>CodeCommander.Language</locale>
+		<texte>&lt;/b&gt;&lt;/td&gt;&lt;td width='20%'&gt;&lt;b&gt;</texte>
+		<locale>CodeCommander.Name</locale>
+		<texte>&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;</texte>
+		<call>mops</call>
+		<texte>&lt;tr valign='bottom'&gt;&lt;td colspan='2'&gt;</texte>
+		<locale>CodeCommander.SearchMode</locale>
+		<texte>'</texte>
+		<variable>searchString</variable>
+		<texte>'&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte>
+		<beginprocess>mops</beginprocess>
+		<affectation>
+			<variable>index</variable>
+			<expression>0</expression>
+		</affectation>
+		<size>
+			<terme>max</terme>
+			<tableau>mops</tableau>
+		</size>
+		<condition>
+			<expression>index &lt; max</expression>
+			<iftrue>continue</iftrue>
+			<iffalse>end</iffalse>
+		</condition>
+		<label>continue</label>
+		<affectation>
+			<variable>index</variable>
+			<expression>index + 1</expression>
+		</affectation>
+		<texte>&lt;tr data='</texte>
+		<champ>
+			<tableau>mops</tableau>
+			<expression>index</expression>
+			<variable>data</variable>
+		</champ>
+		<texte>' class='templateRow' height='12px' onclick='javascript:selectMOP("</texte>
+		<champ>
+			<tableau>mops</tableau>
+			<expression>index</expression>
+			<variable>data</variable>
+		</champ>
+		<texte>");' onmouseover='javascript:this.className="templateRowOver";onChangeSelectionMOPSearch(this);' onmouseout='javascript:this.className="templateRow";' index='</texte>
+		<variable>index</variable>
+		<texte>'&gt;&lt;td&gt;</texte>
+		<champ>
+			<tableau>mops</tableau>
+			<expression>index</expression>
+			<variable>language</variable>
+		</champ>
+		<texte>&lt;/td&gt;&lt;td&gt;</texte>
+		<champ>
+			<tableau>mops</tableau>
+			<expression>index</expression>
+			<variable>name</variable>
+		</champ>
+		<texte>&lt;/tr&gt;</texte>
+		<condition>
+			<expression>index &lt; max</expression>
+			<iftrue>continue</iftrue>
+			<iffalse>end</iffalse>
+		</condition>
+		<label>end</label>
+		<endprocess>mops</endprocess>
+	</code>
+</root>

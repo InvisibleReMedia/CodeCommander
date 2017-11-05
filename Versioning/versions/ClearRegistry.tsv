@@ -1,0 +1,13 @@
+"ProductVersion"	""	1.3.3137.3155
+"FileVersion"	""	3137.3155.12.3156
+"AssemblyVersion"	""	11.3156.3137.3155
+"IsCOM"	""	false
+"Title"	""	"ClearRegistry"
+"Description"	""	"ClearRegistry is a Windows console executable program which cleans all references at COM object's o2Mate from the Windows registry.
+This program stands for The CodeCommander Project"
+"Configuration"	""	"Windows .NET 4.0/x64 CPU/Debug Mode"
+"Company"	""	"Invisible Media"
+"Product"	""	"CodeCommander"
+"Copyright"	""	"Invisible Media © copyright 2014-2016"
+"Trademark"	""	"Invisible Media"
+"Culture"	""	"fr"

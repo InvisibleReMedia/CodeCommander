@@ -1,0 +1,70 @@
+﻿- Utiliser les fichiers locales pour tous les textes de l'application (y compris l'interface)
+- Faire un programme où rédiger les traductions
+	- une boîte de dialogue avec :
+		- le nombre total de mots à traduire (et un compteur restant)
+		- le texte en français
+		- sa traduction en anglais
+		- une zone d'édtion de Word - lui installer le correcteur allemand
+		- 3 boutons précédent/suivant + sauvegarder et fermer
+		- convertir la liste obtenue dans un document Word
+- Faire une nouvelle méthode pour afficher la génération ou la conversion
+	- un bouton générer et un ou des boutons pour la conversion
+	- conserver la même fenêtre et intégrer un tree-view
+	- la génération contient le tree-view:
+		- Dictionnaire (avec une page pour créer un nouveau dictionnaire, utiliser un autre ou bien laisser demander à l'utilisateur)
+			- liste des dictionnaires associés (renommage possible)
+		- Fichiers sources
+			- liste des fichiers sources CodeCommander
+		- Générer - un bouton play ou replay ou stop
+			- Rapport de génération (là où il y a les erreurs)
+		- Fichiers de sortie
+			- Liste des fichiers de sortie
+	- la conversion contient le tree-view :
+			- Dictionnaire (avec une page pour créer un nouveau dictionnaire, utiliser un autre ou bien laisser demander à l'utilisateur)
+			- liste des dictionnaires associés (renommage possible)
+		- Fichiers sources
+			- liste des fichiers sources CodeCommander
+		- Convertir (langage) - un bouton play ou replay ou stop
+			- Rapport de conversion (là il y a les erreurs)
+		- Exécuter - lancer l'exécutable - si existe
+			- Rapport de génération (là où il y a les erreurs)
+		- Fichiers de sortie
+			- Liste des fichiers de sortie
+- changer l'affichage de l'éditeur (pour faire plus joli) :
+	- une icone devant l'outil
+	- corriger les problèmes de copy/paste - des espaces en trop
+	- modifier les <>, [] et autres pour plus de clarté
+	- faire un plus joli cadre pour la liste des outils : les grouper, donner un titre, etc
+	- lancer une commande Validation sur certains outils pour afficher des infos bulles de warning
+	- ajouter des infos bulles d'aide
+	- ...??
+- Legendes :
+	- finir cette partie pour les dictionnaires (version relationnelle et séquencement des pages)
+	- primary key option
+	- in connection option
+	- agrandir la fenêtre des legendes
+	- compléter avec Template, Skeleton, MOP, syntax et execute (le fichier source)
+- wait until <expression> is true/false
+- Développer une interface pour demander à l'utilisateur de créer son dictionnaire
+- convertir dans les autres langages attendus
+- execute instruction + configure Project with a new window mapper
+- corriger l'erreur sur AssemblyCulture
+- créer un tutorial avec des fichiers sons de synthèse vocale
+	- créer plusieurs niveaux de tutoriaux (beginner, intermediate, expert)
+	- créer une classe hébergeant les fichiers sons + lecture + boutons play/pause
+	- gérer un timer à afficher seconde par seconde
+	- construire un système d'information pour déclencher des évenements : dans les fenêtres + dans le navigateur
+	- enregistrer des videos de l'écran + le son et diffuser sur vimeo
+- parsing
+	- parsing language for colorization et highlight syntax
+	- a text editor for CodeCommander source => graphical view
+	- and graphical view => text editor
+	- using categories after parsing (eventually to convert automatically source code from a language into CodeCommander statements)
+- modèles virtuels IHM (2D puis 3D)
+	- créer de nouvelles fonctionnalités au niveau des modèles virtuels (à étudier la manière de concevoir)
+- setp et getp functions
+- variable partagée ou locale à un processus
+	- un _ devant une variable signifie qu'elle est locale au processus (pour la récursivité)
+- créer une instruction function
+- créer une instruction commentaire
+	- un bouton on/off pour rendre éditable le commentaire et pour définir une locale

@@ -1,0 +1,3532 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>o2MateCompil</name>
+    </assembly>
+    <members>
+        <member name="T:o2Mate.ICompiler">
+            <summary>
+            Interface declaration of a statement
+            </summary>
+        </member>
+        <member name="M:o2Mate.ICompiler.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extracts dictionary keys
+            </summary>
+            <param name="proc">current instance process</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load statement data
+            </summary>
+            <param name="comp">compiler instance object</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Injects a statement
+            </summary>
+            <param name="injector">injector where to inject</param>
+            <param name="comp">compiler instance object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier switch</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Says if a statement is computable when it's injected
+            </summary>
+            <param name="proc">process to test</param>
+            <param name="reason">error text</param>
+            <returns>true if succeeded else false (reason parameter contains explanation)</returns>
+        </member>
+        <member name="M:o2Mate.ICompiler.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays a statement into the web browser
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays a statement into the web browser in a read only mode
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Updates data from the web browser (before save)
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Save a statement into an xml file
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="writer">xml writer object</param>
+            <param name="child">html child to save</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse is not load
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node from reading</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Process the statement and writes results in a file
+            </summary>
+            <param name="proc">process instance object</param>
+            <param name="file">final file object</param>
+        </member>
+        <member name="M:o2Mate.ICompiler.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts a statement for a particular programming language destination
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="proc">process instance object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="P:o2Mate.ICompiler.TypeName">
+            <summary>
+            Gets the type name of an instance of this class
+            </summary>
+        </member>
+        <member name="T:o2Mate.RunInnerInstanceCompiler">
+            <summary>
+            Delegate function
+            </summary>
+            <param name="comp">compiler instance object</param>
+        </member>
+        <member name="T:o2Mate.ICompilateur">
+            <summary>
+            Interface of the compiler
+            </summary>
+        </member>
+        <member name="M:o2Mate.ICompilateur.LoadTemplates(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain templates)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.LoadSkeletons(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain skeletons)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.LoadSyntax(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain syntax)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.LoadMOP(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain MOPs)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.DisplayXML(System.String,System.ComponentModel.BindingList{o2Mate.DisplayElement},System.Boolean,System.Int32,System.Boolean,o2Mate.INotifyProgress)">
+            <summary>
+            Displays each statements stored in a string into the web navigator
+            </summary>
+            <param name="xmlString">xml string to display</param>
+            <param name="list">list to store operation</param>
+            <param name="forcedIndent">true if force a number at indentation</param>
+            <param name="indent">number at indentation</param>
+            <param name="writable">displays objects editable or readonly</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Display(System.String,System.ComponentModel.BindingList{o2Mate.DisplayElement},System.Boolean,o2Mate.INotifyProgress)">
+            <summary>
+            Displays a complete statements stored in a file into the web navigator
+            </summary>
+            <param name="fileSource">CodeCommander file name to display</param>
+            <param name="list">list to store operation</param>
+            <param name="writable">displays objects editable or readonly</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            The parse function is just like a limited read (to improve performance) - not a complete loading
+            To call just before the display function
+            </summary>
+            <param name="comp">the compiler object</param>
+            <param name="node">the xml node to read</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.CheckNonRecursiveMode(System.String)">
+            <summary>
+            Says if it's a non recursive call
+            </summary>
+            <param name="processName">name of the process</param>
+            <returns>true if is not a recursively call</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetCodingProcess(System.String)">
+            <summary>
+            Returns a process object identified by a name and a type 'coding'
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetParallelProcess(System.String)">
+            <summary>
+            Returns a process object identified by a name and a type 'parallel'
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetJobProcess(System.String)">
+            <summary>
+            Returns a process object identified by a name and a type 'job'
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetSkeleton(System.String)">
+            <summary>
+            Search for a registered skeleton
+            </summary>
+            <param name="name">name of the skeleton to find</param>
+            <returns>skeleton found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetSyntax(System.String)">
+            <summary>
+            Find a syntax by a name
+            </summary>
+            <param name="name">name of the syntax</param>
+            <returns>syntax object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.RemoveCodingProcess(System.String)">
+            <summary>
+            Remove a process identified by a name and a type 'coding'
+            </summary>
+            <param name="name">name of the process to remove</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetProcess(System.String)">
+            <summary>
+            Returns a user process object identified by a name
+            A user process has a colon on the first character name
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.StartUsingTemplate(o2Mate.UseTemplate)">
+            <summary>
+            Assumes starting a template and do the good work
+            </summary>
+            <param name="curTemp">template object</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.EndUsingTemplate(o2Mate.UseTemplate)">
+            <summary>
+            Finalize a template
+            </summary>
+            <param name="curTemp">template object</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.AddProcess(o2Mate.IProcess)">
+            <summary>
+            Add a new process in the process list
+            Pass a project interface reference and cast to instance of the implemented process class
+            </summary>
+            <param name="process">process object</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.PushProcess(o2Mate.IProcess)">
+            <summary>
+            Push a process on a stack
+            It's required to loaded process
+            </summary>
+            <param name="process">process object</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.PopProcess">
+            <summary>
+            Pop a process on the top of the stack
+            It's required to quit loaded process
+            </summary>
+        </member>
+        <member name="M:o2Mate.ICompilateur.OutputDictionary(System.String)">
+            <summary>
+            Function to construct a complete dictionary object
+            by the CodeCommander file source
+            </summary>
+            <param name="fileSource">file name source</param>
+            <returns>a dictionary object</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.OutputLegendes(System.String)">
+            <summary>
+            Function to construct a list of summary object
+            by the CodeCommander file source
+            </summary>
+            <param name="fileSource">file name source</param>
+            <returns>a summary object</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.InputLegendes(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Summary has been modified from the web navigator
+            This method keeps the summary in internal
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Compilation(System.String,System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method compiler
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Compilation(System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method compiler (use this method when the CodeCommander file source has been loaded either)
+            </summary>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Compilation(System.String,System.String,System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The defaut method compiler
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="destEncoding">final file encoding</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Debug(System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method for debugging
+            </summary>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Debug(System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method for debugging
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetHeader(System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Get header from a CodeCommander file source
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="creationDate">returns the creation date</param>
+            <param name="modificationDate">returns the modification date</param>
+            <param name="revision">returns the revision date</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Convert(Converters.ICodeConverter,System.String,System.String,System.String)">
+            <summary>
+            Converts a CodeCommander source file into a programming language
+            </summary>
+            <param name="converter">a converter object</param>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file data</param>
+            <param name="finalFile">final file (used to set the path output onto the converted source code)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load an xml node
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.SaveToString(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Save objects from the web navigator
+            </summary>
+            <param name="elem">html element</param>
+            <returns>the xml string</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.SaveChildToString(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Save child objects from the web navigator
+            </summary>
+            <param name="elem">html element</param>
+            <returns>the xml string</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Save(System.String,System.Windows.Forms.HtmlElement,o2Mate.INotifyProgress,System.String[])">
+            <summary>
+            Save objects from the web navigator
+            </summary>
+            <param name="fileDestination">file where to write</param>
+            <param name="elem">html element</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+            <param name="infos">header infos</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Save(System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@,System.Int32)">
+            <summary>
+            Save childs objects to an xml writer
+            </summary>
+            <param name="writer">xml writer object</param>
+            <param name="elem">last html element to continue</param>
+            <param name="currentIndent">current indentation</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.Save(System.String,System.String,o2Mate.ILegendeDict)">
+            <summary>
+            Save xml string into a CodeCommander file source (an xml file)
+            </summary>
+            <param name="fileDestination">destination file name</param>
+            <param name="xmlCode">xml string to persist</param>
+            <param name="legendes">summary data</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetTemplate(System.String)">
+            <summary>
+            Find a template by a name
+            </summary>
+            <param name="name">template name to find</param>
+            <returns>template object else throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetMOP(System.String,System.String)">
+            <summary>
+            Find a mop by a language and a name
+            </summary>
+            <param name="language">language</param>
+            <param name="name">name of the mop</param>
+            <returns>mop object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.GetInjector(System.String)">
+            <summary>
+            Get an already registered injector
+            </summary>
+            <param name="map">the name of the injector (can be in and out a skeleton)</param>
+            <returns>injector object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.ICompilateur.CreateFile(System.String)">
+            <summary>
+            Create a CodeCommander file source
+            (overwrite if exists)
+            </summary>
+            <param name="fileName">file name to create</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.UpdateParameters(Converters.ICodeConverter,o2Mate.IProcessInstance,System.String,System.Boolean)">
+            <summary>
+            Method to update parameters of a function
+            Make a backtrack on parent process to assume mutable parameters
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="proc">current process</param>
+            <param name="varName">variable name to check</param>
+            <param name="mutable">mutable switch</param>
+        </member>
+        <member name="M:o2Mate.ICompilateur.MakeNewInstance(o2Mate.ICompilateurInstance,o2Mate.RunInnerInstanceCompiler)">
+            <summary>
+            Make a new instance of the compiler with internal values
+            </summary>
+            <param name="previous">previous instance</param>
+            <param name="run">delegate</param>
+            <returns>instance number</returns>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Unique">
+            <summary>
+            Gets the unique system creation of a name
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Legendes">
+            <summary>
+            Gets summary
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.ConvertedLanguage">
+            <summary>
+            Gets or sets the programming language in conversion
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.EncodedFile">
+            <summary>
+            Gets or sets encoding file
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.UnderConversion">
+            <summary>
+            Gets or sets if a conversion is being processed
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Processes">
+            <summary>
+            Returns all processes (all types included)
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Syntaxes">
+            <summary>
+            Returns all known syntax
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Mops">
+            <summary>
+            Returns all known MOPs
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Threads">
+            <summary>
+            Returns all loaded projects
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Injectors">
+            <summary>
+            Returns all known MOPs
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Skeletons">
+            <summary>
+            Gets skeleton list
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Templates">
+            <summary>
+            Returns all known templates
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.Objects">
+            <summary>
+            Objects list (this is a tree for embedded objects)
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.CurrentProcess">
+            <summary>
+            Gets or sets the current process
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.ProcessStack">
+            <summary>
+            Returns the stack of loaded processes
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateur.CurrentUsingTemplate">
+            <summary>
+            Gets or sets the current using template
+            </summary>
+        </member>
+        <member name="T:o2Mate.ICompilateurInstance">
+            <summary>
+            Instance compiler interface
+            </summary>
+        </member>
+        <member name="M:o2Mate.ICompilateurInstance.Convert(Converters.ICodeConverter,System.String,o2Mate.NameConverter,o2Mate.FinalFile)">
+            <summary>
+            Converts a template to a programming language destination
+            </summary>
+            <param name="converter">a converter object</param>
+            <param name="templateName">template name</param>
+            <param name="nc">struct contained the callback function as the request template</param>
+            <param name="file">final file (used to set the path output onto the converted source code)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateurInstance.Convert(Converters.ICodeConverter,o2Mate.IProcess,o2Mate.FinalFile)">
+            <summary>
+            Converts a process to a programming language destination
+            </summary>
+            <param name="converter">a converter object</param>
+            <param name="proc">current process to convert</param>
+            <param name="file">final file (used to set the path output onto the converted source code)</param>
+        </member>
+        <member name="M:o2Mate.ICompilateurInstance.InputLegendes(o2Mate.ILegendeDict)">
+            <summary>
+            Summary persistence
+            This method keeps the summary in internal
+            </summary>
+            <param name="legendes">summary object</param>
+        </member>
+        <member name="M:o2Mate.ICompilateurInstance.WriteToFile(o2Mate.IProcess,o2Mate.FinalFile)">
+            <summary>
+            Internal starting function to execute statements from a next process
+            Open for a recursive process
+            </summary>
+            <param name="proc">a process instance to execute</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.ICompilateurInstance.ExtractDictionary(o2Mate.IProcess)">
+            <summary>
+            Extracts an develop the dictionary based on the source code
+            </summary>
+            <param name="proc">process instance object</param>
+        </member>
+        <member name="M:o2Mate.ICompilateurInstance.Injection(o2Mate.Injector,System.Xml.XmlNode,System.String)">
+            <summary>
+            The injection allows to inject code into a process
+            </summary>
+            <param name="injector">injector object</param>
+            <param name="node">xml node</param>
+            <param name="modifier">modifier after, before or replace</param>
+        </member>
+        <member name="P:o2Mate.ICompilateurInstance.CurrentDictionnaire">
+            <summary>
+            Gets or sets the current dictionary
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateurInstance.CurrentScope">
+            <summary>
+            Gets or sets the current scope
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateurInstance.CurrentExecutedProcess">
+            <summary>
+            Gets the current executed process
+            </summary>
+        </member>
+        <member name="P:o2Mate.ICompilateurInstance.CalledProcesses">
+            <summary>
+            Returns the stack of called instance processes
+            </summary>
+        </member>
+        <member name="T:o2Mate.Compilateur">
+            <summary>
+            Compiler of CodeCommander files (an xml format)
+            </summary>
+        </member>
+        <member name="F:o2Mate.Compilateur.ParamIdentifier">
+            <summary>
+            the only char prefix for a parameter identifier
+            </summary>
+        </member>
+        <member name="F:o2Mate.Compilateur.RootProcessName">
+            <summary>
+            First process name
+            </summary>
+        </member>
+        <member name="F:o2Mate.Compilateur.InitialWriter">
+            <summary>
+            First writer name
+            </summary>
+        </member>
+        <member name="M:o2Mate.Compilateur.NotifyProgress(System.Int32,System.Int32)">
+            <summary>
+            Notify a progress bar to go to the next step
+            </summary>
+            <param name="count">count position</param>
+            <param name="max">entire work numberous items</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.SetProgressText(System.String)">
+            <summary>
+            Set the progress text to display onto the window progress bar
+            </summary>
+            <param name="s">the text to display</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Compilateur.StartUsingTemplate(o2Mate.UseTemplate)">
+            <summary>
+            Assumes starting a template and do the good work
+            </summary>
+            <param name="curTemp">template object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.EndUsingTemplate(o2Mate.UseTemplate)">
+            <summary>
+            Finalize a template
+            </summary>
+            <param name="curTemp">template object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadTemplates(System.IO.DirectoryInfo)">
+            <summary>
+            Load all files and subfolders from the template directory
+            </summary>
+            <param name="di">directory object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadSyntax(System.IO.DirectoryInfo)">
+            <summary>
+            Load all files and subfolders from the syntax directory
+            </summary>
+            <param name="di">directory object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.ParseSkeletons(System.IO.DirectoryInfo)">
+            <summary>
+            Parse all files and subfolders from the skeletons directory
+            a skeleton is declared with a starter and a closing statement
+            </summary>
+            <param name="di">directory object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadSkeletons(System.IO.DirectoryInfo)">
+            <summary>
+            Load all files and subfolders from the skeletons directory
+            </summary>
+            <param name="di">directory object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadMOP(System.IO.DirectoryInfo)">
+            <summary>
+            Load all files and subfolders from the MOP directory
+            </summary>
+            <param name="di">directory object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetProcess(System.String)">
+            <summary>
+            Find a user process by a name ; returns a process interface reference
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetParallelProcess(System.String)">
+            <summary>
+            Find a parallel process by a name ; returns a process interface reference
+            </summary>
+            <param name="name">name of the parallel process</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetCodingProcess(System.String)">
+            <summary>
+            Find a coding process by a name ; returns a process interface reference
+            </summary>
+            <param name="name">process name to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetJobProcess(System.String)">
+            <summary>
+            Find a job process by a name ; returns a process interface reference
+            </summary>
+            <param name="name">process name to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetSkeleton(System.String)">
+            <summary>
+            Find a skeleton by a name
+            </summary>
+            <param name="name">skeleton name to find</param>
+            <returns>skeleton found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.RemoveCodingProcess(System.String)">
+            <summary>
+            Remove a process identified by a name and a type 'coding'
+            </summary>
+            <param name="name">name of the process to remove</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetTemplate(System.String)">
+            <summary>
+            Find a template by a name
+            </summary>
+            <param name="name">template name to find</param>
+            <returns>template object else throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetSyntax(System.String)">
+            <summary>
+            Find a syntax by a name
+            </summary>
+            <param name="name">name of the syntax</param>
+            <returns>syntax object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetMOP(System.String,System.String)">
+            <summary>
+            Find a mop by a language and a name
+            </summary>
+            <param name="language">language</param>
+            <param name="name">name of the mop</param>
+            <returns>mop object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetInjector(System.String)">
+            <summary>
+            Get an already registered injector
+            </summary>
+            <param name="map">the name of the injector (can be in and out a skeleton)</param>
+            <returns>injector object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.PushProcess(o2Mate.IProcess)">
+            <summary>
+            Push a process on a stack
+            It's required for loaded process
+            </summary>
+            <param name="proc">process object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.AddProcess(o2Mate.IProcess)">
+            <summary>
+            Add a new process in the process list
+            Pass a project interface reference and cast to instance of the implemented process class
+            </summary>
+            <param name="proc">process object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.PopProcess">
+            <summary>
+            Pop a process on the top of the stack
+            It's required to quit loaded process
+            </summary>
+        </member>
+        <member name="M:o2Mate.Compilateur.UpdateParameters(Converters.ICodeConverter,o2Mate.IProcessInstance,System.String,System.Boolean)">
+            <summary>
+            For conversion only
+            Method to update parameters of a function
+            Make a backtrack on parent process to assume mutable parameters
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="proc">current process instance</param>
+            <param name="varName">variable name to check</param>
+            <param name="mutable">mutable switch</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            The parse function is just like a limited read (to improve performance) - not a complete loading
+            To call just before the display function
+            </summary>
+            <param name="comp">the compiler object</param>
+            <param name="node">the xml node to read</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Debug(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Debug function (not yet completly implemented)
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Loading xml node
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.SaveElement(System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Internal function saving html element from the web navigator
+            </summary>
+            <param name="writer">Xml writer</param>
+            <param name="child">next child to save</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.SearchTemplate(System.String)">
+            <summary>
+            Search for one or more templates by name
+            The search is intended for the template list box in the web navigator
+            </summary>
+            <param name="searchString">template name to search</param>
+            <returns>a list of templates</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.SearchSyntax(System.String)">
+            <summary>
+            Search for one or more syntax by name
+            The search is intended for the syntax list box in the web navigator
+            </summary>
+            <param name="searchString">syntax name to search</param>
+            <returns>a list of syntax</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.SearchSkeleton(System.String)">
+            <summary>
+            Search for one or more skeletons by name
+            The search is intended for the skeletons list box in the web navigator
+            </summary>
+            <param name="searchString">skeleton name to search</param>
+            <returns>a list of skeletons</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.Save(System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@,System.Int32)">
+            <summary>
+            Save childs objects to an xml writer
+            </summary>
+            <param name="writer">xml writer object</param>
+            <param name="elem">last html element to continue</param>
+            <param name="currentIndent">current indentation</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Save(System.Xml.XmlWriter,System.Windows.Forms.HtmlElement,System.String,System.String)">
+            <summary>
+            Save childs objects to an xml writer
+            </summary>
+            <param name="writer">xml writer object</param>
+            <param name="elem">html element to save</param>
+            <param name="from">html unique id to start saving</param>
+            <param name="to">html unique id to stop saving</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Save(System.String,System.Windows.Forms.HtmlElement,o2Mate.INotifyProgress,System.String[])">
+            <summary>
+            Save objects from the web navigator
+            </summary>
+            <param name="fileDestination">file where to write</param>
+            <param name="elem">html element</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+            <param name="infos">header infos</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Save(System.String,System.String,o2Mate.ILegendeDict)">
+            <summary>
+            Save xml string into a CodeCommander file source (an xml file)
+            </summary>
+            <param name="fileDestination">destination file name</param>
+            <param name="xmlCode">xml string to persist</param>
+            <param name="legendes">summary data</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.SaveToString(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Save objects from the web navigator
+            </summary>
+            <param name="elem">html element</param>
+            <returns>the xml string</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.SaveChildToString(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Save child objects from the web navigator
+            </summary>
+            <param name="elem">html element</param>
+            <returns>the xml string</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.DisplayXML(System.String,System.ComponentModel.BindingList{o2Mate.DisplayElement},System.Boolean,System.Int32,System.Boolean,o2Mate.INotifyProgress)">
+            <summary>
+            Displays each statements stored in a string into the web navigator
+            </summary>
+            <param name="xmlString">xml string to display</param>
+            <param name="list">list to store operation</param>
+            <param name="forcedIndent">true if force a number at indentation</param>
+            <param name="indent">number at indentation</param>
+            <param name="writable">displays objects editable or readonly</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.DisplaySkeleton(o2Mate.Skeleton,System.ComponentModel.BindingList{o2Mate.DisplayElement})">
+            <summary>
+            Displays a skeleton (in read only html object)
+            </summary>
+            <param name="skeleton">skeleton to display</param>
+            <param name="list">list of objects to display</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Display(System.String,System.ComponentModel.BindingList{o2Mate.DisplayElement},System.Boolean,o2Mate.INotifyProgress)">
+            <summary>
+            Displays a complete statements stored in a file into the web navigator
+            </summary>
+            <param name="fileSource">CodeCommander file name to display</param>
+            <param name="list">list to store operation</param>
+            <param name="writable">displays objects editable or readonly</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.GetHeader(System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Get header from a CodeCommander file source
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="creationDate">returns the creation date</param>
+            <param name="modificationDate">returns the modification date</param>
+            <param name="revision">returns the revision date</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.OutputDictionary(System.String)">
+            <summary>
+            Function to construct a complete dictionary object
+            by the CodeCommander file source
+            </summary>
+            <param name="fileSource">file name source</param>
+            <returns>a dictionary object</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.OutputLegendes(System.String)">
+            <summary>
+            Function to construct a list of summary object
+            by the CodeCommander file source
+            </summary>
+            <param name="fileSource">file name source</param>
+            <returns>a summary object</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.InputLegendes(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Summary has been modified from the web navigator
+            This method keeps the summary in internal
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Compilation(System.String,System.String,System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method compiler
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="destEncoding">final file encoding</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Compilation(System.String,System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method compiler
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Debug(System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method for debugging
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Compilation(System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method compiler (use this method when the CodeCommander file source has been loaded either)
+            </summary>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Debug(System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method for debugging
+            </summary>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Convert(Converters.ICodeConverter,System.String,System.String,System.String)">
+            <summary>
+            Converts a CodeCommander source file into a programming language
+            </summary>
+            <param name="converter">a converter object</param>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file data</param>
+            <param name="finalFile">final file (used to set the path output onto the converted source code)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CheckNonRecursiveMode(System.String)">
+            <summary>
+            Says if it's a non recursive call
+            </summary>
+            <param name="processName">name of the process</param>
+            <returns>true if is not a recursively call</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.MakeOneInstance(o2Mate.RunInnerInstanceCompiler)">
+            <summary>
+            Conversion mode
+            </summary>
+            <param name="run">delegate to launch</param>
+            <returns>the instance number</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.MakeNewInstance(o2Mate.ICompilateurInstance,o2Mate.RunInnerInstanceCompiler)">
+            <summary>
+            Make a new instance of the compiler with internal values
+            </summary>
+            <param name="previous">previous instance</param>
+            <param name="run">delegate</param>
+            <returns>instance number</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadTemplates(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain templates)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadSyntax(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain syntax)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.ParseSkeletons(System.String)">
+            <summary>
+            Parse all files and subfolders from the skeletons directory
+            a skeleton is declared with a starter and a closing statement
+            </summary>
+            <param name="directory">directory name</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadSkeletons(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain skeletons)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.LoadMOP(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain MOPs)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CreateFile(System.String)">
+            <summary>
+            Create a CodeCommander file source
+            (overwrite if exists)
+            </summary>
+            <param name="fileName">file name to create</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.StartParallel(o2Mate.Scope,System.Xml.XmlNode,o2Mate.FinalFile,o2Mate.IProcessInstance)">
+            <summary>
+            Executes a multi-threading sequence
+            </summary>
+            <param name="parent">scope object</param>
+            <param name="node">xml node data to execute</param>
+            <param name="file">final file</param>
+            <param name="proc">current process</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.Clone">
+            <summary>
+            Clone object
+            </summary>
+            <returns>Compiler object</returns>
+        </member>
+        <member name="P:o2Mate.Compilateur.Legendes">
+            <summary>
+            Gets summary
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.EncodedFile">
+            <summary>
+            Gets or sets encoding file
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Objects">
+            <summary>
+            Objects list (this is a tree for embedded objects)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Threads">
+            <summary>
+            Returns all projects defined in a CodeCommander file source
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Templates">
+            <summary>
+            Returns all known templates
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Skeletons">
+            <summary>
+            Returns all known skeletons
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Syntaxes">
+            <summary>
+            Returns all known syntax
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Mops">
+            <summary>
+            Returns all known MOPs
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Injectors">
+            <summary>
+            Returns all known injectors
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Principal">
+            <summary>
+            Returns the principal process
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Processes">
+            <summary>
+            Returns all processes (all types included)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CurrentProcess">
+            <summary>
+            Gets or sets the current process (while loading)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CurrentInstance">
+            <summary>
+            Gets or sets the current instance
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CurrentParseProcess">
+            <summary>
+            Returns the current process during parsing
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.ProcessStack">
+            <summary>
+            Returns the stack of loaded processes
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.UnderConversion">
+            <summary>
+            Gets or sets being in conversion to a programming language
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.ConvertedLanguage">
+            <summary>
+            Gets or sets the programming language onto conversion
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.Unique">
+            <summary>
+            Gets the unique system creation of a name
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CurrentUsingTemplate">
+            <summary>
+            Returns the current using template
+            </summary>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.#ctor(o2Mate.ICompilateur,System.Int32,o2Mate.ICompilateurInstance,System.Boolean)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="comp"></param>
+            <param name="number"></param>
+            <param name="current">current instance</param>
+            <param name="useImmediate">bloquer cette instance immediatement</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.TestAndSetLock">
+            <summary>
+            Test and set lock
+            </summary>
+            <returns>true if active</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Unlock">
+            <summary>
+            This instance is released
+            </summary>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.MakeNewInstance(o2Mate.ICompilateurInstance,o2Mate.RunInnerInstanceCompiler)">
+            <summary>
+            Make a new instance of the compiler with internal values
+            </summary>
+            <param name="previous">previous instance</param>
+            <param name="run">delegate</param>
+            <returns>instance number</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.UpdateParameters(Converters.ICodeConverter,o2Mate.IProcessInstance,System.String,System.Boolean)">
+            <summary>
+            Method to update parameters of a function
+            Make a backtrack on parent process to assume mutable parameters
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="proc">current process</param>
+            <param name="varName">variable name to check</param>
+            <param name="mutable">mutable switch</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.StartUsingTemplate(o2Mate.UseTemplate)">
+            <summary>
+            Assumes starting a template and do the good work
+            </summary>
+            <param name="curTemp">template object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.EndUsingTemplate(o2Mate.UseTemplate)">
+            <summary>
+            Finalize a template
+            </summary>
+            <param name="curTemp">template object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.LoadTemplates(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain templates)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.LoadSkeletons(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain skeletons)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.LoadSyntax(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain syntax)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.LoadMOP(System.String)">
+            <summary>
+            Load all files in a directory (assumes to contain MOPs)
+            </summary>
+            <param name="directory">directory path</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.DisplayXML(System.String,System.ComponentModel.BindingList{o2Mate.DisplayElement},System.Boolean,System.Int32,System.Boolean,o2Mate.INotifyProgress)">
+            <summary>
+            Displays each statements stored in a string into the web navigator
+            </summary>
+            <param name="xmlString">xml string to display</param>
+            <param name="list">list to store operation</param>
+            <param name="forcedIndent">true if force a number at indentation</param>
+            <param name="indent">number at indentation</param>
+            <param name="writable">displays objects editable or readonly</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Display(System.String,System.ComponentModel.BindingList{o2Mate.DisplayElement},System.Boolean,o2Mate.INotifyProgress)">
+            <summary>
+            Displays a complete statements stored in a file into the web navigator
+            </summary>
+            <param name="fileSource">CodeCommander file name to display</param>
+            <param name="list">list to store operation</param>
+            <param name="writable">displays objects editable or readonly</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            The parse function is just like a limited read (to improve performance) - not a complete loading
+            To call just before the display function
+            </summary>
+            <param name="comp">the compiler object</param>
+            <param name="node">the xml node to read</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.CheckNonRecursiveMode(System.String)">
+            <summary>
+            Says if it's a non recursive call
+            </summary>
+            <param name="processName">name of the process</param>
+            <returns>true if is not a recursively call</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetCodingProcess(System.String)">
+            <summary>
+            Returns a process object identified by a name and a type 'coding'
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetParallelProcess(System.String)">
+            <summary>
+            Returns a process object identified by a name and a type 'parallel'
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetJobProcess(System.String)">
+            <summary>
+            Returns a process object identified by a name and a type 'job'
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetSkeleton(System.String)">
+            <summary>
+            Search for a registered skeleton
+            </summary>
+            <param name="name">name of the skeleton to find</param>
+            <returns>skeleton found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetSyntax(System.String)">
+            <summary>
+            Find a syntax by a name
+            </summary>
+            <param name="name">name of the syntax</param>
+            <returns>syntax object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.RemoveCodingProcess(System.String)">
+            <summary>
+            Remove a process identified by a name and a type 'coding'
+            </summary>
+            <param name="name">name of the process to remove</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetProcess(System.String)">
+            <summary>
+            Returns a user process object identified by a name
+            A user process has a colon on the first character name
+            </summary>
+            <param name="name">name of the process to find</param>
+            <returns>process found or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.AddProcess(o2Mate.IProcess)">
+            <summary>
+            Add a new process in the process list
+            Pass a project interface reference and cast to instance of the implemented process class
+            </summary>
+            <param name="process">process object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.PushProcess(o2Mate.IProcess)">
+            <summary>
+            Push a process on a stack
+            It's required to loaded process
+            </summary>
+            <param name="process">process object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.PopProcess">
+            <summary>
+            Pop a process on the top of the stack
+            It's required to quit loaded process
+            </summary>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.PushCalledProcess(o2Mate.IProcessInstance)">
+            <summary>
+            Push an instance process on the stack
+            It's required to called process
+            </summary>
+            <param name="proc">process instance object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.PopCalledProcess">
+            <summary>
+            Pop a process on the top of the stack
+            It's required to quit called process
+            </summary>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.OutputDictionary(System.String)">
+            <summary>
+            Function to construct a complete dictionary object
+            by the CodeCommander file source
+            </summary>
+            <param name="fileSource">file name source</param>
+            <returns>a dictionary object</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.OutputLegendes(System.String)">
+            <summary>
+            Function to construct a list of summary object
+            by the CodeCommander file source
+            </summary>
+            <param name="fileSource">file name source</param>
+            <returns>a summary object</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.InputLegendes(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Summary has been modified from the web navigator
+            This method keeps the summary in internal
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.InputLegendes(o2Mate.ILegendeDict)">
+            <summary>
+            Summary persistence
+            This method keeps the summary in internal
+            </summary>
+            <param name="legendes">summary object</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Compilation(System.String,System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method compiler
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Compilation(System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method compiler (use this method when the CodeCommander file source has been loaded either)
+            </summary>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Compilation(System.String,System.String,System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The defaut method compiler
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="destEncoding">final file encoding</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Debug(System.String,System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method for debugging
+            </summary>
+            <param name="fileData">dictionary file</param>
+            <param name="finalFile">final file</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Debug(System.String,o2Mate.INotifyProgress)">
+            <summary>
+            The method for debugging
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetHeader(System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Get header from a CodeCommander file source
+            </summary>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="creationDate">returns the creation date</param>
+            <param name="modificationDate">returns the modification date</param>
+            <param name="revision">returns the revision date</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Convert(Converters.ICodeConverter,System.String,System.String,System.String)">
+            <summary>
+            Converts a CodeCommander source file into a programming language
+            </summary>
+            <param name="converter">a converter object</param>
+            <param name="fileSource">CodeCommander file source</param>
+            <param name="fileData">dictionary file data</param>
+            <param name="finalFile">final file (used to set the path output onto the converted source code)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load an xml node
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Injection(o2Mate.Injector,System.Xml.XmlNode,System.String)">
+            <summary>
+            The injection allows to inject code into a process
+            </summary>
+            <param name="injector">injector object</param>
+            <param name="node">xml node</param>
+            <param name="modifier">modifier after, before or replace</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Convert(Converters.ICodeConverter,System.String,o2Mate.NameConverter,o2Mate.FinalFile)">
+            <summary>
+            Converts a template to a programming language destination
+            </summary>
+            <param name="converter">a converter object</param>
+            <param name="templateName">template name</param>
+            <param name="nc">struct contained the callback function as the request template</param>
+            <param name="file">final file (used to set the path output onto the converted source code)</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Convert(Converters.ICodeConverter,o2Mate.IProcess,o2Mate.FinalFile)">
+            <summary>
+            Conversion starting function with a next process
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="proc">process object to convert</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.SaveToString(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Save objects from the web navigator
+            </summary>
+            <param name="elem">html element</param>
+            <returns>the xml string</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.SaveChildToString(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Save child objects from the web navigator
+            </summary>
+            <param name="elem">html element</param>
+            <returns>the xml string</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Save(System.String,System.Windows.Forms.HtmlElement,o2Mate.INotifyProgress,System.String[])">
+            <summary>
+            Save objects from the web navigator
+            </summary>
+            <param name="fileDestination">file where to write</param>
+            <param name="elem">html element</param>
+            <param name="wait">notification object (to display a progress bar)</param>
+            <param name="infos">header infos</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Save(System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@,System.Int32)">
+            <summary>
+            Save childs objects to an xml writer
+            </summary>
+            <param name="writer">xml writer object</param>
+            <param name="elem">last html element to continue</param>
+            <param name="currentIndent">current indentation</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.Save(System.String,System.String,o2Mate.ILegendeDict)">
+            <summary>
+            Save xml string into a CodeCommander file source (an xml file)
+            </summary>
+            <param name="fileDestination">destination file name</param>
+            <param name="xmlCode">xml string to persist</param>
+            <param name="legendes">summary data</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetTemplate(System.String)">
+            <summary>
+            Find a template by a name
+            </summary>
+            <param name="name">template name to find</param>
+            <returns>template object else throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetMOP(System.String,System.String)">
+            <summary>
+            Find a mop by a language and a name
+            </summary>
+            <param name="language">language</param>
+            <param name="name">name of the mop</param>
+            <returns>mop object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.GetInjector(System.String)">
+            <summary>
+            Get an already registered injector
+            </summary>
+            <param name="map">the name of the injector (can be in and out a skeleton)</param>
+            <returns>injector object or throw an exception</returns>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.CreateFile(System.String)">
+            <summary>
+            Create a CodeCommander file source
+            (overwrite if exists)
+            </summary>
+            <param name="fileName">file name to create</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.WriteToFile(o2Mate.IProcess,o2Mate.FinalFile)">
+            <summary>
+            Internal starting function to execute statements from a next process
+            Open for a recursive process
+            </summary>
+            <param name="proc">a process instance to execute</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.Compilateur.CompilateurState.ExtractDictionary(o2Mate.IProcess)">
+            <summary>
+            Extracts dictionary names from a next process
+            </summary>
+            <param name="proc">process onto extract dictionary names</param>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Threads">
+            <summary>
+            Returns all projects defined in a CodeCommander file source
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Legendes">
+            <summary>
+            Gets summary
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.CurrentScope">
+            <summary>
+            Gets or sets the current scope
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.CurrentDictionnaire">
+            <summary>
+            Returns the global current dictionary to propagate among each called processes
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.ProcessStack">
+            <summary>
+            Returns the stack of loaded processes
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.CurrentExecutedProcess">
+            <summary>
+            Gets the current executed process
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.CalledProcesses">
+            <summary>
+            Returns the stack of called instance processes
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.CurrentUsingTemplate">
+            <summary>
+            Returns the current using template
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Unique">
+            <summary>
+            Gets the unique system creation of a name
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.ConvertedLanguage">
+            <summary>
+            Gets or sets the programming language in conversion
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.EncodedFile">
+            <summary>
+            Gets or sets encoding file
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.UnderConversion">
+            <summary>
+            Gets or sets if a conversion is being processed
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Templates">
+            <summary>
+            Returns all known templates
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Skeletons">
+            <summary>
+            Returns all known skeletons
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Syntaxes">
+            <summary>
+            Returns all known syntax
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Mops">
+            <summary>
+            Returns all known MOPs
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Injectors">
+            <summary>
+            Returns all known injectors
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Objects">
+            <summary>
+            Objects list (this is a tree for embedded objects)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.CurrentProcess">
+            <summary>
+            Gets the current process
+            </summary>
+        </member>
+        <member name="P:o2Mate.Compilateur.CompilateurState.Processes">
+            <summary>
+            Returns all processes (all types included)
+            </summary>
+        </member>
+        <member name="T:o2Mate.DisplayElement">
+            <summary>
+            Display element
+            </summary>
+        </member>
+        <member name="M:o2Mate.DisplayElement.#ctor(System.String,System.String,System.Object[])">
+            <summary>
+            Constructor for a script and some parameters
+            </summary>
+            <param name="objType">name of the object type</param>
+            <param name="scriptName">name of the javascript function on the web browser</param>
+            <param name="datas">datas infos</param>
+        </member>
+        <member name="M:o2Mate.DisplayElement.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for a script and no parameters
+            </summary>
+            <param name="objType">name of the object type</param>
+            <param name="scriptName">name of the javascript function on the web browser</param>
+        </member>
+        <member name="M:o2Mate.DisplayElement.InvokeBrowser(System.Windows.Forms.WebBrowser)">
+            <summary>
+            Invoking web browser and call the internal delegate function
+            </summary>
+            <param name="web">web browser</param>
+        </member>
+        <member name="P:o2Mate.DisplayElement.ObjectType">
+            <summary>
+            Name of the object type
+            </summary>
+        </member>
+        <member name="P:o2Mate.DisplayElement.Percent">
+            <summary>
+            Gets or sets percentage of progression
+            </summary>
+        </member>
+        <member name="P:o2Mate.DisplayElement.IsLast">
+            <summary>
+            Gets or sets to be the last object
+            </summary>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertExpression(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String,System.String)">
+            <summary>
+            Dans le cas où la variable n'est pas ou plus calculable
+            Enregistre une expression dans une variable incalculable permettant d'utiliser l'expression
+            dans la conversion d'une variable assignée dont le type est défini par l'inférence de l'expression
+            </summary>
+            <param name="comp">compilateur</param>
+            <param name="proc">process</param>
+            <param name="converter">langage de conversion</param>
+            <param name="expression">expression</param>
+            <param name="varName">variable</param>
+            <returns>l'objet variable utilisé</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ComputeExpression(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String,System.String)">
+            <summary>
+            Infers the expression and changes the data type of the existing variable
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="expression">expression</param>
+            <param name="varName">variable name</param>
+            <returns>a stored variable with the infered data type by the expression</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertNonComputableVariableType(o2Mate.IProcessInstance,Converters.ICodeConverter,System.String,o2Mate.EnumDataType)">
+            <summary>
+            Converts a newer variable or an existing variable
+            The variable will be non computable after these changes
+            </summary>
+            <param name="proc">process object</param>
+            <param name="converter">converter object</param>
+            <param name="varName">name of the variable</param>
+            <param name="desiredDataType">data type to convert</param>
+            <returns>the variable (assumes to be present in the scope)</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertExpression(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String)">
+            <summary>
+            Assumes the expression to be non-calculable
+            Convert the expression and infers the data type
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="expression">expression</param>
+            <returns>standalone variable with the result value (do not add into the scope)</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertExpression(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String,o2Mate.EnumDataType)">
+            <summary>
+            Convert the expression with the desired data type
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="expression">expression</param>
+            <param name="desiredType">desired type conversion</param>
+            <returns>standalone variable with the result value (do not add into the scope)</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ComputeExpression(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String)">
+            <summary>
+            Assumes to be a calculable expression
+            Evaluates the expression and returns the value
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="expression">expression</param>
+            <returns>a standalone variable object (do not add into the scope)</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertVariableType(o2Mate.IProcessInstance,Converters.ICodeConverter,System.String,o2Mate.EnumDataType)">
+            <summary>
+            Convert a newer variable or an existing variable.
+            Keeps the current value of this variable.
+            </summary>
+            <param name="proc">process object</param>
+            <param name="converter">converter object</param>
+            <param name="varName">name of the variable</param>
+            <param name="desiredDataType">data type to convert</param>
+            <returns>the conversion string result</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertNewInferedVariable(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String,System.String)">
+            <summary>
+            Use this function to assign an existing variable (or not) with a calculable expression or not.
+            The variable data type is infered by the expression
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="expression">expression</param>
+            <param name="varName">variable name</param>
+            <returns>a newer variable with its value (stored in the scope)</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertNewExpression(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String)">
+            <summary>
+            Use this function to convert an expression which can be computable or not
+            Returns a variable object to do not store in the scope
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="expression">expression</param>
+            <returns>a standalone variable with its value (do not store it in the scope)</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertNewExpression(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String,o2Mate.EnumDataType)">
+            <summary>
+            Use this function to convert an expression which can be computable or not
+            Returns a variable object to do not store in the scope
+            Supply the type to convert 
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="expression">expression</param>
+            <param name="desiredType">desired data type result</param>
+            <returns>a string with the converted expression</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertNewDictionaryString(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String)">
+            <summary>
+            Defines or update a variable object stored in the scope; the variable data type is an object string only (std::wstring in C++)
+            Because of assigned from a dictionary string, the variable is never computable;
+            if the variable was computable, it won't be
+            As the variable value has changed, make a mutable parameter if any
+            As the variable was not exist in the scope, the variable prefixed name (with a type's prefix) is stored in local
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="varName">variable name to be stored in the scope</param>
+            <returns>an added variable object stored in the scope</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertNewDictionaryArray(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String)">
+            <summary>
+            Defines or update a variable object stored in the scope; the variable data type is an object string only (std::wstring in C++)
+            Because of assigned from a dictionary field, the variable is never computable;
+            if the variable was computable, it won't be
+            As the variable value has changed, make a mutable parameter if any
+            As the variable was not exist in the scope, the variable prefixed name (with a type's prefix) is stored in local
+            Just call ConvertNewDictionaryString
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="varName">variable name to be stored in the scope</param>
+            <returns>an added variable object stored in the scope</returns>
+        </member>
+        <member name="M:o2Mate.Helper.ConvertNewDictionarySize(o2Mate.ICompilateur,o2Mate.IProcessInstance,Converters.ICodeConverter,System.String)">
+            <summary>
+            Defines or update a variable object stored in the scope; the variable data type is an integer only
+            Because of assigned from the size of an array, the variable is never computable;
+            if the variable was computable, it won't be
+            As the variable value has changed, make a mutable parameter if any
+            As the variable was not exist in the scope, the variable prefixed name (with a type's prefix) is stored in local
+            Identical from ConvertNewDictionaryString except a different data type
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="varName">variable name to be stored in the scope</param>
+            <returns>an added variable object stored in the scope</returns>
+        </member>
+        <member name="M:o2Mate.Helper.IsLocal(Converters.ICodeConverter,o2Mate.IData)">
+            <summary>
+            Verify if a variable already exists in locals
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="var">variable object</param>
+            <returns>true if is local</returns>
+        </member>
+        <member name="M:o2Mate.Helper.IsLocal(Converters.ICodeConverter,Converters.IFunction,o2Mate.IData)">
+            <summary>
+            Verify if a variable already exists in locals
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="f">funcion</param>
+            <param name="var">variable object</param>
+            <returns>true if is local</returns>
+        </member>
+        <member name="M:o2Mate.Helper.FillNewMethod(o2Mate.ICompilateurInstance,o2Mate.IProcess,Converters.ICodeConverter,Converters.IFunction,o2Mate.FinalFile)">
+            <summary>
+            Fill a new method
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="subProc">sub process object</param>
+            <param name="converter">language converter</param>
+            <param name="f">new function</param>
+            <param name="file">writing in</param>
+        </member>
+        <member name="M:o2Mate.Helper.ClearMethod(Converters.IFunction)">
+            <summary>
+            Clear a function ; using it for rewriting a function to prevent changes of calling functions
+            </summary>
+            <param name="f">function</param>
+        </member>
+        <member name="M:o2Mate.Helper.CheckNewMethod(Converters.ICodeConverter,o2Mate.IProcess,Converters.IFunction)">
+            <summary>
+            Verify if the function need to be renewed
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="curProc">process</param>
+            <param name="newFunc">new function</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Helper.MakeNewMethodForCPP(o2Mate.IProcess,Converters.ICodeConverter,Converters.IFunction)">
+            <summary>
+            Special function for CPP conversion
+            It's needed to confirm for each data type of formal parameters to be the same than the effective parameters
+            if not, variable have to be converted in the good data type
+            </summary>
+            <param name="proc">process</param>
+            <param name="converter">language converter instance</param>
+            <param name="newFunc">new function</param>
+            <returns>sequence call statement in CPP</returns>
+        </member>
+        <member name="M:o2Mate.Helper.NeedNewMethod(Converters.ICodeConverter,o2Mate.IProcess,System.String)">
+            <summary>
+            Verify if the function need to be renewed
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="proc">process object</param>
+            <param name="funName">function name</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="M:o2Mate.Helper.MakeNewMethod(Converters.ICodeConverter,o2Mate.IProcess)">
+            <summary>
+            Make a new function with the incremented instance number
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="proc">process object</param>
+            <returns>a new function</returns>
+        </member>
+        <member name="M:o2Mate.Helper.AddIntoLocal(Converters.ICodeConverter,o2Mate.IData)">
+            <summary>
+            Add into the current local variable list (if not exists)
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="var">variable object</param>
+        </member>
+        <member name="M:o2Mate.Helper.AddIntoLocal(Converters.ICodeConverter,Converters.IFunction,o2Mate.IData)">
+            <summary>
+            Add into the current local variable list (if not exists)
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="f">function</param>
+            <param name="var">variable object</param>
+        </member>
+        <member name="M:o2Mate.Helper.CreateDependantVariable(o2Mate.ICompilateur,Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.UseTemplate,System.String,o2Mate.EnumDataType)">
+            <summary>
+            Create a dependant variable : it's a stored variable in a specific use template (implemented for a specific language)
+            the variable has a data type fixed. If it's not the same, the variable value is converted into the good data type
+            if needed, this variable makes a mutable parameter
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="converter">language converter</param>
+            <param name="proc">process</param>
+            <param name="ut">UseTemplate object</param>
+            <param name="valueName">name of the variable</param>
+            <param name="desiredDataType">fixed data type</param>
+            <returns>the name of the variable (it comes to non computable)</returns>
+        </member>
+        <member name="M:o2Mate.Helper.CreateExprVariable(Converters.ICodeConverter,o2Mate.ICompilateur,o2Mate.IProcessInstance,o2Mate.UseTemplate,System.String,System.String,o2Mate.EnumDataType)">
+            <summary>
+            Create an expression : expression is written for a specific use template (implemented for a specific language)
+            the expression is converted if the infered data type in the expression is not the fixed data type
+            </summary>
+            <param name="converter">language converter</param>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="ut">UseTemplate object</param>
+            <param name="valueName">name of the variable</param>
+            <param name="defaultValue">initial value</param>
+            <param name="desiredDataType">fixed data type</param>
+            <returns>the converted expression</returns>
+        </member>
+        <member name="M:o2Mate.Helper.CreateValue(o2Mate.UseTemplate,System.String)">
+            <summary>
+            Create a value name
+            </summary>
+            <param name="ut">UseTemplate object</param>
+            <param name="valueName">initial name</param>
+            <returns></returns>
+        </member>
+        <member name="M:o2Mate.Helper.CallCoding(o2Mate.ICompilateurInstance,Converters.ICodeConverter,o2Mate.UseTemplate,System.String,o2Mate.FinalFile)">
+            <summary>
+            Call coding process
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="converter">language converter</param>
+            <param name="ut">UseTemplate object</param>
+            <param name="codingName">process name of coding</param>
+            <param name="file">writing in</param>
+        </member>
+        <member name="M:o2Mate.Helper.CallCoding(o2Mate.ICompilateurInstance,o2Mate.IProcessInstance,Converters.ICodeConverter,o2Mate.Coding,System.String,o2Mate.EnumDataType,o2Mate.FinalFile)">
+            <summary>
+            Call coding process
+            Uses a newer variable in which you are adding it in the coding process
+            </summary>
+            <param name="comp">compilation</param>
+            <param name="proc">process</param>
+            <param name="converter">language converter</param>
+            <param name="coding">coding object</param>
+            <param name="varName">name of the variable</param>
+            <param name="desiredDataType">desired data type of the variable</param>
+            <param name="file">writing in</param>
+        </member>
+        <member name="T:o2Mate.Projects">
+            <summary>
+            Project class
+            </summary>
+        </member>
+        <member name="M:o2Mate.Projects.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Projects.Add(o2Mate.ProjectItem)">
+            <summary>
+            Adds an new project item
+            </summary>
+            <param name="elem">newly project item</param>
+        </member>
+        <member name="P:o2Mate.Projects.Dictionary">
+            <summary>
+            Gets the dictionary values
+            </summary>
+        </member>
+        <member name="P:o2Mate.Projects.Record">
+            <summary>
+            Gets or sets if statements has to be recorded
+            </summary>
+        </member>
+        <member name="T:o2Mate.CreateMOP">
+            <summary>
+            Contains a new MOP (a specific statement)
+            </summary>
+        </member>
+        <member name="M:o2Mate.CreateMOP.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.CreateMOP.ReplaceParams(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Search and replace parameters name in direct xml source
+            </summary>
+            <param name="values">a dictionary container parameters name and values</param>
+            <returns>xml code change</returns>
+        </member>
+        <member name="M:o2Mate.CreateMOP.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extract dictionary onto this object
+            </summary>
+            <param name="proc">process</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Inject this object onto the injector
+            </summary>
+            <param name="injector">injector object</param>
+            <param name="comp">the compiler object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier after, before or replace</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Computes if this object instance can be injected onto a destination process
+            Terms of each object information can be uncomputable except when it's a direct computation indeterminisme
+            </summary>
+            <param name="proc">process destination</param>
+            <param name="reason">reason of uncomputable and indeterminist</param>
+            <returns>true if ok else false (and then the reason is set)</returns>
+        </member>
+        <member name="M:o2Mate.CreateMOP.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load object from xml node
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this object onto the web navigator instance
+            A javascript function is invoked with the web navigator
+            </summary>
+            <param name="list">list of binding elements</param>
+            <param name="node">node object (Tree class)</param>
+            <param name="forcedIndent">force a new numberous indentation</param>
+            <param name="indent">number of indentation</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays read only object onto the web navigator instance
+            A javascript function is invoked with the web navigator
+            </summary>
+            <param name="list">list of binding elements</param>
+            <param name="node">node object (Tree class)</param>
+            <param name="forcedIndent">force a new numberous indentation</param>
+            <param name="indent">number of indentation</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            When saving the CodeCommander file source, receipts and updates infos from the tml element of the web navigator
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Saving the object into an xml node
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="writer">Xml writer object</param>
+            <param name="child">html child for nested objects</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse but not load
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node to read</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Execute the object and write results onto the final file
+            </summary>
+            <param name="proc">current process</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.CreateMOP.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts the object and write specific statements for an another programming language
+            </summary>
+            <param name="converter">the language converter</param>
+            <param name="proc">current process</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="P:o2Mate.CreateMOP.Language">
+            <summary>
+            Gets or sets the programming language
+            </summary>
+        </member>
+        <member name="P:o2Mate.CreateMOP.Name">
+            <summary>
+            Gets or sets the name of the MOP
+            </summary>
+        </member>
+        <member name="P:o2Mate.CreateMOP.XmlCode">
+            <summary>
+            Gets the inner xml source code
+            </summary>
+        </member>
+        <member name="P:o2Mate.CreateMOP.Legendes">
+            <summary>
+            Gets the summary object
+            </summary>
+        </member>
+        <member name="P:o2Mate.CreateMOP.ReferenceString">
+            <summary>
+            Gets the parameter list in a separated comma parameter name
+            </summary>
+        </member>
+        <member name="P:o2Mate.CreateMOP.References">
+            <summary>
+            Gets the list of parameters name
+            </summary>
+        </member>
+        <member name="P:o2Mate.CreateMOP.TypeName">
+            <summary>
+            Type name to identifying the object 
+            </summary>
+        </member>
+        <member name="T:o2Mate.CreateProject">
+            <summary>
+            Create a new project (a specific statement)
+            </summary>
+        </member>
+        <member name="M:o2Mate.CreateProject.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extract dictionary onto this object
+            </summary>
+            <param name="proc">process</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Inject this object onto the injector
+            </summary>
+            <param name="injector">injector object</param>
+            <param name="comp">the compiler object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier after, before or replace</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Computes if this object instance can be injected onto a destination process
+            Terms of each object information can be uncomputable except when it's a direct computation indeterminisme
+            </summary>
+            <param name="proc">process destination</param>
+            <param name="reason">reason of uncomputable and indeterminist</param>
+            <returns>true if ok else false (and then the reason is set)</returns>
+        </member>
+        <member name="M:o2Mate.CreateProject.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load object from xml node
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this object onto the web navigator instance
+            A javascript function is invoked with the web navigator
+            </summary>
+            <param name="list">list of binding elements</param>
+            <param name="node">node object (Tree class)</param>
+            <param name="forcedIndent">force a new numberous indentation</param>
+            <param name="indent">number of indentation</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays read only object onto the web navigator instance
+            A javascript function is invoked with the web navigator
+            </summary>
+            <param name="list">list of binding elements</param>
+            <param name="node">node object (Tree class)</param>
+            <param name="forcedIndent">force a new numberous indentation</param>
+            <param name="indent">number of indentation</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            When saving the CodeCommander file source, receipts and updates infos from the tml element of the web navigator
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Saving the object into an xml node
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="writer">Xml writer object</param>
+            <param name="child">html child for nested objects</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse but not load
+            </summary>
+            <param name="comp">this compiler</param>
+            <param name="node">xml node to read</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Execute the object and write results onto the final file
+            </summary>
+            <param name="proc">current process</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.CreateProject.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts the object and write specific statements for an another programming language
+            </summary>
+            <param name="converter">the language converter</param>
+            <param name="proc">current process</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="P:o2Mate.CreateProject.Name">
+            <summary>
+            Gets or sets the name of the project
+            </summary>
+        </member>
+        <member name="P:o2Mate.CreateProject.TypeName">
+            <summary>
+            Type name to identifying the object 
+            </summary>
+        </member>
+        <member name="T:o2Mate.FinalFile">
+            <summary>
+            Implementation class to write the final output in a file
+            during the execution of the CodeCommander source code
+            </summary>
+        </member>
+        <member name="M:o2Mate.FinalFile.StartWithFile(System.String)">
+            <summary>
+            The file begins to write
+            </summary>
+            <param name="fileName">file name where to write</param>
+        </member>
+        <member name="M:o2Mate.FinalFile.Start">
+            <summary>
+            The known file begins to write
+            </summary>
+        </member>
+        <member name="M:o2Mate.FinalFile.WriteToFile(System.String,System.Text.Encoding)">
+            <summary>
+            This method allows to write a text in the file
+            The file is opened and then immediately closed
+            This method is synchronized in order to work for multi-threading
+            </summary>
+            <param name="text">the text to write</param>
+            <param name="enc">encoding format</param>
+        </member>
+        <member name="M:o2Mate.FinalFile.EnsureDirectoryCreated(System.String)">
+            <summary>
+            This function ensures that the directory where to write exists
+            </summary>
+            <param name="fileName">full path of the file</param>
+        </member>
+        <member name="M:o2Mate.FinalFile.EraseFile(System.String)">
+            <summary>
+            This method kills any existing file
+            </summary>
+            <param name="fileName">file name</param>
+        </member>
+        <member name="M:o2Mate.FinalFile.Indent(System.String@)">
+            <summary>
+            This method offers to augment indentation
+            It keeps the number of indentation in a formatted string
+            </summary>
+            <param name="destination">formatted string data</param>
+        </member>
+        <member name="M:o2Mate.FinalFile.Unindent(System.String@)">
+            <summary>
+            This method offers to decrease indentation
+            It keeps the number of indentation in a formatted string
+            </summary>
+            <param name="destination">formatted string data</param>
+        </member>
+        <member name="M:o2Mate.FinalFile.WriteToFile(System.String@,System.String,System.Text.Encoding)">
+            <summary>
+            This method works with a formatted string data
+            The first data is the full path of the file where to write
+            The second data is the number of indentation
+            The thirth data says true when starting a new line
+            </summary>
+            <param name="destination">formatted data information</param>
+            <param name="text">text to write</param>
+            <param name="enc">encoding object</param>
+        </member>
+        <member name="P:o2Mate.FinalFile.FileName">
+            <summary>
+            Gets or sets the file name
+            </summary>
+        </member>
+        <member name="P:o2Mate.FinalFile.CodeCommanderDirectory">
+            <summary>
+            the CodeCommander directory
+            </summary>
+        </member>
+        <member name="P:o2Mate.FinalFile.BuildDirectory">
+            <summary>
+            The build directory
+            </summary>
+        </member>
+        <member name="T:o2Mate.Injector">
+            <summary>
+            An injector class
+            </summary>
+        </member>
+        <member name="M:o2Mate.Injector.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Injector.InjectObject(o2Mate.IProcess,o2Mate.ICompiler,System.String)">
+            <summary>
+            Inject a statement
+            </summary>
+            <param name="proc">the process where to add the statement</param>
+            <param name="obj">the statement to add</param>
+            <param name="modifier">modifier switch (after, before or replace)</param>
+        </member>
+        <member name="M:o2Mate.Injector.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extracts dictionary keys
+            </summary>
+            <param name="proc">current process</param>
+        </member>
+        <member name="M:o2Mate.Injector.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Injects an injector
+            </summary>
+            <param name="injector">injector where to inject</param>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier switch</param>
+        </member>
+        <member name="M:o2Mate.Injector.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Says if this statement is computable when it's injected
+            </summary>
+            <param name="proc">process to test</param>
+            <param name="reason">error text</param>
+            <returns>true if succeeded else false (reason parameter contains explanation)</returns>
+        </member>
+        <member name="M:o2Mate.Injector.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load injector data
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.Injector.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.Injector.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser in a read only mode
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.Injector.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Updates data from the web browser (before save)
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.Injector.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Save the statement into an xml file
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="writer">xml writer object</param>
+            <param name="child">html child to save</param>
+        </member>
+        <member name="M:o2Mate.Injector.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse is not load
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node from reading</param>
+        </member>
+        <member name="M:o2Mate.Injector.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Process the statement and writes results in a file
+            </summary>
+            <param name="proc">process object</param>
+            <param name="file">final file object</param>
+        </member>
+        <member name="M:o2Mate.Injector.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts this statement for a particular programming language destination
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="proc">process object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.Injector.Clone">
+            <summary>
+            Clone object
+            </summary>
+            <returns>injector object</returns>
+        </member>
+        <member name="P:o2Mate.Injector.Name">
+            <summary>
+            Gets or sets the name of the injector
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.Skeleton">
+            <summary>
+            Gets the skeleton path (not null if this injector resided in a skeleton)
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.LongName">
+            <summary>
+            Gets the long name of this injector
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.InjectedProcess">
+            <summary>
+            Gets or sets the process in which this injector resides
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.StackProcesses">
+            <summary>
+            Gets the process stack
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.Before">
+            <summary>
+            Gets or sets the position of the first element of this injector
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.After">
+            <summary>
+            Gets or sets the position of the latest element of this injector
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.Current">
+            <summary>
+            Gets or sets the position of the injector statement
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.IsEmpty">
+            <summary>
+            Returns true if the injector has no statement
+            </summary>
+        </member>
+        <member name="P:o2Mate.Injector.TypeName">
+            <summary>
+            Gets the type name of an instance of this class
+            </summary>
+        </member>
+        <member name="T:o2Mate.RunInnerInstanceProcess">
+            <summary>
+            Run against a process instance
+            </summary>
+            <param name="previous">previous instance</param>
+            <param name="proc">process instance object</param>
+        </member>
+        <member name="T:o2Mate.IProcess">
+            <summary>
+            Interface declaration of a process
+            </summary>
+        </member>
+        <member name="M:o2Mate.IProcess.GetCurrentScope(System.Int32)">
+            <summary>
+            Returns the current scope object from an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <returns>current scope</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.SetCurrentScope(System.Int32,o2Mate.Scope)">
+            <summary>
+            Sets the current scope for an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <param name="scope">the scope value to set</param>
+        </member>
+        <member name="M:o2Mate.IProcess.GetCurrentDictionnaire(System.Int32)">
+            <summary>
+            Returns the current dictionary object from an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <returns>the current scope</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.SetCurrentDictionnaire(System.Int32,o2Mate.Dictionnaire)">
+            <summary>
+            Sets the current dictionary for an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <param name="dict">the dictionary value to set</param>
+        </member>
+        <member name="M:o2Mate.IProcess.GetCurrentPositionExecution(System.Int32)">
+            <summary>
+            Returns the current execution position value from an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <returns>the current execution position</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.SetCurrentPositionExecution(System.Int32,System.Int32)">
+            <summary>
+            Sets the current execution position for an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <param name="curPos">the execution position value to set</param>
+        </member>
+        <member name="M:o2Mate.IProcess.GetDefaultWriter(System.Int32)">
+            <summary>
+            Returns the default writer value from an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <returns>the default writer</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.SetDefaultWriter(System.Int32,System.String)">
+            <summary>
+            Sets the default writer for an existing instance
+            </summary>
+            <param name="instance">instance number</param>
+            <param name="writer">the default value to set</param>
+        </member>
+        <member name="M:o2Mate.IProcess.AddObject(o2Mate.ICompiler)">
+            <summary>
+            Adds a new statement
+            </summary>
+            <param name="obj">a statement object</param>
+        </member>
+        <member name="M:o2Mate.IProcess.InsertObject(System.Int32,o2Mate.ICompiler)">
+            <summary>
+            Inserts a new statement
+            </summary>
+            <param name="index">index (zero-based) where to insert this statement</param>
+            <param name="obj">statement object</param>
+        </member>
+        <member name="M:o2Mate.IProcess.Remove(System.Int32,System.Int32)">
+            <summary>
+            Removes objects
+            </summary>
+            <param name="from">the start index</param>
+            <param name="to">the last index (this included)</param>
+        </member>
+        <member name="M:o2Mate.IProcess.GetPositionLabel(System.String)">
+            <summary>
+            Gets the execution position of a label identified by name
+            </summary>
+            <param name="name">name of the label</param>
+            <returns>execution index (zero-based)</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.Convert(System.Int32,Converters.ICodeConverter,o2Mate.ICompilateurInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts this process to an another language
+            There is only one instance of that process for the entire conversion
+            </summary>
+            <param name="instance">instance number</param>
+            <param name="converter">converter object</param>
+            <param name="comp">compiler object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.IProcess.MakeNewInstance(o2Mate.IProcessInstance,o2Mate.RunInnerInstanceProcess)">
+            <summary>
+            Creates a new instance (allows recursive mode)
+            </summary>
+            <param name="previous">previous process</param>
+            <param name="run">delegate function</param>
+            <returns>a new instance number</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.MakeOneInstance(o2Mate.IProcessInstance,o2Mate.RunInnerInstanceProcess)">
+            <summary>
+            Creates a unique instance (doesn't allow recursive mode)
+            for conversion only
+            </summary>
+            <param name="previous">previous instance process</param>
+            <param name="run">delegate function</param>
+            <returns>a unique instance number</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.GetInstance(System.Int32)">
+            <summary>
+            Get an instance of that process
+            </summary>
+            <param name="instance">instance number</param>
+            <returns>process instance</returns>
+        </member>
+        <member name="M:o2Mate.IProcess.ExecuteProcess(System.Int32,o2Mate.ICompilateurInstance,o2Mate.FinalFile)">
+            <summary>
+            Execution starts immediately against this process
+            Allows recursive calls
+            </summary>
+            <param name="instance">process instance number</param>
+            <param name="comp">compiler instance object</param>
+            <param name="file">final file writer</param>
+        </member>
+        <member name="M:o2Mate.IProcess.ExtractDictionary(System.Int32,o2Mate.ICompilateurInstance)">
+            <summary>
+            Extracts the dictionary from reading the process statements
+            </summary>
+            <param name="instance">instance number</param>
+            <param name="comp">compiler object</param>
+        </member>
+        <member name="P:o2Mate.IProcess.Name">
+            <summary>
+            Gets or sets the process name
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcess.FunctionName">
+            <summary>
+            Gets or sets the strict function name as the process name for conversion
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcess.CurrentProject">
+            <summary>
+            Gets or sets project informations
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcess.Count">
+            <summary>
+            Gets the number of statements
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcess.HasChanged">
+            <summary>
+            Gets or sets if the process has changed (change information to convert to an another instance function)
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcess.Objects">
+            <summary>
+            Gets the statement list
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcess.Replacements">
+            <summary>
+            Gets the replacement parameters for mop
+            </summary>
+        </member>
+        <member name="T:o2Mate.IProcessInstance">
+            <summary>
+            An instance process
+            </summary>
+        </member>
+        <member name="M:o2Mate.IProcessInstance.TestAndSetLock">
+            <summary>
+            Test and set lock
+            </summary>
+        </member>
+        <member name="M:o2Mate.IProcessInstance.ExecuteProcess(o2Mate.ICompilateurInstance,o2Mate.FinalFile)">
+            <summary>
+            Shortcut method, execution starts immediately against this process
+            Allows recursive calls
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="file">final file writer</param>
+        </member>
+        <member name="M:o2Mate.IProcessInstance.ExtractDictionary(o2Mate.ICompilateurInstance)">
+            <summary>
+            Extracts the dictionary from reading the process statements
+            </summary>
+            <param name="comp">compiler object</param>
+        </member>
+        <member name="M:o2Mate.IProcessInstance.Convert(Converters.ICodeConverter,o2Mate.ICompilateurInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts this process to an another language
+            There is only one instance of that process for the entire conversion
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="comp">compiler instance object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.IProcessInstance.Wait">
+            <summary>
+            Wait until all threads are terminated
+            </summary>
+        </member>
+        <member name="M:o2Mate.IProcessInstance.WakeUp">
+            <summary>
+            Terminate sleeping...all threads are terminated
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcessInstance.InstanceNumber">
+            <summary>
+            Gets this instance number
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcessInstance.ParallelProcessCounter">
+            <summary>
+            Gets or sets the counter of threads
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcessInstance.CurrentPositionExecution">
+            <summary>
+            Gets or sets the current execution position
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcessInstance.CurrentScope">
+            <summary>
+            Gets or sets the current scope
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcessInstance.CurrentDictionnaire">
+            <summary>
+            Gets or sets the current dictionary
+            </summary>
+        </member>
+        <member name="P:o2Mate.IProcessInstance.DefaultWriter">
+            <summary>
+            Gets or sets the default writer
+            </summary>
+        </member>
+        <member name="M:o2Mate.Process.ProcessAsFunction(System.String)">
+            <summary>
+            Returns the correct function name as a process
+            </summary>
+            <param name="processName">process name</param>
+            <returns>a function name</returns>
+        </member>
+        <member name="M:o2Mate.Process.ThreadObject.Validate">
+            <summary>
+            This function must be synchronized to run correctly
+            </summary>
+        </member>
+        <member name="T:o2Mate.ProjectItem">
+            <summary>
+            a project item class
+            </summary>
+        </member>
+        <member name="M:o2Mate.ProjectItem.#ctor(System.String,System.Int32,System.String,System.String[])">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="processName">the process name where the statement is executed</param>
+            <param name="position">the position pointer of statement</param>
+            <param name="type">type of statement</param>
+            <param name="values">dictionary values</param>
+        </member>
+        <member name="M:o2Mate.ProjectItem.Print(o2Mate.Dictionnaire)">
+            <summary>
+            Print all statements into the current project
+            </summary>
+            <param name="dict">dictionary values</param>
+        </member>
+        <member name="P:o2Mate.ProjectItem.Type">
+            <summary>
+            Gets or sets the type of statement
+            </summary>
+        </member>
+        <member name="P:o2Mate.ProjectItem.ProcessName">
+            <summary>
+            Gets or sets the process name
+            </summary>
+        </member>
+        <member name="P:o2Mate.ProjectItem.Position">
+            <summary>
+            Gets or sets the position pointer of statement
+            </summary>
+        </member>
+        <member name="T:o2Mate.Skeleton">
+            <summary>
+            Skeleton class
+            </summary>
+        </member>
+        <member name="P:o2Mate.Skeleton.Path">
+            <summary>
+            Gets the skeleton path
+            </summary>
+        </member>
+        <member name="P:o2Mate.Skeleton.Name">
+            <summary>
+            Gets the skeleton name
+            </summary>
+        </member>
+        <member name="T:o2Mate.Syntax">
+            <summary>
+            A syntax class
+            </summary>
+        </member>
+        <member name="M:o2Mate.Syntax.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Syntax.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extracts dictionary keys
+            </summary>
+            <param name="proc">current process</param>
+        </member>
+        <member name="M:o2Mate.Syntax.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Injects a syntax
+            </summary>
+            <param name="injector">injector where to inject</param>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier switch</param>
+        </member>
+        <member name="M:o2Mate.Syntax.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Says if this statement is computable when it's injected
+            </summary>
+            <param name="proc">process to test</param>
+            <param name="reason">error text</param>
+            <returns>true if succeeded else false (reason parameter contains explanation)</returns>
+        </member>
+        <member name="M:o2Mate.Syntax.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load template data
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.Syntax.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.Syntax.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser in a read only mode
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.Syntax.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Updates data from the web browser (before save)
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.Syntax.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Save the statement into an xml file
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="writer">xml writer object</param>
+            <param name="child">html child to save</param>
+        </member>
+        <member name="M:o2Mate.Syntax.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse is not load
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node from reading</param>
+        </member>
+        <member name="M:o2Mate.Syntax.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Process the statement and writes results in a file
+            </summary>
+            <param name="proc">process object</param>
+            <param name="file">final file object</param>
+        </member>
+        <member name="M:o2Mate.Syntax.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts this statement for a particular programming language destination
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="proc">process object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="P:o2Mate.Syntax.Name">
+            <summary>
+            Gets or sets the syntax's name
+            </summary>
+        </member>
+        <member name="P:o2Mate.Syntax.XmlCode">
+            <summary>
+            Gets the inner XML string in this syntax
+            </summary>
+        </member>
+        <member name="P:o2Mate.Syntax.Legendes">
+            <summary>
+            Gets the summary
+            </summary>
+        </member>
+        <member name="P:o2Mate.Syntax.TypeName">
+            <summary>
+            Gets the type name of an instance of this class
+            </summary>
+        </member>
+        <member name="T:o2Mate.Template">
+            <summary>
+            Template class
+            </summary>
+        </member>
+        <member name="F:o2Mate.Template.ParamIdentifier">
+            <summary>
+            Parameter identifier
+            </summary>
+        </member>
+        <member name="M:o2Mate.Template.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.Template.ReplaceParams(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Replace all params with values from the inner XML string
+            </summary>
+            <param name="values">dictionary values</param>
+            <returns>the correct inner XML string without parameters</returns>
+        </member>
+        <member name="M:o2Mate.Template.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extracts dictionary keys
+            </summary>
+            <param name="proc">current process</param>
+        </member>
+        <member name="M:o2Mate.Template.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.Template.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser in a read only mode
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.Template.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Updates data from the web browser (before save)
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.Template.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Save the statement into an xml file
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="writer">xml writer object</param>
+            <param name="child">html child to save</param>
+        </member>
+        <member name="M:o2Mate.Template.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse is not load
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node from reading</param>
+        </member>
+        <member name="M:o2Mate.Template.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Injects a template
+            </summary>
+            <param name="injector">injector where to inject</param>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier switch</param>
+        </member>
+        <member name="M:o2Mate.Template.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Says if this statement is computable when it's injected
+            </summary>
+            <param name="proc">process to test</param>
+            <param name="reason">error text</param>
+            <returns>true if succeeded else false (reason parameter contains explanation)</returns>
+        </member>
+        <member name="M:o2Mate.Template.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load template data
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.Template.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Process the statement and writes results in a file
+            </summary>
+            <param name="proc">process object</param>
+            <param name="file">final file object</param>
+        </member>
+        <member name="M:o2Mate.Template.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts this statement for a particular programming language destination
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="proc">process object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="P:o2Mate.Template.Path">
+            <summary>
+            Gets or sets the template path
+            </summary>
+        </member>
+        <member name="P:o2Mate.Template.Name">
+            <summary>
+            Gets or sets the name of the template
+            </summary>
+        </member>
+        <member name="P:o2Mate.Template.XmlCode">
+            <summary>
+            Gets the inner XML string embedded for a template
+            </summary>
+        </member>
+        <member name="P:o2Mate.Template.Legendes">
+            <summary>
+            Gets summary
+            </summary>
+        </member>
+        <member name="P:o2Mate.Template.Parameters">
+            <summary>
+            Gets the parameter list in a string representation
+            </summary>
+        </member>
+        <member name="P:o2Mate.Template.TypeName">
+            <summary>
+            Gets the type name of an instance of this class
+            </summary>
+        </member>
+        <member name="T:o2Mate.Leaf`1">
+            <summary>
+            A leaf of a tree
+            </summary>
+            <typeparam name="T">data type content</typeparam>
+        </member>
+        <member name="P:o2Mate.Leaf`1.Object">
+            <summary>
+            Gets or sets the object in a leaf node
+            </summary>
+        </member>
+        <member name="T:o2Mate.Node`1">
+            <summary>
+            A node in a tree
+            </summary>
+            <typeparam name="T">data type content</typeparam>
+        </member>
+        <member name="M:o2Mate.Node`1.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:o2Mate.Node`1.SubNode">
+            <summary>
+            Gets the sub node
+            [deprecated]
+            </summary>
+        </member>
+        <member name="T:o2Mate.Tree`1">
+            <summary>
+            A tree class
+            </summary>
+            <typeparam name="T">data type content</typeparam>
+        </member>
+        <member name="M:o2Mate.Tree`1.#ctor">
+            <summary>
+            Constructor with no argument
+            </summary>
+        </member>
+        <member name="M:o2Mate.Tree`1.#ctor(o2Mate.Node{`0})">
+            <summary>
+            Constructs a new tree and attach a node as root
+            </summary>
+            <param name="node">node tree</param>
+        </member>
+        <member name="M:o2Mate.Tree`1.GetEnumerator">
+            <summary>
+            Enumerator
+            </summary>
+            <returns>an enumerator</returns>
+        </member>
+        <member name="M:o2Mate.Tree`1.Add(`0)">
+            <summary>
+            Adds a new data content object as a child of the current node
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:o2Mate.Tree`1.Push">
+            <summary>
+            Move into the inserted last child of the current node
+            </summary>
+        </member>
+        <member name="M:o2Mate.Tree`1.Pop">
+            <summary>
+            Up move
+            </summary>
+        </member>
+        <member name="P:o2Mate.Tree`1.Root">
+            <summary>
+            Root node tree
+            </summary>
+        </member>
+        <member name="P:o2Mate.Tree`1.Current">
+            <summary>
+            Current node
+            </summary>
+        </member>
+        <member name="P:o2Mate.Tree`1.RootCount">
+            <summary>
+            Number of root nodes
+            </summary>
+        </member>
+        <member name="P:o2Mate.Tree`1.Last">
+            <summary>
+            Inserted last node 
+            </summary>
+        </member>
+        <member name="T:o2Mate.UseMOP">
+            <summary>
+            Use a mop statement class
+            </summary>
+        </member>
+        <member name="M:o2Mate.UseMOP.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.UseMOP.ParseCommand(System.String,System.String@,System.Collections.Generic.List{System.String}@,System.String@)">
+            <summary>
+            Parses the command string and gets separated results
+            </summary>
+            <param name="command">the command string</param>
+            <param name="name">the resolved mop name</param>
+            <param name="path">the resolved path</param>
+            <param name="modifier">the resolved modifier switch</param>
+            <returns></returns>
+        </member>
+        <member name="M:o2Mate.UseMOP.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extracts dictionary keys
+            </summary>
+            <param name="proc">current process</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Injects a use mop
+            </summary>
+            <param name="injector">injector where to inject</param>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier switch</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Says if this statement is computable when it's injected
+            </summary>
+            <param name="proc">process to test</param>
+            <param name="reason">error text</param>
+            <returns>true if succeeded else false (reason parameter contains explanation)</returns>
+        </member>
+        <member name="M:o2Mate.UseMOP.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load statement data
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser in a read only mode
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Updates data from the web browser (before save)
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Save this statement into an xml file
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="writer">xml writer object</param>
+            <param name="child">html child to save</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse is not load
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node from reading</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Process this statement and writes results in a file
+            </summary>
+            <param name="proc">process object</param>
+            <param name="file">final file object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts this statement for a particular programming language destination
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="proc">process object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInPerl(Converters.ICodeConverter)">
+            <summary>
+            Write in perl
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInPython(Converters.ICodeConverter)">
+            <summary>
+            Write in python
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInUnixCPP(Converters.ICodeConverter)">
+            <summary>
+            Write in unix cpp
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInCSharp(Converters.ICodeConverter)">
+            <summary>
+            Write in Microsoft C# .NET (Visual Studio 2012)
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInJava(Converters.ICodeConverter)">
+            <summary>
+            Write in java
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInMacOSCPP(Converters.ICodeConverter)">
+            <summary>
+            Write in Mac OS C++
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInMicrosoftCPP(Converters.ICodeConverter)">
+            <summary>
+            Write in Microsoft C++ .NET (Visual Studio 2012)
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInVBScript(Converters.ICodeConverter)">
+            <summary>
+            Write in VB Script
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseMOP.WriteInPowerShell(Converters.ICodeConverter)">
+            <summary>
+            Write in Microsoft PowerShell
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="P:o2Mate.UseMOP.Language">
+            <summary>
+            Gets or sets the language name
+            </summary>
+        </member>
+        <member name="P:o2Mate.UseMOP.Injector">
+            <summary>
+            Gets the injector string
+            </summary>
+        </member>
+        <member name="P:o2Mate.UseMOP.Command">
+            <summary>
+            Gets or sets the command string
+            </summary>
+        </member>
+        <member name="P:o2Mate.UseMOP.Expression">
+            <summary>
+            Gets the expression parameter list
+            </summary>
+        </member>
+        <member name="P:o2Mate.UseMOP.HasInjector">
+            <summary>
+            Says if this mop is intended to inject at the place of an injector
+            </summary>
+        </member>
+        <member name="P:o2Mate.UseMOP.TypeName">
+            <summary>
+            Gets the type name of an instance of this class
+            </summary>
+        </member>
+        <member name="T:o2Mate.NameConverter">
+            <summary>
+            Converter a template name with a specific program at a particular programming language
+            </summary>
+        </member>
+        <member name="F:o2Mate.NameConverter.name">
+            <summary>
+            Name of the template to use
+            </summary>
+        </member>
+        <member name="F:o2Mate.NameConverter.del">
+            <summary>
+            Delegate instance for conversion
+            </summary>
+        </member>
+        <member name="M:o2Mate.NameConverter.#ctor(System.String,o2Mate.NameConverter.Conversion)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">name of the template to use</param>
+            <param name="conv">delegate conversion</param>
+        </member>
+        <member name="T:o2Mate.NameConverter.Conversion">
+            <summary>
+            Delegate for conversion
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="proc">process object</param>
+            <param name="converter">converter object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="T:o2Mate.UseTemplate">
+            <summary>
+            Use a template statement
+            </summary>
+        </member>
+        <member name="M:o2Mate.UseTemplate.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:o2Mate.UseTemplate.GetCoding(System.String)">
+            <summary>
+            Gets a coding by name
+            </summary>
+            <param name="name">coding name</param>
+            <returns>a coding object</returns>
+        </member>
+        <member name="M:o2Mate.UseTemplate.AddCoding(o2Mate.Coding)">
+            <summary>
+            Adds a new coding object
+            </summary>
+            <param name="code">coding object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.ExtractDictionary(o2Mate.IProcessInstance)">
+            <summary>
+            Extracts dictionary keys
+            </summary>
+            <param name="proc">current process</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.Display(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.DisplayReadOnly(System.ComponentModel.BindingList{o2Mate.DisplayElement},o2Mate.Node{o2Mate.ICompiler},System.Boolean,System.Int32@)">
+            <summary>
+            Displays this statement into the web browser in a read only mode
+            </summary>
+            <param name="list">binding data to insert</param>
+            <param name="node">node tree of statements</param>
+            <param name="forcedIndent">true if sets at a particular indentation</param>
+            <param name="indent">a particular indentation</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.Update(System.Windows.Forms.HtmlElement)">
+            <summary>
+            Updates data from the web browser (before save)
+            </summary>
+            <param name="elem">html element</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.Save(o2Mate.ICompilateur,System.Xml.XmlWriter,System.Windows.Forms.HtmlElement@)">
+            <summary>
+            Save this statement into an xml file
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="writer">xml writer object</param>
+            <param name="child">html child to save</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.Parse(o2Mate.ICompilateur,System.Xml.XmlNode)">
+            <summary>
+            Parse is not load
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node from reading</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.Inject(o2Mate.Injector,o2Mate.ICompilateurInstance,System.Xml.XmlNode,System.String)">
+            <summary>
+            Injects a use template
+            </summary>
+            <param name="injector">injector where to inject</param>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+            <param name="modifier">modifier switch</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.IsComputable(o2Mate.IProcess,System.String@)">
+            <summary>
+            Says if this statement is computable when it's injected
+            </summary>
+            <param name="proc">process to test</param>
+            <param name="reason">error text</param>
+            <returns>true if succeeded else false (reason parameter contains explanation)</returns>
+        </member>
+        <member name="M:o2Mate.UseTemplate.Load(o2Mate.ICompilateurInstance,System.Xml.XmlNode)">
+            <summary>
+            Load statement data
+            </summary>
+            <param name="comp">compiler object</param>
+            <param name="node">xml node object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteToFile(o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Process this statement and writes results in a file
+            </summary>
+            <param name="proc">process object</param>
+            <param name="file">final file object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.Convert(Converters.ICodeConverter,o2Mate.IProcessInstance,o2Mate.FinalFile)">
+            <summary>
+            Converts this statement for a particular programming language destination
+            </summary>
+            <param name="converter">converter object</param>
+            <param name="proc">process object</param>
+            <param name="file">final file</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInPerl(Converters.ICodeConverter)">
+            <summary>
+            Write in perl
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInPython(Converters.ICodeConverter)">
+            <summary>
+            Write in python
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInUnixCPP(Converters.ICodeConverter)">
+            <summary>
+            Write in unix cpp
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInCSharp(Converters.ICodeConverter)">
+            <summary>
+            Write in Microsoft C# .NET (Visual Studio 2012)
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInJava(Converters.ICodeConverter)">
+            <summary>
+            Write in java
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInMacOSCPP(Converters.ICodeConverter)">
+            <summary>
+            Write in Mac OS C++
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInMicrosoftCPP(Converters.ICodeConverter)">
+            <summary>
+            Write in Microsoft C++ .NET (Visual Studio 2012)
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInVBScript(Converters.ICodeConverter)">
+            <summary>
+            Write in VB Script
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:o2Mate.UseTemplate.WriteInPowerShell(Converters.ICodeConverter)">
+            <summary>
+            Write in Microsoft PowerShell
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="P:o2Mate.UseTemplate.Name">
+            <summary>
+            Gets or sets the name of the template to use
+            </summary>
+        </member>
+        <member name="P:o2Mate.UseTemplate.Parameters">
+            <summary>
+            Gets parameters (name/value) for the template to use
+            </summary>
+        </member>
+        <member name="P:o2Mate.UseTemplate.TypeName">
+            <summary>
+            Gets the type name of an instance of this class
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,388 @@
+
+Variables locales:
+------------------
+
+Les variables locales sont représentées dans une liste avec des objets de la classe TypedVariable (contenant un type de données)
+et, le nom de la variable.
+
+Un contrôle représenté par une fonction permet de déterminer si le type de données de la variable a changé, sachant que
+dans l'exécution générique, les variables ne sont pas typées tandis qu'elles le sont avec la conversion dans des langages
+typés. Ce contrôle permet d'assurer que l'affectation de la variable avec un nouveau type implique la transformation de la donnée typée
+en son type propre.
+
+
+Une variable est locale lorsqu'elle est créé dans le processus en cours :
+	- soit elle a déjà été créé dans le scope et elle existe déjà dans les variables locales,
+	- soit elle n'a pas encore été créée dans le scope et elle n'existe pas dans les variables locales, donc en la créant dans le scope,
+	  je l'ajoute à la liste des variables locales.
+
+Une variable non locale est obligatoirement :
+	- une variable qui existe dans le scope avec un nom de processus appelant bien déterminé, différent du processus courant et
+	  locale à ce processus,
+	- elle est passée en paramètre lorsqu'elle est utilisée dans un sous-processus,
+	- le paramètre est mutable lors d'une affectation avec ce nom de variable (la variable existe déjà dans le scope et elle n'est pas
+	  dans la liste des variables locales)
+	  
+Une variable est reconnue locale lorsqu'elle n'existe pas dans le scope et, donc elle est créée à cet instant dans le processus en cours.
+Une variable est reconnue non locale lorsqu'elle existe dans le scope et qu'elle n'a pas le même nom de processus où elle a été déclarée.
+
+Une variable non locale est toujours passée en paramètre, soit de manière constante (non modifiable), soit par un pointeur permettant
+de conserver le changement de sa valeur hors de la fin du processus en cours.
+
+
+Variables calculables:
+----------------------
+
+Pour les besoins du projet, un MOP (model-o-programming) inclut le passage de paramètres (uniquement par valeur).
+Cette fonctionnalité est implémentée dans la conversion par l'affectation de variables nommées avant l'exécution du MOP
+tandis que pour le compilateur générique, il s'agit d'un remplacement des paramètres formels par la valeur de l'expression
+indiquée dans les paramètres effectifs (au moment de l'appel du MOP).
+
+Lors de la conversion et étant donné qu'un MOP est une injection d'instructions dans un processus (soit le processus en cours,
+soit un autre processus) via une instruction d'injection, il y a plusieurs cas où les valeurs effectives des paramètres doivent
+être connues à priori :
+
+	- affectation ou utilisation d'une variable nommée en fonction d'un paramètre du MOP,
+	- appel de template nommé en fonction d'un paramètre du MOP,
+	- appel de processus nommé en fonction d'un paramètre du MOP,
+	- nom de paramètre dans l'appel d'un template,
+	- appel d'un MOP nommé en fonction d'un paramètre du MOP courant.
+
+En particulier, si le paramètre d'un MOP est dans une valeur effective d'un template à utiliser, même si ce nom de paramètre est le même
+pour le template et le MOP, le report du paramètre sur le template doit être connu à priori dans les mêmes situations.
+
+Dans certains cas, si l'on ne connait pas la valeur effective d'un paramètre du MOP, son inconnu n'a pas d'incidence sur la conversion.
+Dans d'autres cas, sans connaître la valeur effective d'un paramètre du MOP, la conversion est impossible; l'exécution générique reste
+cependant toujours possible.
+
+Le traitement est au cas par cas à l'aide de l'information IsComputable sur chaque variable.
+
+Une variable est dite calculable si :
+	- toutes ses opérations sont calculables à priori lors de son affectation,
+	- du moment qu'elle n'est pas modifiée dans un sous-processus,
+	- et que le flux de contrôle ne soit ni une boucle, ni dans un branchement (une opération conditionnelle dès 1 option), ni après.
+
+Une variable qui n'est pas calculable entraine pour toutes ses utilisations ultérieures une incalculabilité.
+
+Dans la conversion, les variables non locales sont dors et déjà incalculables si elles sont dans les paramètres de la fonction courante et
+que la valeur est modifiée.
+
+Paramètres effectifs calculables:
+---------------------------------
+
+Puisque dans la conversion, toutes les variables non locales sont représentées par des paramètres formels dans une fonction,
+un paramètre effectif calculable ne fait pas partie des paramètres formels.
+
+
+Paramètres effectifs incalculables:
+-----------------------------------
+
+Un paramètre mutable implique une modification de sa valeur au cours de la fonction appelante; la variable après coup n'est plus
+calculable. Cette condition est irréversible, au contraire des paramètres non modifiés.
+
+Une variable locale reste donc calculable tout le temps qu'elle conserve sa valeur au cours de son parcours dans les processus (i.e. fonctions).
+Une variable locale perd sa calculabilité dès que sa valeur est modifiée à un moment donné de son trajet de processus en processus (i.e. fonctions)
+et au retour du processus.
+
+
+Flux de contrôle sur la conversion:
+-----------------------------------
+
+Toute variable calculable affectée locale ou non à l'intérieur d'une boucle et à travers tous les processus appelés
+dans la boucle devient incalculable.
+
+Toute variable affectée locale ou non dans une condition ou dans une fonction appelée dans une condition devient incalculable
+pour toute la suite du code source (puisqu'elle est affectée, le paramètre de la fonction devient mutable dans le processus
+où la variable est modifiée).
+
+
+Fonctions et processus
+----------------------
+
+Ici, on considèrera une fonction implémentée comme une conversion des instructions d'un processus.
+L'appel d'un processus Y dans un processus X, déclenche obligatoirement la création de l'implémentation de ce processus Y si la fonction
+n'a pas encore été implémentée. Si le processus Y (p.e. un injecteur modifié) a changé par rapport à une implémentation antérieure
+alors une nouvelle fonction est construite qui pourrait inclure des paramètres formels mutable ou immutable différents
+de la précédente implémentation.
+
+Le processus Y à convertir en une fonction est un processus Y appelé : c'est pourquoi, on a en cet instant toutes les connaissances
+des variables existantes dans le scope afin de composer l'instruction d'appel de la fonction avec ses paramètres pour le processus Y.
+Donc toutes les fonctions appelantes qui font intervenir la fonction du processus Y doivent être réécrites elles aussi.
+
+En revanche, si le nom de la fonction du processus Y a changée, il faut savoir indiquer au processus appelant qu'il doit d'abord écrire
+exactement l'appel de la fonction mais également, mettre à jour les paramètres de la fonction appelante : le processus initiateur de
+la construction de la fonction réécrite a également la propriété HasChanged à Vrai.
+
+
+
+Enchainements des processus (i.e. fonctions et sous-fonctions)
+--------------------------------------------------------------
+
+Dans la conversion, les processus sont toujours implémentés au moment de l'appel à ce processus; un nouveau processus appelé déclenche
+l'implémentation de ce processus. Les injecteurs qui sont incluent dans ce processus sont également implémentés par injection d'instructions
+à l'endroit de l'injecteur : l'implémentation des MOP est toujours réservées pour leur exploitation future.
+Dans le cas d'une réecriture d'un injecteur (i.e. la modification de l'injecteur) au cours du processus X pour un processus Y,
+le processus Y, lors de son appel, crée une nouvelle implémentation de la fonction ainsi qu'une nouvelle implémentation pour
+chaque fonction appelante.
+
+Lorsqu'un injecteur dans le processus Y est modifié, ce processus a la propriété HasChanged à Vrai. Si à ce processus est déjà associé à une fonction,
+une nouvelle fonction est créée pour tenir compte du changement de son implémentation. La nouvelle fonction peut avoir de nouveaux paramètres
+ou retrouver les mêmes paramètres ou bien encore ne contenir aucun paramètre. C'est au moment de l'appel du processus que la fonction déjà associée
+est répliquée et les modifications des paramètres de cette fonction modifiée et en conséquence les fonctions appelantes sont réécrites. La propriété
+HasChanged à Vrai sur le processus reporte la valeur de cette propriété à tous les processus (i.e. les fonctions) appelants.
+
+La difficulté rencontrée à ce moment-là est que le processus appelant ayant la propriété HasChanged est, en fait, en cours de conversion :
+ce processus reçoit cette propriété HasChanged alors qu'il a déjà défini le nom de sa fonction et ses paramètres formels mutables ou non.
+Or, si un paramètre qui ne l'était pas le devient soudainement, la conversion dans des langages évolués, déclaratifs et typés va devoir
+considérer chaque variable comme une variable dont on ne sait pas si elle sera mutable ou pas.
+
+
+Conclusion :
+------------
+
+Affectations:
+-------------
+
+	- si la variable existe dans le scope
+		- si le nom du processus de la variable est différent du processus courant, c'est donc un paramètre.
+		- sinon c'est une variable locale
+		  ajouter la variable dans la liste si elle n'existe encore pas dans les variables locales
+	- si la variable n'existe pas dans le scope
+		- je crée la variable locale avec le nom du processus courant et je l'ajoute aux variables locales
+
+Utilisations (variables calculables et incalculables)
+-----------------------------------------------------
+	- La variable utilisée existe forcément dans le scope sinon c'est une chaîne constante,
+	- Si la variable n'est pas dans la liste des variables locales alors elle est ajoutée dans la liste des paramètres,
+	- Une variable est calculable si l'ensemble de ses opérations sont calculables, sauf
+		- si le flux de contrôle est pendant et après une boucle (for, while, until),
+		- ou si elle est modifiée dans une condition,
+	- Une variable calculable passée par référence à une fonction n'est plus calculable avant et après l'appel de la fonction. Le
+	  paramètre est mutable pour tous les processus parents.
+
+
+Fonctions calculables et incalculables
+--------------------------------------
+Une fonction dont les paramètres soont passés par valeur est calculable et conserve toutes les valeurs des variables calculables.
+Si la fonction est appelée à nouveau alors elle est dupliquée en une autre fonction contenant ses propres valeurs des variables calculables.
+
+
+TODO:
+-----
+	- supprimer l'objet Scope de la fonction,
+	- remplacer le type List<string> de LocalVariables par List<TypedVariable>,
+	- déplacer la classe TypedVariable dans le projet Converters,
+	- ajouter les fonctions de conversion pour chaque langage de conversion (ILangageConverter) sur la classe TypedVariable,
+	- appeler la comparaison de types pour qu'une variable typée conserve son type identique durant tout le cycle de vie de la variable,
+	- rendre public static les fonctions ConvertToXXXX et les déplacer dans la classe TypedVariable,
+	- Ajouter une propriété ControlFlow en lecture seule dans la classe IFunction qui décrit le flux de contrôle,
+	- Ajouter une fonction de propagation du ControlFlow tout au long de la conversion,
+	- Ajouter deux fonctions ControlFlowForward ControlFlowBackward pour calculer la propriété ControlFlow,
+	- Ajouter des fonctions publiques dans TypedVariable permettant de savoir si la variable est calculable ou non selon
+	  les critères définis dans ce document,
+	- Modifier macroNumber en instanceNumber dans IFunction,
+	- Gérer la réécriture des fonctions dont au moins un paramètre est calculable,
+	- Ajouter une propriété HasChanged sur la classe Process,
+	- Gérer le nombre d'instance d'une fonction selon la modification d'un injecteur dans une sous-fonction,
+	- Toutes les affectations doivent être maintenues, au cas où, une variable n'est plus calculable; en revanche,
+	  la valeur connue des variables à priori peut être exprimée par une constante plutôt que par le nom de la variable : c'est toujours
+	  le cas pour les paramètres effectifs de MOP dont la valeur doit être connue à priori.
+
+
+
+Appels des processus et injecteurs
+----------------------------------
+
+Un injecteur peut modifier un processus. Une fois modifié, le processus a changé.
+Toutes les fonctions sont soit réécrites avec les mêmes instructions, soit avec un autre nom pour la fonction.
+
+Appels des processus et variables calculables
+---------------------------------------------
+
+Une variable calculable peut être modifiée. Une fois modifiée, la variable peut soit rester calculable, soit ne plus être calculable.
+Une variable calculable passée en paramètre est recopiée à sa valeur à chaque utilisation.
+L'appel d'un processus utilisant cette variable calculable oblige que la fonction associée soit différente à chaque fois
+que la variable a été modifiée.
+
+
+Langages fortement typés
+------------------------
+
+Par exemple, en C++, une variable possède un type unique, spécifique et inchangeable.
+Alors qu'en PowerShell, une variable n'a pas de type fixé : le type est connu à l'exécution de l'affectation avec inférence
+de l'expression : la variable prend le type de l'expression. Une fois la variable modifiée, son type peut être modifié.
+
+Pour convertir les instructions en C++, je dois prendre en compte le typage de chaque variable.
+
+i = 1
+i = bonjour
+
+Ainsi, la conversion en C++ de l'exemple ci-dessus est:
+
+int n_i;
+wsrtring ws_i;
+
+n_i = 1;
+ws_i = wstring(L"bonjour");
+
+i = 1
+i = i . bonjour
+
+int n_i;
+wstring ws_i;
+
+n_i = 1;
+ws_i = toString(n_i) + L"bonjour";
+
+Selon le flux de contrôle, les affectations des variables typées doivent provoquer une conversion au cours du traitement dans une boucle
+ou bien avant la boucle, à l'initialisation.
+
+Exemple 1 :
+-----------
+
+a = 1
+déclarer modèle /CodeCommander/Loop(name="L1",counter="i",value="3")
+	codage "body":
+		a = a . 1
+		a = a + 1
+
+int n_a;
+int n_i;
+wstring ws_a;
+for(n_i=1; n_i <= 3; ++n_i)
+{
+	ws_a = toString(n_a) + "1";
+	n_a = wstring2i(ws_a) + 1;
+}
+
+Exemple 2:
+----------
+
+a = 1
+déclarer modèle /CodeCommander/Loop(name="L1",counter="i",value="3")
+	codage "body":
+		a = a . 1
+
+int n_a;
+int n_i;
+wstring ws_a;
+ws_a = toString(n_a);
+for(n_i=1; n_i <= 3; ++n_i)
+{
+	ws_a = ws_a + "1";
+}
+
+Exemple 3:
+----------
+
+a = 1
+déclarer modèle /CodeCommander/Loop(name="L1",counter="i",value="3")
+	codage "body":
+		a = a + 1
+		a = a . 1
+
+int n_a;
+int n_i;
+wstring ws_a;
+for(n_i=1; n_i <= 3; ++n_i)
+{
+	n_a = n_a + 1;
+	ws_a = toString(n_a) + "1";
+	n_a = wstring2i(ws_a);
+}
+
+
+
+
+Pour mettre en oeuvre la conversion depuis un langage non typé vers un langage fortement typé, je pense qu'il faut
+contenir les boucles et les tests conditionnels dans des fonctions.
+
+Exemple 1 :
+-----------
+
+a = 1
+déclarer modèle /CodeCommander/Loop(name="L1",counter="i",value="3")
+	codage "body":
+		a = a . 1
+		a = a + 1
+
+void func_for(int *n_a, wstring *ws_a)
+{
+	for(n_i=1; n_i <= 3; ++n_i)
+	{
+		*ws_a = toString(*n_a) + "1";
+		*n_a = wstring2i(*ws_a) + 1;
+	}
+}
+
+
+int n_a;
+int n_i;
+wstring ws_a;
+n_a = 1;
+func_for(&n_a, &ws_a);
+
+Créer une fonction spécifique permet d'obtenir la liste des variables non locales utilisées dans la fonction en connaissant
+l'ensemble des paramètres graçe à l'écriture de l'implémentation.
+
+Exemple 2:
+----------
+
+a = 1
+déclarer modèle /CodeCommander/Loop(name="L1",counter="i",value="3")
+	codage "body":
+		a = a . 1
+
+void func_for(wstring *ws_a)
+{
+	for(n_i=1; n_i <= 3; ++n_i)
+	{
+		*ws_a = *ws_a + "1";
+	}
+}
+
+
+int n_a;
+int n_i;
+wstring ws_a;
+n_a = 1;
+ws_a = toString(n_a);
+func_for(&ws_a);
+
+Créer une fonction spécifique permet d'ajouter avant l'appel de la fonction des instructions d'initialisations
+nécessaires au bon fonctionnement de la gestion des variables fortement typées.
+
+
+Exemple 3:
+----------
+
+a = 1
+déclarer modèle /CodeCommander/Loop(name="L1",counter="i",value="3")
+	codage "body":
+		a = a + 1
+		a = a . 1
+
+void func_for(wstring *ws_a, int *n_a)
+{
+	for(n_i=1; n_i <= 3; ++n_i)
+	{
+		*n_a = wstring2i(*ws_a);
+		for_infor(n_a, ws_a);
+	}
+}
+
+void func_infor(int *n_a, wstring *ws_a)
+{
+	*n_a = *n_a + 1;
+	*ws_a = toString(*n_a) + "1";
+}
+
+int n_a;
+int n_i;
+wstring ws_a;
+n_a = 1;
+ws_a = toString(n_a);
+func_for(&n_a, &ws_a);
+
+Le double appel de fonctions permettra de contrôler également les possibles affectations de la variable d'itération (n_i).
+

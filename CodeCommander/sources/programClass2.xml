@@ -1,0 +1,12 @@
+﻿<root><legendes/><infos><creationDate>12/08/2012 21:08:54</creationDate><modificationDate>12/08/2012 21:16:48</modificationDate><revision>3</revision></infos><code><texte>using·System;
+using·System.Xml;</texte><texte>
+namespace·</texte><variable>NameSpace</variable><texte>·{
+····public·class·</texte><variable>TheClass</variable><texte>·{
+
+#region·Default·Constructor
+····public·</texte><variable>TheClass</variable><texte>()·{
+····}
+#endregion
+
+····}
+}</texte></code></root>

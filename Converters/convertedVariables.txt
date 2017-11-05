@@ -1,0 +1,225 @@
+﻿Ce logiciel est un outil :
+
+	- d'écriture automatisé de programmes et/ou de documents,
+	- un outil RAD (indéfiniment) configurable et résultant en un code source fiable et propre,
+	- une base de connaissances (Knowledge Management) pour la programmation (shell, C/C++, C#, .NET, etc),
+	- une architecture très dynamique et absolument modulaire,
+	- une grande liberté dans la conception de modèles de programmes (fondé sur la programmation orienté modèle),
+	- possibilité de concevoir des modèles par aspect (avec les inserteurs),
+	- la facilité d'exploitation des instructions (rejouables et paramètrables),
+	- des moyens de nommage étendus et de multiples options pour la variabilité,
+	- une lecture simple, claire et concise du langage,
+	- création personnelle de DSL (Domain Specific Language) par programmation d'outils d'analyses et de conversions,
+	- des compléments d'explications au-delà du simple commentaire (avec une légende pour chaque variable),
+	- de nombreuses instructions allant au-delà des langages de programmation actuels (même pour .NET)
+
+		- le parallèlisme, le partage des variables et l'instruction de sémaphore,
+		- la déclaration de propriétés attachées aux variables - par exemple, comme le type à utiliser,
+		- le développement rapide de programmes d'analyses lexicales et de grammaires,
+		- la mise au point de nouvelles fonctions et de modèles virtuels pour les IHM (2D et 3D)
+
+	- la transcription des instructions dans de nombreux autres langages de programmation.
+
+
+
+
+
+Le langage que j'ai créé utilise une liste de noms de variables avec des indications et une valeur.
+Les indications sont :
+	- lorsque la variable est calculable (on sait calculer exactement sa valeur). Une variable
+	  est calculable lorsque tous ses termes sont calculables. Il y a uniquement deux cas où la
+	  variable ne peut plus être calculable :
+		- lorsque la variable ou un de ses termes est chargée par une donnée du dictionnaire
+		- lorsque la variable ou un de ses termes est un facteur d'itération (identifié grace aux
+		  modèles de flux de contrôles par défaut)
+	- lorsque la variable est globale (la portée de la variable est globale; elle est connue partout).
+
+Les variables ont une portée relative : déclarée dans un processus, une variable est connue
+et modifiable dans tous les processus appelés depuis ce processus initial. La variable est
+détruite dès la fin du processus si créée dans ce processus.
+Si la variable n'est pas connue par un processus, le nom de la variable est considérée
+comme une chaîne de caractères constante et dans le cas d'un opérateur sur des nombres entiers,
+la valeur est alors 0.
+
+Un processus peut être créé à n'importe quel moment et utilisé partout. La récursivité est maintenant
+possible (à partir de la version 1.3).
+
+En revanche, lors de la conversion pour certains langages de programmation, il est préférable
+d'avoir déjà implémenté le processus avant son premier appel (car les paramètres formels d'un processus
+ou d'une procédure sont automatiquement déterminés au moment de son implémentation).
+
+La valeur d'une variable est toujours sous la forme d'une chaîne de caractères.
+C'est l'évaluation d'une expression qui infère sur le type de la variable (un entier ou une chaîne;
+un booléen est en fait un entier '0' - faux - ou '1' - vrai - avec l'exception
+qu'un autre entier - positif ou négatif - est considéré comme vrai).
+
+A l'heure actuelle, une variable a une valeur entière ou pas. Les nombres décimaux ne sont pas reconnus.
+D'ailleurs, les caractères , et . sont déjà utilisés comme des opérateurs. Mais, il reste possible
+d'implémenter les nombres décimaux avec en supplément une fonction toInt() qui retournera la valeur entière
+d'un nombre. Je note que même sans pouvoir déclarer des nombres décimaux, la division de
+deux nombres entiers reste encore entière.
+
+Puisque l'application a pour but d'écrire des programmes, les nombres entiers sont suffisants.
+Toutefois, les nombres décimaux permettraient des calculs mathématiques pour la génération de courbes et
+de graphiques (par exemple). En revanche, les nombres décimaux pourraient être mieux définis
+comme selon un nombre rationnel ou irrationnel.
+
+Une variable dont la valeur ne peut pas donner un nombre entier retourne toujours 0.
+
+Une particularité originale dans ce nouveau langage est que les chaînes de caractères constantes
+ne sont pas encadrées par des guillemets. Une chaîne de caractères est considérée comme constante
+lorsque la chaîne n'est pas exactement le nom d'une variable.
+
+Les opérateurs possibles dans une expression sont :
+
+ - la somme entre deux nombres entiers (+)
+ - la soustraction entre deux nombres entiers (-)
+ - la multiplication entre deux nombres entiers (*)
+ - la division entre deux nombres entiers (/) - si toutefois le diviseur est non nul et sinon le résultat donnera 0.
+ - la comparaison > entre deux nombres entiers
+ - la comparaison < entre deux nombres entiers
+ - l'égalité entre deux nombres entiers (=)
+   Je note que les comparaisons <= et >= ne sont pas définies
+ - l'égalité entre deux chaînes de caractères (?). Le résultat sera 0 ou 1.
+ - la concaténation entre deux chaînes (.)
+	Attention : L'expression 1 . 2 donnera toujours 12. En revanche a + b donnera toujours 0 si a et b
+	ne sont pas des noms de variables. De même, a . b donnera 00 si a et b valent 0
+ - l'extraction d'un caractère dans une chaîne de caractères ou un nombre (:)
+   Je note que a : x extrait le x-ième caractère de a en commençant par 1.
+   Egalement, Hello World : 2 retournera le caractère e si la chaîne Hello World n'est pas le nom d'une variable.
+ - les parenthèses sont évaluées normalement et peuvent modifier la précédence par défaut des opérateurs.
+   La précédence par défaut des opérateurs est la suivante
+
+		',', '<', '>', '=', '+', '-', '/', '*', '.', '?', ':'
+
+		Je note que la division est prioritaire sur la multiplication : aussi, 6/3*2 = 6/(3*2) = 1
+		Exceptionnellement, -x est considéré comme un nombre entier négatif.
+
+		Les parenthèses servent aussi pour faire appel à une fonction avec des paramètres.
+
+ - Une virgule dans une expression sépare deux expressions pour donner une suite.
+   La suite permet d'utiliser des fonctions à plusieurs paramètres et la fonction array() retournera
+   toujours la suite sous la forme de chaque résultat avec une chaîne de caractères séparée par des virgules.
+   Pour obtenir chaque élément séparé par une virgule, il est possible d'utiliser le modèle /String/Split.
+
+   Il est probable que les futures versions implémentent les nombres décimaux, les opérateurs de
+   plus d'un caractère (>= et <=) et les opérateurs unaires.
+
+   Egalement, les espaces laissés des deux côtés d'un opérateur sont toujours éliminés.
+   C'est tout l'ensemble du terme isolé par des opérateurs qui correspond soit à une constante soit
+   au nom d'une variable (si elle existe).
+
+   Je note que si je souhaite afficher un caractère qui est un opérateur, il existe
+   aussi des variables globales qui afficheront ce caractère. Ces variables restent modifiables
+   mais il est probable que cela ne soit pas possible de les modifier après conversion dans un
+   autre langage de programmation.
+
+
+Le langage que j'ai créé est en mesure d'être traduit dans de nombreux autres langages de programmation.
+Cette conversion nécessite certains ajustements notamment l'ajout de méthodes spécifiques pour
+le bon fonctionnement surtout afin que le résultat reste iso-exécuté.
+
+Ne pas confondre : c'est ce langage de programmation qui est converti en un autre. Pour être clair,
+l'exécution du programme traduit dans un autre langage donnera la même retranscription des fichiers écrits
+qu'avec le programme qui interpréte et exécute les instructions.
+
+Pour cela, les modèles de base qui sont installés dans /CodeCommander/... (comme le foreach ou le while)
+permettent de convertir tout ces modèles dans d'autres langages de programmation qu'ils soient orienté objet ou pas.
+
+Notamment : VBScript, PowerShell, Perl, Python, C++ (MacOS ou Unix ou Microsoft .NET), C#,
+            Java, ASP, ASP.NET, PHP, JavaScript, XSLT, T4 Writing (Microsoft)
+
+
+
+Selon que le langage de programmation de destination est fortement typé ou non, les
+variables définies auront un type particulier ou pas. Les types utilisés sont uniquement
+des types simples. Toutes les expressions sont iso-convertibles, c'est-à-dire qu'elles
+donnent les mêmes résultats dans tous les langages convertis.
+
+Une variable est identifié selon :
+
+	- elle est passée en paramètre (par valeur ou par référence - donc mutable),
+	- elle est déclarée dans la fonction en cours d'implémentation (elle est modifiable).
+	  Si elle est passée en paramètre à une autre fonction, la variable est transcrite
+	  en passage par valeur ou par référence (avec la syntaxe correcte du langage) selon qu'elle est
+	  modifiée au cours de son cycle de vie.
+
+Le nom de la variable ne change pas si le langage de conversion n'est pas fortement typé. Si
+le langage est fortement typée, la variable utilise un préfixe qui l'identifie pour chaque
+typage et l'utilisation de plusieurs types simultanés est controlé par la dernière affectation.
+Si la variable a alors plusieurs noms, la conversion pour chaque type de données est permise par
+l'implémentation d'une classe appelée 'SimpleType' (en C++ et en C#).
+
+Pour les langages non typés comme VBScript, le nom de la variable est toujours le même, sous réserve
+que le nom ne soit pas en contradiction avec les conventions de nommage.
+Pour les langages comme Perl ou Python, les opérateurs sont redéfinis pour l'inférence de type
+selon l'opérateur utilisé.
+
+Enfin, pour l'instruction de lancement en parallèle, j'ai été amené à créer de nouvelles structures
+en fonction de la syntaxe du langage et passées par référence aux différentes tâches partagées.
+
+La première fonction appelée dans le démarrage d'une nouvelle tâche reçoit la structure
+en référence et les fonctions suivantes reçoivent les différentes variables unitairement extraites depuis
+la structure.
+
+La conversion du programme dans un autre langage s'effectue en deux étapes :
+
+	1) la constitution de l'implémentation des processus,
+	
+		- si l'implémentation d'un processus est modifié entre deux appels,
+		  réimplémentation d'une nouvelle fonction avec l'ajout d'un numéro d'instance,
+		- suivi des différents appels de processus (tester la non-récursivité),
+		- gestion des variables utilisées et/ou modifiées (déclaration à postèriori des paramètres de chaque fonction),
+		- un processus jamais appelé n'est jamais implémenté
+
+	2) la mise à jour de l'utilisation des variables selon :
+
+		- pour la partie gauche d'une affectation, selon :
+	
+			- si la partie gauche est une variable déclarée par valeur :
+
+				- la partie droite doit être par valeur,
+				- la partie droite ne peut pas être par référence
+				  sauf si l'expression est une seule variable en référence (déréferencement)
+	
+			- si la partie gauche est une variable déclarée par référence, déréférencer la partie gauche et :
+
+				- la partie droite doit être par valeur,
+				- la partie droite ne peut pas être par référence
+				  sauf si l'expression est une seule variable en référence (déréferencement)
+
+		- pour la partie droite d'une affectation, selon :
+
+			- si l'expression est complexe :
+
+				- toujours déréférencer quand la variable est une référence,
+				- utiliser la variable si passage par valeur,
+				- remplacer ou non le nom de la variable quand elle est calculable
+
+			- si l'expression est simple :
+
+				- déréférencer si la variable est par référence,
+				- la partie gauche est toujours par valeur
+
+		- le passage par valeur à une fonction :
+
+			- pour une variable déclarée en valeur,
+			- déréférencer si déclarée en référence (issue d'un paramètre)
+
+		- le passage par référence à une fonction :
+
+			- pour une variable déclarée en valeur, la variable devient mutable,
+			- laisser tel que si la variable est déclarée en référence (issue d'un paramètre)
+			- une variable par valeur ou par référence peut ne plus être calculable après l'appel.
+
+La première étape de la conversion rédige l'implémentation de chaque fonction avec un descripteur
+pour chaque variable. Selon le langage, ce descripteur peut varier. Par exemple, en PowerShell
+le nom de la variable est encadré par S[ et ] et en C++, c'est $[ et ]. Selon que la variable est
+à gauche ou à droite d'une affectation ou dans une expression, j'ajoute devant left: ou byvalue:
+Il y a aussi ifptr: qui indique que le contenu de la variable est un objet
+sous la forme d'une expression de type valeur ou bien de type pointeur (spécifique au C++).
+
+Si rien n'est précisé, la variable indiquée peut être fournie sous la forme d'une expression de type
+valeur ou bien de type référence.
+
+

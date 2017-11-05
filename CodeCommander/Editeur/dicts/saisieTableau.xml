@@ -1,0 +1,74 @@
+﻿<root>
+	<legendes />
+	<infos>
+		<creationDate>20/08/2012 14:51:14</creationDate>
+		<modificationDate>22/08/2012 21:46:41</modificationDate>
+		<revision>10</revision>
+	</infos>
+	<code>
+		<usetemplate name="/dict/assistant2">
+			<params>
+				<param name="title">title</param>
+				<param name="description">description</param>
+				<param name="commentaire">commentaire</param>
+			</params>
+			<codings>
+				<coding name="body" indent="1">
+					<code>
+						<beginprocess indent="2">boucle</beginprocess>
+						<affectation indent="2">
+							<variable>index</variable>
+							<expression>0</expression>
+						</affectation>
+						<size indent="2">
+							<terme>max</terme>
+							<tableau>items</tableau>
+						</size>
+						<condition indent="2">
+							<expression>index &lt; max</expression>
+							<iftrue>continue</iftrue>
+							<iffalse>end</iffalse>
+						</condition>
+						<label indent="2">continue</label>
+						<affectation indent="2">
+							<variable>index</variable>
+							<expression>index + 1</expression>
+						</affectation>
+						<affectationchamp indent="2">
+							<variable>itemIndex</variable>
+							<champ>
+								<tableau>items</tableau>
+								<expression>index</expression>
+								<variable>index</variable>
+							</champ>
+						</affectationchamp>
+						<texte>&lt;tr&gt;&lt;td&gt;</texte>
+						<usetemplate name="/dict/item" indent="2">
+							<params>
+								<param name="tabName">fields</param>
+								<param name="rowId">itemIndex</param>
+							</params>
+							<codings />
+						</usetemplate>
+						<texte>&lt;/td&gt;&lt;/tr&gt;</texte>
+						<condition indent="2">
+							<expression>index &lt; max</expression>
+							<iftrue>continue</iftrue>
+							<iffalse>end</iffalse>
+						</condition>
+						<label indent="2">end</label>
+						<endprocess indent="2">boucle</endprocess>
+						<usetemplate name="/dict/itemInitialize" indent="2">
+							<params />
+							<codings />
+						</usetemplate>
+						<texte indent="2">&lt;table·id='myTable'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;</texte>
+						<call indent="2">boucle</call>
+						<texte indent="2">&lt;/table&gt;</texte>
+						<texte indent="2">&lt;p·align='right'&gt;&lt;span·style='font-size:xx-small;text-decoration:underline;color:red;cursor:pointer'·onclick='javascript:addRow();'&gt;Ajouter&lt;/span&gt;&lt;/p&gt;</texte>
+					</code>
+				</coding>
+			</codings>
+		</usetemplate>
+	</code>
+</root>

@@ -1,0 +1,29 @@
+$job = Start-Job -ScriptBlock { 
+  while($true) {
+    Register-EngineEvent -SourceIdentifier MyNewMessage -Forward
+    Start-Sleep -Seconds 3
+    $null = New-Event -SourceIdentifier MyNewMessage -MessageData "Pingback from job."
+  }
+}
+
+$event = Register-EngineEvent -SourceIdentifier MyNewMessage -Action {
+  Write-Host $event.MessageData;
+}
+
+for($i=0; $i -lt 10; $i++) {
+  Start-Sleep -Seconds 1
+  Write-Host "Pingback from main."
+}
+
+$job,$event| Stop-Job -PassThru| Remove-Job #stop the job and event listener
+
+
+function RunJobFromQueue
+{
+    if( $queue.Count -gt 0)
+    {
+        $j = Start-Job -ScriptBlock {param($x); Get-WinEvent -LogName $x} -ArgumentList $queue.Dequeue()
+        Register-ObjectEvent -InputObject $j -EventName StateChanged -Action { RunJobFromQueue; Unregister-Event $eventsubscriber.SourceIdentifier; Remove-Job $eventsubscriber.SourceIdentifier } | Out-Null
+    }
+}
+ 

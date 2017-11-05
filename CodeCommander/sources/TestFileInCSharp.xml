@@ -1,0 +1,33 @@
+﻿<root><legendes /><infos><creationDate>26/08/2012 15:47:03</creationDate><modificationDate>26/08/2012 16:04:03</modificationDate><revision>5</revision></infos><code><texte>using·System;
+using·System.Collections.Generic;
+using·System.Text;
+using·System.IO;
+
+
+namespace·test·{
+
+····public·static·class·MyFileWritten·{
+
+·······</texte><usetemplate name="/C#/ImplWriteFileForText" indent="1"><params><param name="create">true</param></params><codings><coding name="write" indent="2"><code><texte indent="3">sw.WriteLine("Bonjour");</texte></code></coding></codings></usetemplate><texte indent="1">
+
+···</texte><usetemplate name="/C#/ImplReadFileOfText" indent="1"><params /><codings><coding name="read" indent="2"><code><texte indent="3">string·line·=·sr.ReadLine();
+Console.WriteLine(line);</texte></code></coding></codings></usetemplate><texte indent="1">
+
+···</texte><usetemplate name="/C#/WindowsPathSeparator" indent="1"><params><param name="out">sep</param></params><codings /></usetemplate><texte>
+
+·······public·static·void·Main(string[]·args)·{
+
+··············try
+··············{
+···················string·</texte><usetemplate name="/C#/ConstructFileName" indent="1"><params><param name="volume">C:</param><param name="directory" /><param name="name">test</param><param name="extension">txt</param><param name="separator">sep</param><param name="out">file</param></params><codings /></usetemplate><texte indent="1">
+
+···················</texte><usetemplate name="/C#/UseWriteFileForText" indent="1"><params><param name="fileName">file</param></params><codings /></usetemplate><texte indent="1">
+
+···················</texte><usetemplate name="/C#/UseReadFileOfText"><params><param name="fileName">file</param></params><codings /></usetemplate><texte>
+··············}
+··············catch(Exception·ex)·{
+·················Console.WriteLine(ex.ToString());
+··············}
+·······}
+····}
+}</texte></code></root>

@@ -1,0 +1,80 @@
+﻿<root preserve-whitespace="no">
+	<legendes />
+	<infos>
+		<creationDate>19/08/2012 16:37:40</creationDate>
+		<modificationDate>21/08/2012 14:36:24</modificationDate>
+		<revision>2</revision>
+	</infos>
+	<code>
+		<call>legendes</call>
+		<beginprocess>legendes</beginprocess>
+		<affectation>
+			<variable>index</variable>
+			<expression>0</expression>
+		</affectation>
+		<size>
+			<terme>max</terme>
+			<tableau>legendes</tableau>
+		</size>
+		<condition>
+			<expression>index &lt; max</expression>
+			<iftrue>continue</iftrue>
+			<iffalse>end</iffalse>
+		</condition>
+		<label>continue</label>
+		<affectation>
+			<variable>index</variable>
+			<expression>index + 1</expression>
+		</affectation>
+		<texte>&lt;li·context='</texte>
+		<champ>
+			<tableau>legendes</tableau>
+			<expression>index</expression>
+			<variable>context</variable>
+		</champ>
+		<texte>' name='</texte>
+		<champ>
+			<tableau>legendes</tableau>
+			<expression>index</expression>
+			<variable>name</variable>
+		</champ>
+		<texte>'·description='</texte>
+		<champ>
+			<tableau>legendes</tableau>
+			<expression>index</expression>
+			<variable>description</variable>
+		</champ>
+		<texte>'·commentaire='</texte>
+		<champ>
+			<tableau>legendes</tableau>
+			<expression>index</expression>
+			<variable>commentaire</variable>
+		</champ>
+		<texte>'·typeLegende='</texte>
+		<champ>
+			<tableau>legendes</tableau>
+			<expression>index</expression>
+			<variable>type</variable>
+		</champ>
+		<texte>'·expression='</texte>
+		<champ>
+			<tableau>legendes</tableau>
+			<expression>index</expression>
+			<variable>expression</variable>
+		</champ>
+		<texte>'·free='</texte>
+		<champ>
+			<tableau>legendes</tableau>
+			<expression>index</expression>
+			<variable>free</variable>
+		</champ>
+		<texte>'/&gt;</texte>
+		<condition>
+			<expression>index &lt; max</expression>
+			<iftrue>continue</iftrue>
+			<iffalse>end</iffalse>
+		</condition>
+		<label>end</label>
+		<endprocess>legendes</endprocess>
+	</code>
+</root>

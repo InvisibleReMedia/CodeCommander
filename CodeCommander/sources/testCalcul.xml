@@ -1,0 +1,2 @@
+﻿<root><legendes /><infos><creationDate>25/08/2012 21:43:50</creationDate><modificationDate>26/08/2012 16:30:13</modificationDate><revision>9</revision></infos><code><affectation><variable>result</variable><expression>32/(8/2)</expression></affectation><texte>Le·résultat·vaut·(4)·:</texte><variable>result</variable><affectation><variable>result</variable><expression>Hello World !</expression></affectation><texte>
+Le·résultat·est·:</texte><variable>result</variable></code></root>

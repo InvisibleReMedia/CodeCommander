@@ -1,0 +1,63 @@
+Je souhaite pouvoir afficher une page Web dans un webBrowser pour la création du dictionnaire.
+La première page doit pouvoir proposer de:
+ - créer un nouveau dictionnaire
+ - charger un dictionnaire existant
+
+Si l'on crée un nouveau dictionnaire, le bouton nous mène à la premiere page de saisie des données du dictionnaire.
+Cette première page contient la liste des champs libres.
+Les champs libres sont ceux qui ne font aucune dépendance. Une dépendance signifie, par exemple, qu'un champ d'énumération peut enchaîner
+sur la création d'un ou plusieurs tableaux selon que l'on choisit XML ou BD dans le champ d'énumération.
+
+Si l'on charge un dictionnaire existant, on ouvre le dictionnaire et on peut le modifier.
+
+Sur chaque page du dictionnaire, on peut revenir à l'accueil, aller à la page précédente ou à la page suivante.
+
+Il faut une méthode de passage des pages qui soit souple et pratique et que l'on puisse stocker dans une structure
+la dernière page vue et les sous-pages lorsque l'on veut ajouter une nouvelle donnée dans un tableau qui soit
+en relation avec un autre.
+
+En effet, le dictionnaire est une base de données relationnelle.
+
+pour un tableau, on peut écrire : depends on type to XML and primary key is ID
+pour un champ, on pourra écrire : related to tableau with Name
+
+Sur un champ qui a une relation, il y a un lien Ajouter qui permet d'ajouter un nouvel élément dans le tableau référence.
+L'ensemble des données du tableau sont affichés et on a un lien pour ajouter un nouvel élément dans le tableau.
+
+La dernière page permet de sauvegarder le dictionnaire et d'éxécuter le code.
+
+Il faut donc des classes qui vont afficher les pages suivantes:
+ - la page Bienvenue
+ - la page des champs libres
+ - une page donnée dépendante
+ - une page tableau
+ - une page récapitulative et de sauvegarde
+ - une page d'éxécution
+
+
+Voici la liste des expressions possibles:
+
+ - observe (expression régulière|liste d'entiers|énumeration) : s'applique à un champ ou une chaîne
+ - primary key is <champ>
+ - in connection with <nom du tableau ou nom du tableau.champ ou de la chaîne> to <nom d'un champ du tableau>: s'applique sur un champ d'un tableau ou une chaîne
+ 
+L'instruction observe permet de vérifier les données saisies contre une expression régulière, une liste d'entiers ou une énumération.
+L'instruction primary key s'applique sur un tableau indiquant la clé primaire du tableau.
+L'instruction in connection with permet de sélectionner un élément du tableau et de le ranger dans la valeur du champ ou de la chaîne.
+
+Les instructions in connection with et observe depends on ne peuvent pas être combinées.
+Si on indique observe sur un champ ou une chaine alors il n'est pas en relation et l'inverse est également vrai.
+
+De plus, utiliser in connection with dans un champ ou une chaîne implique que le champ ou la chaîne sera de type Number.
+
+Pour l'instruction in connection with <tableau> to <field name>, il n'y a pas d'ambiguité : le tableau indiqué est celui à utiliser.
+
+Le problème est pour les instructions suivantes:
+ - in connection with <chaine> to <field name>
+ - in connection with <tableau.champ> to <field name>
+
+Selon le contenu de la chaine ou le champ alors le tableau indiqué est différent : donc, il faut à la volée modifier les données
+de choix dans la zone de saisie.
+
+Je propose un rangement des choix par JSON. Ainsi, lorsque l'on change une valeur dans une donnée, on relance la modification des connexions.
+Si la donnée modifiée doit modifier une référence dans 

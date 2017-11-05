@@ -1,0 +1,44 @@
+<root>
+  <legendes />
+  <infos>
+    <creationDate>07/12/2014 16:35:28</creationDate>
+    <modificationDate>07/12/2014 16:36:06</modificationDate>
+    <revision>2</revision>
+  </infos>
+  <code>
+    <texte>
+      ··#·**************************************************¶
+      ··#·*··copyright·@·2014¶
+      ··#·*··This·file·was·generated¶
+      ··#·*··by·CodeCommander¶
+      ··#·*¶
+      ··#·*··codecommander.codeplex.com¶
+      ··#·*¶
+      ··#·*¶
+      ··#·***************************************************/¶
+      ··¶
+      ··function·Get-DirectoryScript()·{¶
+      ··¬$invocation·=·(Get-Variable·MyInvocation·-Scope·1).Value¶
+      ··¬return·Split-Path·$invocation.MyCommand.Path¶
+      ··}¶
+      ··#·Load·the·file·functions¶
+      ··$functionsPath·=·Join-Path·(Get-DirectoryScript) "</texte>
+    <variable>FunctionsFileName</variable>
+    <texte>"¶
+··.·$functionsPath¶
+··¶
+··#·Invoke·the·script¶
+··Invoke-Command·$init·-NoNewScope¶
+
+··$defaultWriter·=·@("</texte>
+    <variable>DefaultFileName</variable>
+    <texte>
+      ",·0,·"",·$true)¶
+      ··EraseFile($defaultWriter[0])¶
+      ¶
+      ··#·Run·the·main·script¶··</texte>
+    <variable>MainFunction</variable>
+    <texte>¶
+¶</texte>
+  </code>
+</root>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+  <code>
+    <texte>&lt;div·width='100%'·height='100%'·class='popup'·id='popup</texte>
+    <variable>Depth</variable>
+    <texte>'&gt;</texte>
+    <texte>&lt;table·align='left'·valign='top'·cellspacing='0'·cellpadding='0'·border='0'·width='100%'·height='100%'·style='background-color:#D3ECFA;'&gt;</texte>
+    <texte>&lt;tr·valign='top'&gt;</texte>
+    <texte>&lt;td·width='40px'·bgcolor='black'·style='background:url("ZoneSelection.jpg")·repeat-y;filter:alpha(opacity=90)'&gt;&lt;div·width='40px'·height='100%'·style='background-color:gray2'·id='selectionArea</texte>
+    <variable>Depth</variable>
+    <texte>'&gt;&lt;/div&gt;&lt;/td&gt;</texte>
+    <texte>&lt;td&gt;&lt;div·style='display:inline;float:left'·id='windowContent</texte>
+    <variable>Depth</variable>
+    <texte>'&gt;&lt;/div&gt;&lt;/td&gt;</texte>
+    <texte>&lt;td·width='26px'·align='right'&gt;</texte>
+    <texte>&lt;img·id='closePopup</texte>
+    <variable>Depth</variable>
+    <texte>'·style='cursor:pointer'·onclick='javascript:ClosePopup()';·src='sup.jpg'·align='right'·width='11px'·height='11px'/&gt;&lt;img·style='cursor:pointer'·onclick='javascript:SaveTemplate("</texte>
+    <variable>TemplateName</variable>
+    <texte>")';·src='ok.jpg'·align='right'·width='11px'·height='11px'/&gt;</texte>
+    <texte>&lt;/td&gt;</texte>
+    <texte>&lt;/tr&gt;</texte>
+    <texte>&lt;/table&gt;</texte>
+    <texte>&lt;/div&gt;</texte>
+  </code>
+</root>

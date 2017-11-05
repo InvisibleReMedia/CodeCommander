@@ -1,0 +1,1299 @@
+﻿<root>
+	<legendes />
+	<infos>
+		<creationDate>19/08/2012 16:37:40</creationDate>
+		<modificationDate>21/09/2012 21:39:46</modificationDate>
+		<revision>64</revision>
+	</infos>
+	<code>
+		<template path="/CodeCommander" name="SearchInTab">
+			<legendes />
+			<params>
+				<param>name</param>
+				<param>tabName</param>
+				<param>rowId</param>
+				<param>start</param>
+				<param>result</param>
+			</params>
+			<code>
+				<beginprocess>$name_searchInTab</beginprocess>
+				<affectation>
+					<variable>searchIndex</variable>
+					<expression>$start</expression>
+				</affectation>
+				<affectation>
+					<variable>$result</variable>
+					<expression>0</expression>
+				</affectation>
+				<size>
+					<terme>sizeSearchTab</terme>
+					<tableau>$tabName</tableau>
+				</size>
+				<condition>
+					<expression>searchIndex &lt; sizeSearchTab</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>continue</label>
+				<affectation>
+					<variable>searchIndex</variable>
+					<expression>searchIndex + 1</expression>
+				</affectation>
+				<affectationchamp>
+					<variable>rowIdSearch</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>searchIndex</expression>
+						<variable>rowId</variable>
+					</champ>
+				</affectationchamp>
+				<condition>
+					<expression>rowIdSearch = $rowId</expression>
+					<iftrue>found</iftrue>
+					<iffalse>next</iffalse>
+				</condition>
+				<label>found</label>
+				<affectation>
+					<variable>$result</variable>
+					<expression>searchIndex</expression>
+				</affectation>
+				<condition>
+					<expression>true</expression>
+					<iftrue>end</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>next</label>
+				<condition>
+					<expression>searchIndex &lt; sizeSearchTab</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>end</label>
+				<endprocess>$name_searchInTab</endprocess>
+				<call>$name_searchInTab</call>
+			</code>
+		</template>
+		<template path="/CodeCommander" name="SearchInTab2">
+			<legendes />
+			<params>
+				<param>name</param>
+				<param>tabName</param>
+				<param>rowName</param>
+				<param>rowValue</param>
+				<param>start</param>
+				<param>result</param>
+			</params>
+			<code>
+				<beginprocess>$name_searchInTab2</beginprocess>
+				<affectation>
+					<variable>searchIndex</variable>
+					<expression>$start</expression>
+				</affectation>
+				<affectation>
+					<variable>$result</variable>
+					<expression>0</expression>
+				</affectation>
+				<size>
+					<terme>sizeSearchTab</terme>
+					<tableau>$tabName</tableau>
+				</size>
+				<condition>
+					<expression>searchIndex &lt; sizeSearchTab</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>continue</label>
+				<affectation>
+					<variable>searchIndex</variable>
+					<expression>searchIndex + 1</expression>
+				</affectation>
+				<affectationchamp>
+					<variable>rowIdSearch</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>searchIndex</expression>
+						<variable>$rowName</variable>
+					</champ>
+				</affectationchamp>
+				<condition>
+					<expression>rowIdSearch = $rowValue</expression>
+					<iftrue>found</iftrue>
+					<iffalse>next</iffalse>
+				</condition>
+				<label>found</label>
+				<affectation>
+					<variable>$result</variable>
+					<expression>searchIndex</expression>
+				</affectation>
+				<condition>
+					<expression>true</expression>
+					<iftrue>end</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>next</label>
+				<condition>
+					<expression>searchIndex &lt; sizeSearchTab</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>end</label>
+				<endprocess>$name_searchInTab2</endprocess>
+				<call>$name_searchInTab2</call>
+			</code>
+		</template>
+		<template path="/dict" name="racine">
+			<legendes />
+			<params>
+				<param>title</param>
+			</params>
+			<code>
+				<beginprocess>root</beginprocess>
+				<texte>
+					&lt;table·style='border:2px·solid·black;font-family:Arial'·cellpadding='2px'·cellspacing='0'·border='0'·width='100%'·height='100%'&gt;
+					·····&lt;tr·height='1px'&gt;
+					········&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					·····&lt;/tr&gt;
+					·····&lt;tr·height='40px'&gt;
+					········&lt;td·width='70%'·align='center'&gt;$title&lt;/td&gt;
+					·····&lt;/tr&gt;
+					·····&lt;tr·height='1px'&gt;
+					········&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					·····&lt;/tr&gt;
+					·····&lt;tr&gt;
+					········&lt;td·width='100%'·align='center'&gt;
+				</texte>
+				<handler name="body" />
+				<texte>
+					&lt;/td&gt;
+					·····&lt;/tr&gt;
+					&lt;/table&gt;
+				</texte>
+				<endprocess>root</endprocess>
+				<call>root</call>
+			</code>
+		</template>
+		<template path="/dict" name="assistant">
+			<legendes />
+			<params>
+				<param>title</param>
+			</params>
+			<code>
+				<beginprocess>root</beginprocess>
+				<texte>
+					&lt;script·language='javascript'·type='text/javascript'&gt;¶
+					·····function·fireAdd(name)·{¶
+					·········callback.action·=·'add';¶
+					·········var·obj·=·document.getElementById(name);¶
+					·········callback.name·=·name;¶
+					·········callback.reference·=·obj.ref;
+					·········callback.click();¶
+					·····}¶
+					·····function·fireEdit(name)·{¶
+					·········callback.action·=·'edit';¶
+					·········var·obj·=·document.getElementById(name);¶
+					·········callback.name·=·name;¶
+					·········callback.index·=·obj.value;¶
+					·········callback.reference·=·obj.ref;¶
+					·········callback.click();¶
+					·····}
+					&lt;/script&gt;
+				</texte>
+				<texte>
+					&lt;table·id='tableContent'·style='border:2px·solid·black;font-family:Arial'·cellpadding='2px'·cellspacing='0'·border='0'·width='100%'·height='100%'&gt;
+					····&lt;tr·height='1px'&gt;
+					·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='40px'·align='center'&gt;
+					·······&lt;td&gt;
+				</texte>
+				<variable>$title</variable>
+				<texte>
+					&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='1px'&gt;
+					·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='12px'&gt;
+					·······&lt;td·align='right'·width='100%'&gt;
+					··········&lt;span·id='nextTop'·name='nextTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Suivant&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='previousTop'·name='previousTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Précédent&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='accueilTop'·name='accueilTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+					·······&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr&gt;
+					······&lt;td·width='100%'·align='center'&gt;
+				</texte>
+				<handler name="body" />
+				<texte>
+					······&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='12px'&gt;
+					······&lt;td·align='right'·width='100%'&gt;
+					··········&lt;span·id='nextBottom'·name='nextBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Suivant&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='previousBottom'·name='previousBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Précédent&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='accueilBottom'·name='accueilBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+					······&lt;/td&gt;
+					····&lt;/tr&gt;
+					&lt;/table&gt;¶
+					&lt;div·id='callback'·style='display:none'/&gt;
+				</texte>
+				<endprocess>root</endprocess>
+				<call>root</call>
+			</code>
+		</template>
+		<template path="/dict" name="assistant2">
+			<legendes />
+			<params>
+				<param>title</param>
+				<param>description</param>
+				<param>commentaire</param>
+			</params>
+			<code>
+				<beginprocess>root</beginprocess>
+				<texte>
+					&lt;script·language='javascript'·type='text/javascript'&gt;¶
+					·····function·fireAdd(name)·{¶
+					·········callback.action·=·'add';¶
+					·········var·obj·=·document.getElementById(name);¶
+					·········callback.name·=·name;¶
+					·········callback.reference·=·obj.ref;
+					·········callback.click();¶
+					·····}¶
+					·····function·fireEdit(name)·{¶
+					·········callback.action·=·'edit';¶
+					·········var·obj·=·document.getElementById(name);¶
+					·········callback.name·=·name;¶
+					·········callback.index·=·obj.value;¶
+					·········callback.reference·=·obj.ref;¶
+					·········callback.click();¶
+					·····}
+					&lt;/script&gt;
+				</texte>
+				<texte>
+					&lt;table·id='tableContent'·style='border:2px·solid·black;font-family:Arial'·cellpadding='2px'·cellspacing='0'·border='0'·width='100%'·height='100%'&gt;
+					····&lt;tr·height='1px'&gt;
+					·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='40px'·align='center'&gt;
+					·······&lt;td&gt;
+				</texte>
+				<variable>$title</variable>
+				<texte>
+					&lt;/td&gt;
+					····&lt;/tr&gt;¶
+					····&lt;tr·style='font-size:smaller'·height='12px'·align='center'&gt;¶
+					·······&lt;td&gt;
+				</texte>
+				<variable>$description</variable>
+				<texte>
+					&lt;/td&gt;¶
+					····&lt;/tr&gt;¶
+					····&lt;tr·style='font-size:xx-small'·height='12px'·align='left'&gt;¶
+					·······&lt;td&gt;(
+				</texte>
+				<variable>$commentaire</variable>
+				<texte>
+					)&lt;/td&gt;¶
+					····&lt;/tr&gt;
+					····&lt;tr·height='1px'&gt;
+					·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='12px'&gt;
+					·······&lt;td·align='right'·width='100%'&gt;
+					··········&lt;span·id='nextTop'·name='nextTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Suivant&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='previousTop'·name='previousTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Précédent&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='accueilTop'·name='accueilTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+					·······&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr&gt;
+					······&lt;td·width='100%'·align='center'&gt;
+				</texte>
+				<handler name="body" />
+				<texte>
+					······&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='12px'&gt;
+					······&lt;td·align='right'·width='100%'&gt;
+					··········&lt;span·id='nextBottom'·name='nextBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Suivant&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='previousBottom'·name='previousBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Précédent&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='accueilBottom'·name='accueilBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+					······&lt;/td&gt;
+					····&lt;/tr&gt;
+					&lt;/table&gt;¶
+					&lt;div·id='callback'·style='display:none'/&gt;
+				</texte>
+				<endprocess>root</endprocess>
+				<call>root</call>
+			</code>
+		</template>
+		<template path="/dict" name="assistant3">
+			<legendes />
+			<params>
+				<param>title</param>
+				<param>description</param>
+				<param>commentaire</param>
+			</params>
+			<code>
+				<beginprocess>root</beginprocess>
+				<texte>
+					&lt;script·language='javascript'·type='text/javascript'&gt;¶
+					·····function·fireAdd(name)·{¶
+					·········callback.action·=·'add';¶
+					·········var·obj·=·document.getElementById(name);¶
+					·········callback.name·=·name;¶
+					·········callback.reference·=·obj.ref;
+					·········callback.click();¶
+					·····}¶
+					·····function·fireEdit(name)·{¶
+					·········callback.action·=·'edit';¶
+					·········var·obj·=·document.getElementById(name);¶
+					·········callback.name·=·name;¶
+					·········callback.index·=·obj.value;¶
+					·········callback.reference·=·obj.ref;¶
+					·········callback.click();¶
+					·····}¶
+					·····function·validate()·{¶
+					·········callback.action·=·'validate';¶
+					·········callback.click();¶
+					·····}
+					&lt;/script&gt;
+				</texte>
+				<texte>
+					&lt;table·id='tableContent'·style='border:2px·solid·black;font-family:Arial'·cellpadding='2px'·cellspacing='0'·border='0'·width='100%'·height='100%'&gt;
+					····&lt;tr·height='1px'&gt;
+					·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='40px'·align='center'&gt;
+					·······&lt;td&gt;
+				</texte>
+				<variable>$title</variable>
+				<texte>
+					&lt;/td&gt;
+					····&lt;/tr&gt;¶
+					····&lt;tr·style='font-size:smaller'·height='12px'·align='center'&gt;¶
+					·······&lt;td&gt;
+				</texte>
+				<variable>$description</variable>
+				<texte>
+					&lt;/td&gt;¶
+					····&lt;/tr&gt;¶
+					····&lt;tr·style='font-size:xx-small'·height='12px'·align='left'&gt;¶
+					·······&lt;td&gt;(
+				</texte>
+				<variable>$commentaire</variable>
+				<texte>
+					)&lt;/td&gt;¶
+					····&lt;/tr&gt;
+					····&lt;tr·height='1px'&gt;
+					·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='12px'&gt;
+					·······&lt;td·align='right'·width='100%'&gt;
+					··········&lt;span·id='returnTop'·name='returnTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Retour&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='accueilTop'·name='accueilTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+					·······&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr&gt;
+					······&lt;td·width='100%'·align='center'&gt;
+				</texte>
+				<handler name="body" />
+				<texte>
+					······&lt;/td&gt;
+					····&lt;/tr&gt;¶
+					····&lt;tr&gt;¶
+					······&lt;td·align='right'·width='100%'&gt;¶
+					··········&lt;input·type='button'·name='btnValidate'·id='btnValidate'·value='Valider'·onclick='javascript:validate();'/&gt;
+					······&lt;/td&gt;¶
+					····&lt;/tr&gt;
+					····&lt;tr·height='12px'&gt;
+					······&lt;td·align='right'·width='100%'&gt;
+					··········&lt;span·id='returnBottom'·name='returnBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Retour&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='accueilBottom'·name='accueilBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+					······&lt;/td&gt;
+					····&lt;/tr&gt;
+					&lt;/table&gt;¶
+					&lt;div·id='callback'·style='display:none'/&gt;
+				</texte>
+				<endprocess>root</endprocess>
+				<call>root</call>
+			</code>
+		</template>
+		<template path="/dict" name="freeText">
+			<legendes />
+			<params>
+				<param>nom</param>
+				<param>description</param>
+				<param>commentaire</param>
+				<param>type</param>
+				<param>valeur</param>
+				<param>observe</param>
+				<param>connections</param>
+				<param>arrRef</param>
+			</params>
+			<code>
+				<beginprocess>freeText</beginprocess>
+				<texte>
+					&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;b&gt;
+				</texte>
+				<variable>$description</variable>
+				<texte>
+					&lt;/b&gt;&lt;/td&gt;
+					·········&lt;td·width='50%'·rowspan='3'·style='padding-left:2px;border-left:1px·inset·black'&gt;
+					··············
+				</texte>
+				<usetemplate name="/dict/freeEntry">
+					<params>
+						<param name="nom">$nom</param>
+						<param name="type">$type</param>
+						<param name="valeur">$valeur</param>
+						<param name="observe">$observe</param>
+						<param name="connections">$connections</param>
+						<param name="arrRef">$arrRef</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<texte>
+					·········&lt;/td&gt;
+					······&lt;/tr&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small;text-decoration:underline'&gt;
+				</texte>
+				<variable>$type</variable>
+				<texte>
+					&lt;/span&gt;&lt;/td&gt;
+					······&lt;/tr&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small'&gt;
+				</texte>
+				<variable>$commentaire</variable>
+				<texte>
+					&lt;/span&gt;&lt;/td&gt;
+					······&lt;/tr&gt;
+					&lt;/table&gt;
+				</texte>
+				<endprocess>freeText</endprocess>
+				<call>freeText</call>
+			</code>
+		</template>
+		<template path="/dict" name="tabText">
+			<legendes />
+			<params>
+				<param>rowId</param>
+				<param>nom</param>
+				<param>description</param>
+				<param>commentaire</param>
+				<param>type</param>
+				<param>valeur</param>
+				<param>observe</param>
+			</params>
+			<code>
+				<beginprocess>tabText</beginprocess>
+				<texte>
+					&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;b&gt;
+				</texte>
+				<variable>$description</variable>
+				<texte>
+					&lt;/b&gt;&lt;/td&gt;
+					·········&lt;td·width='50%'·rowspan='3'·style='padding-left:2px;border-left:1px·inset·black'&gt;
+					··············
+				</texte>
+				<usetemplate name="/dict/valueEntry">
+					<params>
+						<param name="rowId">$rowId</param>
+						<param name="nom">$nom</param>
+						<param name="type">$type</param>
+						<param name="valeur">$valeur</param>
+						<param name="observe">$observe</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<texte>
+					¶
+					·········&lt;/td&gt;
+					······&lt;/tr&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small;text-decoration:underline'&gt;
+				</texte>
+				<variable>$type</variable>
+				<texte>
+					&lt;/span&gt;&lt;/td&gt;
+					······&lt;/tr&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small'&gt;
+				</texte>
+				<variable>$commentaire</variable>
+				<texte>
+					&lt;/span&gt;&lt;/td&gt;
+					······&lt;/tr&gt;
+					&lt;/table&gt;
+				</texte>
+				<endprocess>tabText</endprocess>
+				<call>tabText</call>
+			</code>
+		</template>
+		<template path="/dict" name="item">
+			<legendes />
+			<params>
+				<param>tabName</param>
+				<param>rowId</param>
+			</params>
+			<code>
+				<beginprocess>item</beginprocess>
+				<beginprocess>iterateFields</beginprocess>
+				<texte>&lt;table·id='rowId</texte>
+				<variable>$rowId</variable>
+				<texte>'·border='0'·cellpadding='0'·cellspacing='0'&gt;&lt;tr&gt;&lt;td&gt;</texte>
+				<affectation>
+					<variable>position</variable>
+					<expression>0</expression>
+				</affectation>
+				<usetemplate name="/CodeCommander/SearchInTab">
+					<params>
+						<param name="name">loop1</param>
+						<param name="tabName">$tabName</param>
+						<param name="rowId">$rowId</param>
+						<param name="start">0</param>
+						<param name="result">position</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<condition>
+					<expression>position &gt; 0</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>continue</label>
+				<affectationchamp>
+					<variable>nom</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>position</expression>
+						<variable>nom</variable>
+					</champ>
+				</affectationchamp>
+				<affectationchamp>
+					<variable>desc</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>position</expression>
+						<variable>description</variable>
+					</champ>
+				</affectationchamp>
+				<affectationchamp>
+					<variable>comment</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>position</expression>
+						<variable>commentaire</variable>
+					</champ>
+				</affectationchamp>
+				<affectationchamp>
+					<variable>type</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>position</expression>
+						<variable>type</variable>
+					</champ>
+				</affectationchamp>
+				<affectationchamp>
+					<variable>val</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>position</expression>
+						<variable>value</variable>
+					</champ>
+				</affectationchamp>
+				<affectationchamp>
+					<variable>o</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>position</expression>
+						<variable>observe</variable>
+					</champ>
+				</affectationchamp>
+				<usetemplate name="/dict/tabText">
+					<params>
+						<param name="rowId">$rowId</param>
+						<param name="nom">nom</param>
+						<param name="description">desc</param>
+						<param name="type">type</param>
+						<param name="commentaire">comment</param>
+						<param name="valeur">val</param>
+						<param name="observe">o</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<usetemplate name="/CodeCommander/SearchInTab">
+					<params>
+						<param name="name">loop2</param>
+						<param name="tabName">$tabName</param>
+						<param name="rowId">$rowId</param>
+						<param name="start">position</param>
+						<param name="result">position</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<condition>
+					<expression>position &gt; 0</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>end</label>
+				<texte>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte>
+				<endprocess>iterateFields</endprocess>
+				<texte>
+					&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·cols='2'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;
+					····&lt;tr&gt;
+					·······&lt;td&gt;&lt;b&gt;
+				</texte>
+				<variable>$rowId</variable>
+				<texte>
+					&lt;/b&gt;&lt;/td&gt;
+					·······&lt;td&gt;&lt;img·style='cursor:pointer'·state='up'·onclick='javascript:if·(this.state=="up")·{·this.state="down";this.src="tabDown.png";·var·obj=document.getElementById("rowId
+				</texte>
+				<variable>$rowId</variable>
+				<texte>");·obj.style.display="block";}·else·{·this.state="up";·this.src="tabUp.png";·var·obj=document.getElementById("rowId</texte>
+				<variable>$rowId</variable>
+				<texte>");·obj.style.display="none";};'·src='tabUp.png'·width='12px'·height='12px'/&gt;</texte>
+				<texte>
+					&lt;/td&gt;
+					·······&lt;td&gt;
+				</texte>
+				<call>iterateFields</call>
+				<texte>
+					&lt;/td&gt;
+					····&lt;/tr&gt;
+					&lt;/table&gt;
+				</texte>
+				<endprocess>item</endprocess>
+				<call>item</call>
+			</code>
+		</template>
+		<template path="/dict" name="emptyItem">
+			<legendes />
+			<params>
+				<param>tabName</param>
+			</params>
+			<code>
+				<beginprocess>emptyItem</beginprocess>
+				<texte>&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;&lt;tr&gt;&lt;td·width='50%'&gt;&lt;b&gt;</texte>
+				<champ>
+					<tableau>$tabName</tableau>
+					<expression>emptyItemsIndex</expression>
+					<variable>description</variable>
+				</champ>
+				<texte>&lt;/b&gt;&lt;/td&gt;&lt;td·width='50%'·rowspan='3'·style='padding-left:2px;border-left:1px·inset·black'&gt;</texte>
+				<affectationchamp>
+					<variable>t</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>emptyItemsIndex</expression>
+						<variable>type</variable>
+					</champ>
+				</affectationchamp>
+				<affectationchamp>
+					<variable>n</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>emptyItemsIndex</expression>
+						<variable>nom</variable>
+					</champ>
+				</affectationchamp>
+				<affectationchamp>
+					<variable>o</variable>
+					<champ>
+						<tableau>$tabName</tableau>
+						<expression>emptyItemsIndex</expression>
+						<variable>observe</variable>
+					</champ>
+				</affectationchamp>
+				<usetemplate name="/dict/emptyEntry">
+					<params>
+						<param name="type">t</param>
+						<param name="nom">n</param>
+						<param name="observe">o</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<texte>&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small;text-decoration:underline'&gt;</texte>
+				<champ>
+					<tableau>$tabName</tableau>
+					<expression>emptyItemsIndex</expression>
+					<variable>type</variable>
+				</champ>
+				<texte>&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small'&gt;</texte>
+				<champ>
+					<tableau>$tabName</tableau>
+					<expression>emptyItemsIndex</expression>
+					<variable>commentaire</variable>
+				</champ>
+				<texte>&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte>
+				<endprocess>emptyItem</endprocess>
+				<beginprocess>emptyItems</beginprocess>
+				<texte>&lt;table·id='rowId"·+·rowId·+·"'·border='0'·cellpadding='0'·cellspacing='0'&gt;&lt;tr&gt;&lt;td&gt;</texte>
+				<affectation>
+					<variable>emptyItemsIndex</variable>
+					<expression>0</expression>
+				</affectation>
+				<size>
+					<terme>sizeItems</terme>
+					<tableau>$tabName</tableau>
+				</size>
+				<condition>
+					<expression>emptyItemsIndex &lt; sizeItems</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>continue</label>
+				<affectation>
+					<variable>emptyItemsIndex</variable>
+					<expression>emptyItemsIndex + 1</expression>
+				</affectation>
+				<call>emptyItem</call>
+				<condition>
+					<expression>emptyItemsIndex &lt; sizeItems</expression>
+					<iftrue>continue</iftrue>
+					<iffalse>end</iffalse>
+				</condition>
+				<label>end</label>
+				<texte>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte>
+				<endprocess>emptyItems</endprocess>
+				<call>emptyItems</call>
+			</code>
+		</template>
+		<template path="/dict" name="itemInitialize">
+			<legendes />
+			<params />
+			<code>
+				<beginprocess>itemInitialize</beginprocess>
+				<texte>
+					&lt;script·language='JavaScript'·type='text/javascript'&gt;
+					function·onChangeFieldContent(rowId,·fieldId)
+					{
+					callback.action·=·"onchange";
+					callback.rowId·=·rowId;
+					callback.fieldId·=·fieldId;
+					var·obj·=·document.getElementById(fieldId);
+					callback.value·=·obj.value;
+					callback.click();
+					}
+					function·addRow()·{
+					····var·obj·=·document.getElementById("myTable");
+					····var·row·=·obj.insertRow(obj.rows.length);
+					····var·cell·=·row.insertCell(0);
+					var·rowId·=·obj.rows.length;
+					····var·data·=·"&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·cols='2'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;"·+·rowId·+·"&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;img·style='cursor:pointer'·state='up'·onclick=\"javascript:if·(this.state=='up')·{·this.state='down';this.src='tabDown.png';·var·obj=document.getElementById('rowId"·+·rowId·+·"');·obj.style.display='block';·}·else·{·this.state='up';this.src='tabUp.png';·var·obj=document.getElementById('rowId"·+·rowId·+·"');·obj.style.display='none';·};\"·src='tabUp.png'·width='12px'·height='12px'/&gt;&lt;/td&gt;&lt;td&gt;
+				</texte>
+				<usetemplate name="/dict/emptyItem">
+					<params>
+						<param name="tabName">keyTab</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<texte>
+					&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+					····cell.innerHTML·=·data;
+					····callback.action·=·'addRow';
+					callback.rowId·=·rowId;
+					····callback.click();
+					}
+					&lt;/script&gt;
+				</texte>
+				<endprocess>itemInitialize</endprocess>
+				<call>itemInitialize</call>
+			</code>
+		</template>
+		<template path="/dict" name="emptyEntry">
+			<legendes />
+			<params>
+				<param>nom</param>
+				<param>type</param>
+				<param>observe</param>
+			</params>
+			<code>
+				<beginprocess>emptyEntry</beginprocess>
+				<condition>
+					<expression>$type?String</expression>
+					<iftrue>string</iftrue>
+					<iffalse>nonString</iffalse>
+				</condition>
+				<label>string</label>
+				<texte>&lt;input·type='text'·name='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'·id='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'·onfocusout=\"javascript:onChangeFieldContent("·+·rowId·+·",·'rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>');\"·value=''·width='100%'·size='30'/&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonString</label>
+				<condition>
+					<expression>$type?Number</expression>
+					<iftrue>number</iftrue>
+					<iffalse>nonNumber</iffalse>
+				</condition>
+				<label>number</label>
+				<texte>&lt;input·type='text'·name='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'·id='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'·onfocusout=\"javascript:onChangeFieldContent("·+·rowId·+·",·'rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>');\"·value=''·width='100%'·size='30'/&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonNumber</label>
+				<condition>
+					<expression>$type?Enumeration</expression>
+					<iftrue>enum</iftrue>
+					<iffalse>nonEnum</iffalse>
+				</condition>
+				<label>enum</label>
+				<texte>&lt;select·name='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'·onfocusout=\"javascript:onChangeFieldContent("·+·rowId·+·",·'rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>');\"·value=''·id='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'&gt;&lt;option·value=''&gt;&lt;/option&gt;</texte>
+				<usetemplate name="/CodeCommander/LoopUntil">
+					<params>
+						<param name="name">Until</param>
+						<param name="counter">splitIndex</param>
+						<param name="init">1</param>
+						<param name="limit">item?EmptyChar</param>
+					</params>
+					<codings>
+						<coding name="body" indent="1">
+							<code>
+								<usetemplate name="/String/split" indent="2">
+									<params>
+										<param name="name">Split</param>
+										<param name="value">$observe</param>
+										<param name="search">CommaChar</param>
+										<param name="index">splitIndex</param>
+										<param name="out">item</param>
+									</params>
+									<codings />
+								</usetemplate>
+								<usetemplate name="/CodeCommander/Condition" indent="2">
+									<params>
+										<param name="name">Cond</param>
+										<param name="condition">item?EmptyChar</param>
+									</params>
+									<codings>
+										<coding name="false" indent="3">
+											<code>
+												<texte indent="4">&lt;option·value='</texte>
+												<variable indent="4">item</variable>
+												<texte indent="4">'&gt;</texte>
+												<variable indent="4">item</variable>
+												<texte indent="4">&lt;/option&gt;</texte>
+											</code>
+										</coding>
+									</codings>
+								</usetemplate>
+							</code>
+						</coding>
+					</codings>
+				</usetemplate>
+				<texte>&lt;/select&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonEnum</label>
+				<condition>
+					<expression>$type?Date</expression>
+					<iftrue>date</iftrue>
+					<iffalse>string</iffalse>
+				</condition>
+				<label>date</label>
+				<texte>&lt;input·type='text'·name='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'·id='rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>'·onfocusout=\"javascript:onChangeFieldContent("·+·rowId·+·",·'rowId"·+·rowId·+·"_</texte>
+				<variable>$nom</variable>
+				<texte>');\"·value=''·width='100%'·size='30'/&gt;</texte>
+				<label>next</label>
+				<endprocess>emptyEntry</endprocess>
+				<call>emptyEntry</call>
+			</code>
+		</template>
+		<template path="/dict" name="freeEntry">
+			<legendes />
+			<params>
+				<param>nom</param>
+				<param>type</param>
+				<param>valeur</param>
+				<param>observe</param>
+				<param>connections</param>
+				<param>arrRef</param>
+			</params>
+			<code>
+				<beginprocess>freeEntry</beginprocess>
+				<condition>
+					<expression>$type?String</expression>
+					<iftrue>string</iftrue>
+					<iffalse>nonString</iffalse>
+				</condition>
+				<label>string</label>
+				<texte>&lt;input·type='text'·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>'·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'·width='100%'·size='30'/&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonString</label>
+				<condition>
+					<expression>$type?Number</expression>
+					<iftrue>number</iftrue>
+					<iffalse>nonNumber</iffalse>
+				</condition>
+				<label>number</label>
+				<affectation>
+					<variable>found</variable>
+					<expression>0</expression>
+				</affectation>
+				<usetemplate name="/CodeCommander/SearchInTab2">
+					<params>
+						<param name="name">S1</param>
+						<param name="tabName">$connections</param>
+						<param name="rowName">name</param>
+						<param name="rowValue">$nom</param>
+						<param name="start">0</param>
+						<param name="result">found</param>
+					</params>
+					<codings />
+				</usetemplate>
+				<condition>
+					<expression>found&gt;0</expression>
+					<iftrue>ref</iftrue>
+					<iffalse>number2</iffalse>
+				</condition>
+				<label>ref</label>
+				<texte>&lt;select·id='</texte>
+				<variable>$nom</variable>
+				<texte>'·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·width='100%'·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'·ref='</texte>
+				<variable>$arrRef</variable>
+				<texte>'&gt;</texte>
+				<usetemplate name="/CodeCommander/LoopWithWhile">
+					<params>
+						<param name="name">LW1</param>
+						<param name="counter">indexRef</param>
+						<param name="init">0</param>
+						<param name="limit">stop</param>
+					</params>
+					<codings>
+						<coding name="increment" indent="1">
+							<code>
+								<affectation indent="2">
+									<variable>indexRef</variable>
+									<expression>indexRef + 1</expression>
+								</affectation>
+							</code>
+						</coding>
+						<coding name="limit" indent="1">
+							<code>
+								<affectation indent="2">
+									<variable>stop</variable>
+									<expression>found&gt;0</expression>
+								</affectation>
+							</code>
+						</coding>
+						<coding name="body" indent="1">
+							<code>
+								<texte indent="2">&lt;option·value='</texte>
+								<variable indent="2">indexRef</variable>
+								<texte indent="2">'&gt;</texte>
+								<champ indent="2">
+									<tableau>$connections</tableau>
+									<expression>found</expression>
+									<variable>value</variable>
+								</champ>
+								<texte indent="2">&lt;/option&gt;</texte>
+								<usetemplate name="/CodeCommander/SearchInTab2" indent="2">
+									<params>
+										<param name="name">S2</param>
+										<param name="tabName">$connections</param>
+										<param name="rowName">name</param>
+										<param name="rowValue">$nom</param>
+										<param name="start">found</param>
+										<param name="result">found</param>
+									</params>
+									<codings />
+								</usetemplate>
+							</code>
+						</coding>
+					</codings>
+				</usetemplate>
+				<texte>&lt;/select&gt;&lt;img·src='lsc_edit.png'·height='12px'·width='12px'·onclick="javascript:fireEdit('</texte>
+				<variable>$nom</variable>
+				<texte>');"/&gt;&lt;img·src='Button-Add-icon.png'·height='12px'·widht='12px'·onclick="javascript:fireAdd('</texte>
+				<variable>$nom</variable>
+				<texte>');"/&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>number2</label>
+				<texte>&lt;input·type='text'·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>'·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'·width='100%'·size='30'/&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonNumber</label>
+				<condition>
+					<expression>$type?Enumeration</expression>
+					<iftrue>enum</iftrue>
+					<iffalse>nonEnum</iffalse>
+				</condition>
+				<label>enum</label>
+				<texte>&lt;select·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>'&gt;&lt;option·value=''&gt;&lt;/option&gt;¶</texte>
+				<usetemplate name="/CodeCommander/LoopUntil">
+					<params>
+						<param name="name">Until</param>
+						<param name="counter">splitIndex</param>
+						<param name="init">1</param>
+						<param name="limit">item?EmptyChar</param>
+					</params>
+					<codings>
+						<coding name="body" indent="1">
+							<code>
+								<usetemplate name="/String/split" indent="2">
+									<params>
+										<param name="name">Split</param>
+										<param name="value">$observe</param>
+										<param name="search">CommaChar</param>
+										<param name="index">splitIndex</param>
+										<param name="out">item</param>
+									</params>
+									<codings />
+								</usetemplate>
+								<usetemplate name="/CodeCommander/Condition" indent="2">
+									<params>
+										<param name="name">Cond</param>
+										<param name="condition">item?EmptyChar</param>
+									</params>
+									<codings>
+										<coding name="false" indent="3">
+											<code>
+												<texte indent="4">&lt;option·value='</texte>
+												<variable indent="4">item</variable>
+												<texte indent="4">'&gt;</texte>
+												<variable indent="4">item</variable>
+												<texte indent="4">&lt;/option&gt;</texte>
+											</code>
+										</coding>
+									</codings>
+								</usetemplate>
+							</code>
+						</coding>
+					</codings>
+				</usetemplate>
+				<texte>&lt;/select&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonEnum</label>
+				<condition>
+					<expression>$type?Date</expression>
+					<iftrue>date</iftrue>
+					<iffalse>string</iffalse>
+				</condition>
+				<label>date</label>
+				<texte>&lt;input·type='text'·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>'·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'·width='100%'·size='30'/&gt;</texte>
+				<label>next</label>
+				<endprocess>freeEntry</endprocess>
+				<call>freeEntry</call>
+			</code>
+		</template>
+		<template path="/dict" name="valueEntry">
+			<legendes />
+			<params>
+				<param>nom</param>
+				<param>type</param>
+				<param>rowId</param>
+				<param>valeur</param>
+				<param>observe</param>
+			</params>
+			<code>
+				<beginprocess>valueEntry</beginprocess>
+				<condition>
+					<expression>$type?String</expression>
+					<iftrue>string</iftrue>
+					<iffalse>nonString</iffalse>
+				</condition>
+				<label>string</label>
+				<texte>&lt;input·type='text'·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>'·onfocusout="javascript:onChangeFieldContent(</texte>
+				<variable>$rowId</variable>
+				<texte>,·'</texte>
+				<variable>$nom</variable>
+				<texte>');"·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'·width='100%'·size='30'/&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonString</label>
+				<condition>
+					<expression>$type?Number</expression>
+					<iftrue>number</iftrue>
+					<iffalse>nonNumber</iffalse>
+				</condition>
+				<label>number</label>
+				<texte>&lt;input·type='text'·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>'·onfocusout="javascript:onChangeFieldContent(</texte>
+				<variable>$rowId</variable>
+				<texte>,·'</texte>
+				<variable>$nom</variable>
+				<texte>');"·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'·width='100%'·size='30'/&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonNumber</label>
+				<condition>
+					<expression>$type?Enumeration</expression>
+					<iftrue>enum</iftrue>
+					<iffalse>nonEnum</iffalse>
+				</condition>
+				<label>enum</label>
+				<texte>&lt;select·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>' onfocusout="javascript:onChangeFieldContent(</texte>
+				<variable>$rowId</variable>
+				<texte>,·'</texte>
+				<variable>$nom</variable>
+				<texte>');"·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'&gt;&lt;option·value=''&gt;&lt;/option&gt;</texte>
+				<usetemplate name="/CodeCommander/LoopUntil">
+					<params>
+						<param name="name">Until</param>
+						<param name="counter">splitIndex</param>
+						<param name="init">1</param>
+						<param name="limit">item?EmptyChar</param>
+					</params>
+					<codings>
+						<coding name="body" indent="1">
+							<code>
+								<usetemplate name="/String/split" indent="2">
+									<params>
+										<param name="name">Split</param>
+										<param name="value">$observe</param>
+										<param name="search">CommaChar</param>
+										<param name="index">splitIndex</param>
+										<param name="out">item</param>
+									</params>
+									<codings />
+								</usetemplate>
+								<usetemplate name="/CodeCommander/Condition" indent="2">
+									<params>
+										<param name="name">Cond</param>
+										<param name="condition">item?EmptyChar</param>
+									</params>
+									<codings>
+										<coding name="false" indent="3">
+											<code>
+												<texte indent="4">&lt;option·value='</texte>
+												<variable indent="4">item</variable>
+												<texte indent="4">'&gt;</texte>
+												<variable indent="4">item</variable>
+												<texte indent="4">&lt;/option&gt;</texte>
+											</code>
+										</coding>
+									</codings>
+								</usetemplate>
+							</code>
+						</coding>
+					</codings>
+				</usetemplate>
+				<texte>&lt;/select&gt;</texte>
+				<condition>
+					<expression>true</expression>
+					<iftrue>next</iftrue>
+					<iffalse>fake</iffalse>
+				</condition>
+				<label>nonEnum</label>
+				<condition>
+					<expression>$type?Date</expression>
+					<iftrue>date</iftrue>
+					<iffalse>string</iffalse>
+				</condition>
+				<label>date</label>
+				<texte>&lt;input·type='text'·name='</texte>
+				<variable>$nom</variable>
+				<texte>'·id='</texte>
+				<variable>$nom</variable>
+				<texte>'·onfocusout="javascript:onChangeFieldContent(</texte>
+				<variable>$rowId</variable>
+				<texte>,·'</texte>
+				<variable>$nom</variable>
+				<texte>');"·value='</texte>
+				<variable>$valeur</variable>
+				<texte>'·width='100%'·size='30'/&gt;</texte>
+				<label>next</label>
+				<endprocess>valueEntry</endprocess>
+				<call>valueEntry</call>
+			</code>
+		</template>
+	</code>
+</root>

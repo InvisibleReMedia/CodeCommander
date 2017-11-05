@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<root><legendes /><infos><creationDate>21/11/2014 14:17:40</creationDate><modificationDate>21/11/2014 14:21:05</modificationDate><revision>2</revision></infos><code><texte>//¶
+//·This·file·was·generated·by·CodeCommander¶
+//¶
+//¶
+//·codecommander.codeplex.com¶
+//¶
+//¶
+//·main.cpp·:·main·project·file.¶
+¶
+#include·"stdafx.h"¶
+¶
+¶
+wchar_t·x_SpaceChar·=·L'·';¶
+wchar_t·x_PlusChar·=·L'+';¶
+wchar_t·x_MinusChar·=·L'-';¶
+wchar_t·x_StarChar·=·L'*';¶
+wchar_t·x_SlashChar·=·L'/';¶
+wchar_t·x_ColonChar·=·L':';¶
+wchar_t·x_CommaChar·=·L',';¶
+wchar_t·x_DotChar·=·L'.';¶
+wchar_t·x_ExChar·=·L'!';¶
+wchar_t·x_IntChar·=·L'?';¶
+wchar_t·x_EmptyChar·=·L'';¶
+wchar_t·x_InfChar·=·L'&lt;';¶
+wchar_t·x_SupChar·=·L'&gt;';¶
+  wchar_t·x_OpenParChar·=·L'(';¶
+  wchar_t·x_CloseParChar·=·L')';¶
+  wchar_t·x_OpenBraChar·=·L'{';¶
+  wchar_t·x_CloseBraChar·=·L'}';¶
+  wchar_t·x_OpenSquaBraChar·=·L'[';¶
+  wchar_t·x_CloseSquaBraChar·=·L']';¶
+  wstring·x_CrLf·=·wstring(L"01");¶
+  bool·x_trueValue·=·true;¶
+  bool·x_falseValue·=·false;¶
+  ¶
+  wstring·toString(const·int·i)·{¶
+  ¬wstringstream·stream;¶
+  ¬stream·&lt;&lt;·i;¶
+¬return·stream.str();¶
+}¶
+¶
+wstring·toString(const·bool·b)·{¶
+¬wstringstream·stream;¶
+¬stream·&lt;&lt;·b;¶
+¬return·stream.str();¶
+}¶
+¶
+int·wstring2i(const·wstring&amp;·w)·{¶
+¬tr1::wregex·r(L"^(\\d+)$");¶
+¬tr1::wsmatch·wmatch;¶
+¬if·(tr1::regex_search(w,·wmatch,·r))·{¶
+¬¬int·x·=·_wtoi(wmatch[0].str().c_str());¶
+¬¬return·x;¶
+¬}¶
+¬else¶
+¬¬return·0;¶
+}¶
+¶
+bool·wstring2b(const·wstring&amp;·w)·{¶
+¬tr1::wregex·r(L"^(\\d+)$");¶
+¬tr1::wsmatch·wmatch;¶
+¬if·(tr1::regex_search(w,·wmatch,·r))·{¶
+¬¬int·x·=·_wtoi(wmatch[0].str().c_str());¶
+¬¬if·(x·==·0)¶
+¬¬¬return·false;¶
+¬¬else¶
+¬¬¬return·true;¶
+¬}¶
+¬else¶
+¬¬return·0;¶
+}¶
+¶
+wchar_t·wstring2ch(const·wstring&amp;·w)·{¶
+¬return·wstring2ch(w.c_str());¶
+}¶
+¶
+int·wstring2i(const·wchar_t·*str)·{¶
+¬wstring·w(str);¶
+¬return·wstring2i(w);¶
+}¶
+¶
+bool·wstring2b(const·wchar_t·*str)·{¶
+¬wstring·w(str);¶
+¬return·wstring2b(w);¶
+}¶
+¶
+wchar_t·wstring2ch(const·wchar_t·*str)·{¶
+¬return·str[0];¶
+}¶
+¶
+wostream&amp;·operator&lt;&lt;(wostream&amp;·o,·SimpleType&amp;·st)·{¶
+¶
+¬return·st.print(o);¶
+}¶
+¶
+int·main(array&lt;System::String·^&gt;·^args)¶
+  {¶
+  ¬x_CrLf[0] = (wchar_t)10;
+  ¬x_CrLf[1] = (wchar_t)13;¶
+  ¬Compiled·comp(wstring(L"</texte><variable>DictFileName</variable><texte>.xml"));¶
+¬return·comp.main(args);¶
+}¶</texte></code></root>

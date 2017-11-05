@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NotifyProgress</name>
+    </assembly>
+    <members>
+        <member name="T:o2Mate.INotifyProgress">
+            <summary>
+            Interface declaration to display a progress bar
+            and steps through the progression
+            </summary>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.SetCount(System.Int32)">
+            <summary>
+            Sets the total number of work
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.SetProgress(System.Int32)">
+            <summary>
+            Sets the current number as done work
+            </summary>
+            <param name="position">the current number</param>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.Step(System.Int32)">
+            <summary>
+            Advances the counter to inc
+            </summary>
+            <param name="inc">value to advance</param>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.SetMarquee">
+            <summary>
+            Progress bar format
+            </summary>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.SetText(System.String)">
+            <summary>
+            Sets the text description to display
+            </summary>
+            <param name="t">text to display</param>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.Start(System.Boolean)">
+            <summary>
+            Starts the progress bar (if cancelable, adds a cancel button)
+            </summary>
+            <param name="cancelable">can be canceled by user</param>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.Terminate(System.Boolean)">
+            <summary>
+            Notifies the terminated work
+            </summary>
+            <param name="noError">with error or not</param>
+        </member>
+        <member name="M:o2Mate.INotifyProgress.GiveException(System.Exception)">
+            <summary>
+            Displays a dialog box with the exception
+            </summary>
+            <param name="ex">exception object</param>
+        </member>
+        <member name="P:o2Mate.INotifyProgress.IsCanceled">
+            <summary>
+            Says if the user has canceled the process
+            </summary>
+        </member>
+        <member name="P:o2Mate.INotifyProgress.IsFinished">
+            <summary>
+            Gets the ending condition or sets to true
+            </summary>
+        </member>
+    </members>
+</doc>

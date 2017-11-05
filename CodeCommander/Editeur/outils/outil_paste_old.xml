@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+	<code>
+		<texte>&lt;div type='paste' name='paste' indent="</texte>
+		<variable>Indent</variable>
+		<texte>" style='margin-left:</texte>
+		<affectationchaine>
+			<variable>indentValue</variable>
+			<chaine>Indent</chaine>
+		</affectationchaine>
+		<affectation>
+			<variable>indentSize</variable>
+			<expression>30 + indentValue * 21</expression>
+		</affectation>
+		<variable>indentSize</variable>
+		<texte>px' id='divpaste</texte>
+		<variable>Number</variable>
+		<texte>'&gt;&lt;span id='paste</texte>
+		<variable>Number</variable>
+		<texte>' onclick='javascript:pasteCodeCommander("divpaste</texte>
+		<variable>Number</variable>
+		<texte>");' onmouseover='javascript:this.className="pasteOver";' onmouseout='javascript:this.className="paste";' style='cursor:pointer' class='paste'&gt;Coller&lt;/span&gt;&lt;/div&gt;</texte>
+	</code>
+</root>

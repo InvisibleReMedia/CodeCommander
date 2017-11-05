@@ -1,0 +1,1 @@
+"C:\Program Files\Microsoft Visual Studio 8\SDK\v2.0\Bin\signtool.exe" sign /f "C:\Documents and Settings\Olivier\Bureau\Olivier_2014.pfx" /p "password" "C:\Documents and Settings\Olivier\Mes documents\Visual Studio 2005\Projects\Projects\Perforce\CodeCommander\Projects\codecommander\CodeCommander\bin\Release\Editeur\outils.vbs" 

@@ -1,0 +1,228 @@
+﻿<root><legendes /><infos><creationDate>19/08/2012 16:37:40</creationDate><modificationDate>24/08/2012 12:37:27</modificationDate><revision>29</revision></infos><code><template path="/CodeCommander" name="SearchInTab"><legendes/><params><param>name</param><param>tabName</param><param>rowId</param><param>start</param><param>result</param></params><code><beginprocess>$name_searchInTab</beginprocess><affectation><variable>searchIndex</variable><expression>$start</expression></affectation><affectation><variable>$result</variable><expression>0</expression></affectation><size><terme>sizeSearchTab</terme><tableau>$tabName</tableau></size><condition><expression>searchIndex &lt; sizeSearchTab</expression><iftrue>continue</iftrue><iffalse>end</iffalse></condition><label>continue</label><affectation><variable>searchIndex</variable><expression>searchIndex + 1</expression></affectation><affectationchamp><variable>rowIdSearch</variable><champ><tableau>$tabName</tableau><expression>searchIndex</expression><variable>rowId</variable></champ></affectationchamp><condition><expression>rowIdSearch = $rowId</expression><iftrue>found</iftrue><iffalse>next</iffalse></condition><label>found</label><affectation><variable>$result</variable><expression>searchIndex</expression></affectation><condition><expression>true</expression><iftrue>end</iftrue><iffalse>fake</iffalse></condition><label>next</label><condition><expression>searchIndex &lt; sizeSearchTab</expression><iftrue>continue</iftrue><iffalse>end</iffalse></condition><label>end</label><endprocess>$name_searchInTab</endprocess><call>$name_searchInTab</call></code></template><template path="/dict" name="racine"><legendes /><params><param>title</param></params><code><beginprocess>root</beginprocess><texte>
+					&lt;table·style='border:2px·solid·black;font-family:Arial'·cellpadding='2px'·cellspacing='0'·border='0'·width='100%'·height='100%'&gt;
+					·····&lt;tr·height='1px'&gt;
+					········&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					·····&lt;/tr&gt;
+					·····&lt;tr·height='40px'&gt;
+					········&lt;td·width='70%'·align='center'&gt;$title&lt;/td&gt;
+					·····&lt;/tr&gt;
+					·····&lt;tr·height='1px'&gt;
+					········&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					·····&lt;/tr&gt;
+					·····&lt;tr&gt;
+					········&lt;td·width='100%'·align='center'&gt;
+				</texte><handler name="body" /><texte>
+					&lt;/td&gt;
+					·····&lt;/tr&gt;
+					&lt;/table&gt;
+				</texte><endprocess>root</endprocess><call>root</call></code></template><template path="/dict" name="assistant"><legendes /><params><param>title</param></params><code><beginprocess>root</beginprocess><texte>
+					&lt;table·id='tableContent'·style='border:2px·solid·black;font-family:Arial'·cellpadding='2px'·cellspacing='0'·border='0'·width='100%'·height='100%'&gt;
+					····&lt;tr·height='1px'&gt;
+					·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='40px'·align='center'&gt;
+					·······&lt;td&gt;</texte><variable>$title</variable><texte>&lt;/td&gt;
+						····&lt;/tr&gt;
+						····&lt;tr·height='1px'&gt;
+						·······&lt;td·width='70%'·align='center'&gt;&lt;hr·width='100%'/&gt;&lt;/td&gt;
+						····&lt;/tr&gt;
+						····&lt;tr·height='12px'&gt;
+						·······&lt;td·align='right'·width='100%'&gt;
+						··········&lt;span·id='nextTop'·name='nextTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Suivant&lt;/span&gt;&amp;#160;
+						··········&lt;span·id='previousTop'·name='previousTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Précédent&lt;/span&gt;&amp;#160;
+						··········&lt;span·id='accueilTop'·name='accueilTop'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+						·······&lt;/td&gt;
+						····&lt;/tr&gt;
+						····&lt;tr&gt;
+						······&lt;td·width='100%'·align='center'&gt;
+					</texte><handler name="body" /><texte>
+					······&lt;/td&gt;
+					····&lt;/tr&gt;
+					····&lt;tr·height='12px'&gt;
+					······&lt;td·align='right'·width='100%'&gt;
+					··········&lt;span·id='nextBottom'·name='nextBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Suivant&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='previousBottom'·name='previousBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Précédent&lt;/span&gt;&amp;#160;
+					··········&lt;span·id='accueilBottom'·name='accueilBottom'·style='font-size:smaller;text-decoration:underline;color:red;cursor:pointer'&gt;Accueil&lt;/span&gt;
+					······&lt;/td&gt;
+					····&lt;/tr&gt;
+					&lt;/table&gt;
+				</texte><endprocess>root</endprocess><call>root</call></code></template><template path="/dict" name="freeText"><legendes/><params><param>nom</param><param>description</param><param>commentaire</param><param>valeur</param></params><code><beginprocess>freeText</beginprocess><texte>
+					&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;b&gt;
+				</texte><variable>$description</variable><texte>
+					&lt;/b&gt;&lt;/td&gt;
+					·········&lt;td·width='50%'·rowspan='3'·style='padding-left:2px;border-left:1px·inset·black'&gt;
+					··············&lt;input·type='text'·name='</texte><variable>$nom</variable><texte>'·id='</texte><variable>$nom</variable><texte>'·value='</texte><variable>$valeur</variable><texte>'·width='100%'·size='30'/&gt;
+					·········&lt;/td&gt;
+					······&lt;/tr&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small;text-decoration:underline'&gt;c'est·un·entier&lt;/span&gt;&lt;/td&gt;
+					······&lt;/tr&gt;
+					······&lt;tr&gt;
+					·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small'&gt;
+				</texte><variable>$commentaire</variable><texte>
+					&lt;/span&gt;&lt;/td&gt;
+					······&lt;/tr&gt;
+					&lt;/table&gt;
+				</texte><endprocess>freeText</endprocess><call>freeText</call></code></template>
+	<template path="/dict" name="tabText">
+		<legendes/>
+		<params>
+			<param>rowId</param>
+			<param>nom</param>
+			<param>description</param>
+			<param>commentaire</param>
+			<param>valeur</param>
+		</params>
+		<code>
+			<beginprocess>tabText</beginprocess>
+			<texte>
+				&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;
+				······&lt;tr&gt;
+				·········&lt;td·width='50%'&gt;&lt;b&gt;
+			</texte>
+			<variable>$description</variable>
+			<texte>
+				&lt;/b&gt;&lt;/td&gt;
+				·········&lt;td·width='50%'·rowspan='3'·style='padding-left:2px;border-left:1px·inset·black'&gt;
+				··············&lt;input·type='text'·name='</texte>
+			<variable>$nom</variable>
+			<texte>'·id='</texte>
+			<variable>$nom</variable>
+			<texte>'·onfocusout="javascript:onChangeFieldContent(</texte><variable>$rowId</variable>
+			<texte>,'</texte>
+			<variable>$nom</variable>
+			<texte>');" value='</texte>
+			<variable>$valeur</variable>
+			<texte>'·width='100%'·size='30'/&gt;
+				·········&lt;/td&gt;
+				······&lt;/tr&gt;
+				······&lt;tr&gt;
+				·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small;text-decoration:underline'&gt;c'est·un·entier&lt;/span&gt;&lt;/td&gt;
+				······&lt;/tr&gt;
+				······&lt;tr&gt;
+				·········&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small'&gt;
+			</texte>
+			<variable>$commentaire</variable>
+			<texte>
+				&lt;/span&gt;&lt;/td&gt;
+				······&lt;/tr&gt;
+				&lt;/table&gt;
+			</texte>
+			<endprocess>tabText</endprocess>
+			<call>tabText</call>
+		</code>
+	</template><template path="/dict" name="item"><legendes/><params><param>tabName</param><param>rowId</param></params><code><beginprocess>item</beginprocess><beginprocess>iterateFields</beginprocess>
+					<texte>&lt;table id='rowId</texte>
+				<variable>$rowId</variable>
+				<texte>' border='0' cellpadding='0' cellspacing='0'&gt;&lt;tr&gt;&lt;td&gt;</texte><affectation><variable>position</variable><expression>0</expression></affectation><usetemplate name="/CodeCommander/SearchInTab"><params><param name="name">loop1</param><param name="tabName">$tabName</param><param name="rowId">$rowId</param><param name="start">0</param><param name="result">position</param></params><codings /></usetemplate><condition><expression>position &gt; 0</expression><iftrue>continue</iftrue><iffalse>end</iffalse></condition><label>continue</label><affectationchamp><variable>nom</variable><champ><tableau>$tabName</tableau><expression>position</expression><variable>nom</variable></champ></affectationchamp><affectationchamp><variable>desc</variable><champ><tableau>$tabName</tableau><expression>position</expression><variable>description</variable></champ></affectationchamp><affectationchamp><variable>comment</variable><champ><tableau>$tabName</tableau><expression>position</expression><variable>commentaire</variable></champ></affectationchamp><affectationchamp><variable>val</variable><champ><tableau>$tabName</tableau><expression>position</expression><variable>value</variable></champ></affectationchamp><usetemplate name="/dict/tabText"><params>
+					<param name="rowId">$rowId</param><param name="nom">nom</param><param name="description">desc</param><param name="commentaire">comment</param><param name="valeur">val</param></params><codings /></usetemplate><usetemplate name="/CodeCommander/SearchInTab"><params><param name="name">loop2</param><param name="tabName">$tabName</param><param name="rowId">$rowId</param><param name="start">position</param><param name="result">position</param></params><codings /></usetemplate><condition><expression>position &gt; 0</expression><iftrue>continue</iftrue><iffalse>end</iffalse></condition><label>end</label>
+					<texte>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte><endprocess>iterateFields</endprocess><texte>
+					&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·cols='2'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;
+						····&lt;tr&gt;
+						·······&lt;td&gt;&lt;b&gt;
+					</texte><variable>$rowId</variable><texte>
+&lt;/b&gt;&lt;/td&gt;
+·······&lt;td&gt;&lt;img·style='cursor:pointer' state='up'·onclick='javascript:if·(this.state=="up")·{·this.state="down";this.src="tabDown.png";·var obj=document.getElementById("rowId</texte>
+					<variable>$rowId</variable>
+					<texte>"); obj.style.display="block";}·else·{·this.state="up"; this.src="tabUp.png";·var obj=document.getElementById("rowId</texte>
+				<variable>$rowId</variable>
+				<texte>"); obj.style.display="none";};'·src='tabUp.png'·width='12px'·height='12px'/&gt;</texte><texte>
+&lt;/td&gt;
+·······&lt;td&gt;</texte><call>iterateFields</call><texte>
+&lt;/td&gt;
+····&lt;/tr&gt;
+&lt;/table&gt;</texte><endprocess>item</endprocess><call>item</call></code></template><template path="/dict" name="emptyItem"><legendes/><params><param>tabName</param></params><code><beginprocess>emptyItem</beginprocess>
+	<texte>&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;&lt;tr&gt;&lt;td·width='50%'&gt;&lt;b&gt;</texte>
+	<champ>
+		<tableau>$tabName</tableau>
+		<expression>emptyItemsIndex</expression>
+		<variable>description</variable>
+	</champ>
+	<texte>&lt;/b&gt;&lt;/td&gt;&lt;td·width='50%'·rowspan='3'·style='padding-left:2px;border-left:1px·inset·black'&gt;&lt;input·type='text'·name='rowId" + rowId + "_</texte>
+	<champ>
+		<tableau>$tabName</tableau>
+		<expression>emptyItemsIndex</expression>
+		<variable>nom</variable>
+	</champ>
+	<texte>'·id='rowId" + rowId + "_</texte>
+	<champ>
+		<tableau>$tabName</tableau>
+		<expression>emptyItemsIndex</expression>
+		<variable>nom</variable>
+	</champ>
+	<texte>'·onfocusout=\"javascript:onChangeFieldContent(" + rowId + ", 'rowId" + rowId + "_</texte>
+	<champ>
+		<tableau>$tabName</tableau>
+		<expression>emptyItemsIndex</expression>
+		<variable>nom</variable>
+	</champ>
+	<texte>');\" value=''·width='100%'·size='30'/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small;text-decoration:underline'&gt;c'est·un·entier&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td·width='50%'&gt;&lt;span·style='font-size:xx-small'&gt;</texte>
+	<champ>
+		<tableau>$tabName</tableau>
+		<expression>emptyItemsIndex</expression>
+		<variable>commentaire</variable>
+	</champ>
+	<texte>&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte><endprocess>emptyItem</endprocess>
+	<beginprocess>emptyItems</beginprocess>
+	<texte>&lt;table id='rowId" + rowId + "' border='0' cellpadding='0' cellspacing='0'&gt;&lt;tr&gt;&lt;td&gt;</texte>
+	<affectation>
+		<variable>emptyItemsIndex</variable>
+		<expression>0</expression>
+	</affectation>
+	<size>
+		<terme>sizeItems</terme>
+		<tableau>$tabName</tableau>
+	</size>
+	<condition>
+		<expression>emptyItemsIndex &lt; sizeItems</expression>
+		<iftrue>continue</iftrue>
+		<iffalse>end</iffalse>
+	</condition>
+	<label>continue</label>
+	<affectation>
+		<variable>emptyItemsIndex</variable>
+		<expression>emptyItemsIndex + 1</expression>
+	</affectation>
+	<call>emptyItem</call>
+	<condition>
+		<expression>emptyItemsIndex &lt; sizeItems</expression>
+		<iftrue>continue</iftrue>
+		<iffalse>end</iffalse>
+	</condition>
+	<label>end</label>
+	<texte>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</texte>
+	<endprocess>emptyItems</endprocess>
+	<call>emptyItems</call>
+</code></template><template path="/dict" name="itemInitialize"><legendes/><params /><code><beginprocess>itemInitialize</beginprocess><texte>
+					&lt;div·id='callback'·style='display:none'&gt;&lt;/div&gt;
+					&lt;script·language='JavaScript'·type='text/javascript'&gt;
+	function onChangeFieldContent(rowId, fieldId)
+	{
+		callback.action = "onchange";
+		callback.rowId = rowId;
+		callback.fieldId = fieldId;
+		var obj = document.getElementById(fieldId);
+		callback.value = obj.value;
+		callback.click();
+	}
+	function·addRow()·{
+	····var·obj·=·document.getElementById("myTable");
+	····var·row·=·obj.insertRow(obj.rows.length);
+	····var·cell·=·row.insertCell(0);
+var rowId = obj.rows.length;
+	····var·data·=·"&lt;table·style='border-top:1px·inset·black;border-bottom:1px·inset·black;'·cols='2'·border='0'·cellpadding='0'·cellspacing='0'·width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;" + rowId + "&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;img·style='cursor:pointer'·state='up' onclick=\"javascript:if·(this.state=='up')·{·this.state='down';this.src='tabDown.png';·var obj=document.getElementById('rowId" + rowId + "'); obj.style.display='block';·}·else·{·this.state='up';this.src='tabUp.png';·var obj=document.getElementById('rowId" + rowId + "'); obj.style.display='none';·};\"·src='tabUp.png'·width='12px'·height='12px'/&gt;&lt;/td&gt;&lt;td&gt;</texte>
+		<usetemplate name="/dict/emptyItem">
+			<params>
+				<param name="tabName">keyTab</param>
+			</params>
+			<codings/>
+		</usetemplate><texte>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+	····cell.innerHTML·=·data;
+	····callback.action·=·'addRow';
+	callback.rowId = rowId;
+	····callback.click();
+	}
+	&lt;/script&gt;
+				</texte><endprocess>itemInitialize</endprocess><call>itemInitialize</call></code></template></code></root>

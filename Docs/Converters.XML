@@ -1,0 +1,2680 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Converters</name>
+    </assembly>
+    <members>
+        <member name="T:Converters.EnumControlFlow">
+            <summary>
+            Control flow
+            This enum specifies the meaning of using variable
+            </summary>
+        </member>
+        <member name="F:Converters.EnumControlFlow.E_NONE">
+            <summary>
+            NONE
+            </summary>
+        </member>
+        <member name="F:Converters.EnumControlFlow.E_FUNC">
+            <summary>
+            IN A FUNCTION CONTROL FLOW
+            </summary>
+        </member>
+        <member name="F:Converters.EnumControlFlow.E_IN_LOOP">
+            <summary>
+            IN A LOOP CONTROL FLOW
+            </summary>
+        </member>
+        <member name="F:Converters.EnumControlFlow.E_IN_CONDITION">
+            <summary>
+            IN CONDITION CONTROL FLOW
+            </summary>
+        </member>
+        <member name="F:Converters.EnumControlFlow.E_AFTER_LOOP">
+            <summary>
+            AFTER A LOOP
+            </summary>
+        </member>
+        <member name="F:Converters.EnumControlFlow.E_AFTER_CONDITION">
+            <summary>
+            AFTER A CONDITION
+            </summary>
+        </member>
+        <member name="T:Converters.Languages">
+            <summary>
+            List of all supported language converter
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.PowerShell">
+            <summary>
+            Language name of PowerShell
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.MicrosoftCSharp">
+            <summary>
+            Language name of Microsoft C# .NET
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.Java">
+            <summary>
+            Language name of Java
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.MacOSCPP">
+            <summary>
+            Language name of Mac OS C++
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.MicrosoftCPP">
+            <summary>
+            Language name of Microsoft C++ .NET
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.Perl">
+            <summary>
+            Language name of Perl
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.Python">
+            <summary>
+            Language name Python
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.UnixCPP">
+            <summary>
+            Language name Unix C++
+            </summary>
+        </member>
+        <member name="F:Converters.Languages.VBScript">
+            <summary>
+            Language name of VBScript
+            </summary>
+        </member>
+        <member name="T:Converters.EnumParameterOrder">
+            <summary>
+            In a strongly name language, some variables
+            could have the same value in multiple different types.
+            The typed variable name with a specific type is new, current or last
+            </summary>
+        </member>
+        <member name="F:Converters.EnumParameterOrder.E_NEW">
+            <summary>
+            NEW VARIABLE TYPE
+            </summary>
+        </member>
+        <member name="F:Converters.EnumParameterOrder.E_CURRENT">
+            <summary>
+            CURRENT VARIABLE TYPE
+            </summary>
+        </member>
+        <member name="F:Converters.EnumParameterOrder.E_LAST">
+            <summary>
+            LAST VARIABLE TYPE
+            </summary>
+        </member>
+        <member name="T:Converters.IParameter">
+            <summary>
+            Hold a parameter in a function
+            </summary>
+        </member>
+        <member name="M:Converters.IParameter.Commit">
+            <summary>
+            Commit
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.FormalParameter">
+            <summary>
+            Gets or sets the formal parameter name
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.ReplacementParameter">
+            <summary>
+            Gets or sets the replacement parameter name (from a mop)
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.EffectiveParameter">
+            <summary>
+            Gets or sets the effective parameter name (a data from scope)
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.StructureReferences">
+            <summary>
+            Gets or sets the encapsulated structure reference of this parameter
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.VariableName">
+            <summary>
+            Gets or sets the variable name
+            Exact name (associated on a variable from scope) of the effective parameter
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.IsDirty">
+            <summary>
+            Gets or sets if parameter has changed
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.IsMutableParameter">
+            <summary>
+            Gets or sets if the parameter is mutable
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.IsComputable">
+            <summary>
+            Gets or sets if the parameter is computable
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.DataType">
+            <summary>
+            Gets or sets the simple data type (in any language)
+            </summary>
+        </member>
+        <member name="P:Converters.IParameter.Order">
+            <summary>
+            Gets or sets the parameter order
+            </summary>
+        </member>
+        <member name="T:Converters.IStructure">
+            <summary>
+            an interface for structures on any programming language interface
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.InstanceName">
+            <summary>
+            Gets the instance name
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.FieldName">
+            <summary>
+            Gets the field name in a structure
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.PrefixedFieldName">
+            <summary>
+            Gets the prefixed field name
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.IsGlobal">
+            <summary>
+            Says if it's a global field
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.DataType">
+            <summary>
+            Gets the data type field
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.StructureType">
+            <summary>
+            Gets the structure string data type as a field
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.IsMutable">
+            <summary>
+            Says if this field is mutable
+            </summary>
+        </member>
+        <member name="P:Converters.IStructure.IsItself">
+            <summary>
+            Says if this field is a structure itself
+            </summary>
+        </member>
+        <member name="T:Converters.IFunction">
+            <summary>
+            an interface for functions on any programming language interface
+            </summary>
+        </member>
+        <member name="M:Converters.IFunction.Clear">
+            <summary>
+            Make function info empty
+            Ideal for renewing the function
+            </summary>
+        </member>
+        <member name="M:Converters.IFunction.AddToSource(System.String)">
+            <summary>
+            Inserts a new statement in the function body
+            </summary>
+            <param name="source">source</param>
+        </member>
+        <member name="M:Converters.IFunction.PropagateControlFlow(Converters.IFunction)">
+            <summary>
+            Keeps control flow among multiple functions
+            </summary>
+            <param name="f">current function</param>
+        </member>
+        <member name="M:Converters.IFunction.ForwardControlFlowSub">
+            <summary>
+            Assumes to start a function
+            </summary>
+        </member>
+        <member name="M:Converters.IFunction.ForwardControlFlowInLoop">
+            <summary>
+            Assumes to be in a loop
+            </summary>
+        </member>
+        <member name="M:Converters.IFunction.ForwardControlFlowAfterLoop">
+            <summary>
+            Assumes to be after a loop
+            </summary>
+        </member>
+        <member name="M:Converters.IFunction.ForwardControlFlowInIf">
+            <summary>
+            Assumes to be in a condition
+            </summary>
+        </member>
+        <member name="M:Converters.IFunction.ForwardControlFlowAfterIf">
+            <summary>
+            Assumes to be after a condition
+            </summary>
+        </member>
+        <member name="M:Converters.IFunction.BackwardControlFlowSub">
+            <summary>
+            Assumes to end a function
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.Name">
+            <summary>
+            Gets the name of the function
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.StrictName">
+            <summary>
+            Gets or sets strictly the name
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.IsJob">
+            <summary>
+            Gets or sets if function as a job
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.IsMacro">
+            <summary>
+            Gets or sets if function as a macro
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.IsVisible">
+            <summary>
+            Gets or sets when a function is visible
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.InstanceNumber">
+            <summary>
+            Gets or sets an instance number
+            This counts the number of functions with the same name
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.Parameters">
+            <summary>
+            Gets the function parameters
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.LocalVariables">
+            <summary>
+            Gets local variables
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.InstancesStructure">
+            <summary>
+            Gets instance structures (instance/structure name)
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.ControlFlow">
+            <summary>
+            Gives the current control flow
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.IsStaticControlFlow">
+            <summary>
+            Is true when the current control flow
+            is none or at the root of a function
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.PrivateVariableCounter">
+            <summary>
+            Gets or sets the numerous of private variables
+            This allows to create automatic variable
+            that are different of user variables
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.IndentSize">
+            <summary>
+            Number of indentation in the source code
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.Source">
+            <summary>
+            Gets or sets the entire function body
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.CacheSource">
+            <summary>
+            Gets or sets the expression string converted on the fly
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.DataTypeResult">
+            <summary>
+            Gets or sets known data type (of any programming language)
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.IsByReferenceReturn">
+            <summary>
+            Gets or sets if the expression must return by reference
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.IsComputableExpression">
+            <summary>
+            Gets or sets if the current evaluated expression is computable
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.AdditionalSource">
+            <summary>
+            Gets or sets intermediate statements
+            </summary>
+        </member>
+        <member name="P:Converters.IFunction.UsedVariables">
+            <summary>
+            Gets used variables
+            This tells what variables are used
+            </summary>
+        </member>
+        <member name="T:Converters.ICodeConverter">
+            <summary>
+            Converter to a programming language
+            </summary>
+        </member>
+        <member name="M:Converters.ICodeConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="newFunc">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.ICodeConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.ICodeConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="name">variable name</param>
+            <param name="isMutable">true if mutable</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">true if mutable</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.ICodeConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.ICodeConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.ICodeConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.ILanguageConverter">
+            <summary>
+            Callback functions to redirect for specific language
+            Any CodeCommander's statement have to implement these methods
+            </summary>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInVBScript(Converters.ICodeConverter)">
+            <summary>
+            VBScript converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInPowerShell(Converters.ICodeConverter)">
+            <summary>
+            PowerShell converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInPerl(Converters.ICodeConverter)">
+            <summary>
+            Perl converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInPython(Converters.ICodeConverter)">
+            <summary>
+            Python converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInMicrosoftCPP(Converters.ICodeConverter)">
+            <summary>
+            Microsoft CPP converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInUnixCPP(Converters.ICodeConverter)">
+            <summary>
+            Unix CPP converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInCSharp(Converters.ICodeConverter)">
+            <summary>
+            Microsoft CSharp converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInJava(Converters.ICodeConverter)">
+            <summary>
+            Java converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="M:Converters.ILanguageConverter.WriteInMacOSCPP(Converters.ICodeConverter)">
+            <summary>
+            Mac OS CPP converter
+            </summary>
+            <param name="converter">converter object</param>
+        </member>
+        <member name="T:Converters.MacOSCPPConverter">
+            <summary>
+            Mac OS CPP converter
+            </summary>
+        </member>
+        <member name="F:Converters.MacOSCPPConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.MacOSCPPConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.MacOSCPPConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.MacOSCPPConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.JavaConverter">
+            <summary>
+            Java converter
+            </summary>
+        </member>
+        <member name="F:Converters.JavaConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.JavaConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.JavaConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.JavaConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.JavaConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.JavaConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.JavaConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.JavaConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.JavaConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.CSharpConverter">
+            <summary>
+            CSharp Converter
+            </summary>
+        </member>
+        <member name="F:Converters.CSharpConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.CSharpConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.CSharpConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.CSharpConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.CSharpConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.CSharpConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.CSharpConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.CSharpConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.CSharpConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.PythonConverter">
+            <summary>
+            Python converter
+            </summary>
+        </member>
+        <member name="F:Converters.PythonConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.PythonConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.PythonConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.PythonConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.PythonConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.PythonConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PythonConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.PythonConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.PythonConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.PerlConverter">
+            <summary>
+            Perl converter
+            </summary>
+        </member>
+        <member name="F:Converters.PerlConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.PerlConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.PerlConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.PerlConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.PerlConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.PerlConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PerlConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.PerlConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.PerlConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="M:Converters.Structure.#ctor(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Creates a new field into a structure to hold a variable in a scope with its current data type
+            </summary>
+            <param name="name">name of the instance structure</param>
+            <param name="d">variable object</param>
+            <param name="isMutable">mutable switch</param>
+        </member>
+        <member name="M:Converters.Structure.#ctor(System.String,System.String,o2Mate.EnumDataType,System.Boolean)">
+            <summary>
+            Creates a new field into a structure to hold
+            </summary>
+            <param name="name">name of the instance structure</param>
+            <param name="fieldName">field name</param>
+            <param name="dataType">data type</param>
+            <param name="isMutable">mutable switch</param>
+        </member>
+        <member name="M:Converters.Structure.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a new field into a structure with a structure data type
+            </summary>
+            <param name="name">name of the instance structure</param>
+            <param name="structDataType">structure data type name</param>
+            <param name="fieldName">field name</param>
+            <param name="isMutable">mutable switch</param>
+        </member>
+        <member name="P:Converters.Structure.InstanceName">
+            <summary>
+            Gets the instance name
+            </summary>
+        </member>
+        <member name="P:Converters.Structure.FieldName">
+            <summary>
+            Gets the field name in a structure
+            </summary>
+        </member>
+        <member name="P:Converters.Structure.PrefixedFieldName">
+            <summary>
+            Gets the prefixed field name
+            </summary>
+        </member>
+        <member name="P:Converters.Structure.DataType">
+            <summary>
+            Gets the data type field
+            </summary>
+        </member>
+        <member name="P:Converters.Structure.StructureType">
+            <summary>
+            Gets the structure string data type as a field
+            </summary>
+        </member>
+        <member name="P:Converters.Structure.IsGlobal">
+            <summary>
+            Says if it's a global field
+            </summary>
+        </member>
+        <member name="P:Converters.Structure.IsMutable">
+            <summary>
+            Says if this field is mutable
+            </summary>
+        </member>
+        <member name="P:Converters.Structure.IsItself">
+            <summary>
+            Says if this field is a structure itself
+            </summary>
+        </member>
+        <member name="T:Converters.TypedVariable">
+            <summary>
+            Variable definition with a type
+            Usefull for moving the data type
+            </summary>
+        </member>
+        <member name="M:Converters.TypedVariable.#ctor(System.String,System.String,o2Mate.EnumDataType,o2Mate.EnumDataType)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="varName">variable name</param>
+            <param name="prefixedName">specific prefix associated with a type</param>
+            <param name="from">current data type</param>
+            <param name="type">new date type</param>
+        </member>
+        <member name="M:Converters.TypedVariable.ConvertToVBScript(Converters.ICodeConverter,o2Mate.EnumDataType,o2Mate.EnumDataType,o2Mate.IDataNotInScope)">
+            <summary>
+            Converts a data type to an another and
+            performs the correct transform code in VBScript
+            </summary>
+            <param name="converter">current converter object</param>
+            <param name="from">the current data type</param>
+            <param name="to">the new data type</param>
+            <param name="var">variable object</param>
+            <returns>a new variable object - with the same variable name and a different prefix but doesn't reside in a scope</returns>
+        </member>
+        <member name="M:Converters.TypedVariable.ConvertToPowerShell(Converters.ICodeConverter,o2Mate.EnumDataType,o2Mate.EnumDataType,o2Mate.IDataNotInScope)">
+            <summary>
+            Converts a data type to an another and
+            performs the correct transform code in PowerShell
+            </summary>
+            <param name="converter">current converter object</param>
+            <param name="from">the current data type</param>
+            <param name="to">the new data type</param>
+            <param name="var">variable object</param>
+            <returns>a new variable object - with the same variable name and a different prefix but doesn't reside in a scope</returns>
+        </member>
+        <member name="M:Converters.TypedVariable.ConvertToCPP(Converters.ICodeConverter,o2Mate.EnumDataType,o2Mate.EnumDataType,o2Mate.IDataNotInScope)">
+            <summary>
+            Converts a data type to an another and
+            performs the correct transform code in CPP
+            </summary>
+            <param name="converter">current converter object</param>
+            <param name="from">the current data type</param>
+            <param name="to">the new data type</param>
+            <param name="var">variable object</param>
+            <returns>a new variable object - with the same variable name and a different prefix but doesn't reside in a scope</returns>
+        </member>
+        <member name="M:Converters.TypedVariable.MoveType(Converters.ICodeConverter,o2Mate.IScope)">
+            <summary>
+            Move the type
+            </summary>
+            <param name="converter">current converter</param>
+            <param name="scope">current scope</param>
+            <returns>the converted expression</returns>
+        </member>
+        <member name="M:Converters.TypedVariable.ChangeType(Converters.ICodeConverter,o2Mate.IScope)">
+            <summary>
+            Type change
+            </summary>
+            <param name="converter">current converter</param>
+            <param name="scope">current scope</param>
+            <returns>a new variable object (doesn't reside in scope)</returns>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInVBScript(Converters.ICodeConverter)">
+            <summary>
+            VBScript call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInPowerShell(Converters.ICodeConverter)">
+            <summary>
+            PowerShell call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInPerl(Converters.ICodeConverter)">
+            <summary>
+            Perl call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInPython(Converters.ICodeConverter)">
+            <summary>
+            Python call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInMicrosoftCPP(Converters.ICodeConverter)">
+            <summary>
+            Microsoft CPP call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInUnixCPP(Converters.ICodeConverter)">
+            <summary>
+            Unix CPP call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInCSharp(Converters.ICodeConverter)">
+            <summary>
+            Microsoft CSharp call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInJava(Converters.ICodeConverter)">
+            <summary>
+            Java call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="M:Converters.TypedVariable.WriteInMacOSCPP(Converters.ICodeConverter)">
+            <summary>
+            Mac OS CPP call
+            </summary>
+            <param name="converter">current converter</param>
+        </member>
+        <member name="P:Converters.TypedVariable.VariableName">
+            <summary>
+            Gets the variable name
+            </summary>
+        </member>
+        <member name="P:Converters.TypedVariable.PrefixedName">
+            <summary>
+            Gets the prefix name
+            </summary>
+        </member>
+        <member name="P:Converters.TypedVariable.FromType">
+            <summary>
+            Gets the current data type
+            </summary>
+        </member>
+        <member name="P:Converters.TypedVariable.ToType">
+            <summary>
+            Gets the new data type
+            </summary>
+        </member>
+        <member name="T:Converters.UnixCPPConverter">
+            <summary>
+            Unix CPP converter
+            </summary>
+        </member>
+        <member name="F:Converters.UnixCPPConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.UnixCPPConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.UnixCPPConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.UnixCPPConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.MicrosoftCPPConverter">
+            <summary>
+            Microsoft CPP converter
+            </summary>
+        </member>
+        <member name="F:Converters.MicrosoftCPPConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.MicrosoftCPPConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.Escape(System.String)">
+            <summary>
+            Output escaped string
+            </summary>
+            <param name="input">input string</param>
+            <returns>escaped string</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.InterpreteOnLeft(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Turns the variable name on a value or a reference.
+            OnLeft means that the variable is placed at the left of an assertion
+            if the variable is a reference, dereferences it. Other, leaves as it
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.InterpreteOnPtr(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Turns the variable name on a reference or a value.
+            OnPtr means that the variable is a pointer or a value
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.InterpreteOnRef(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Turns the variable name on a reference.
+            OnRef means that the variable is passed by reference to a function
+            always references it if variable is a value
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.InterpreteOnValue(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Turns the variable name on a value.
+            OnValue means that the variable is placed at the right of an assertion
+            or the variable is passed by value to a function
+            always dereferences it
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.InterpreteDefault(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Do not interprete the variable, leaves as it
+            default means that the variable is presented as it
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.MicrosoftCPPConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.MicrosoftCPPConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.PowerShellConverter">
+            <summary>
+            PowerShell converter
+            </summary>
+        </member>
+        <member name="F:Converters.PowerShellConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.PowerShellConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.PowerShellConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.PowerShellConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.PowerShellConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.PowerShellConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.Escape(System.String)">
+            <summary>
+            Output escaped string
+            </summary>
+            <param name="input">input string</param>
+            <returns>escaped string</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.InterpreteOnLeft(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Turns the variable name on a value or a reference.
+            OnLeft means that the variable is placed at the left of an assertion
+            if the variable is a reference, dereferences it. Other, leaves as it
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.InterpreteOnRef(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Turns the variable name on a reference.
+            OnRef means that the variable is passed by reference to a function
+            always references it if variable is a value
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.InterpreteOnValue(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Turns the variable name on a value.
+            OnValue means that the variable is placed at the right of an assertion
+            or the variable is passed by value to a function
+            always dereferences it
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.InterpreteDefault(Converters.IStructure,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Do not interprete the variable, leaves as it
+            default means that the variable is presented as it
+            </summary>
+            <param name="var">var structure</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameter list</param>
+            <param name="declared">local variable list</param>
+            <returns>the truth expression</returns>
+        </member>
+        <member name="M:Converters.PowerShellConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.PowerShellConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.PowerShellConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+        <member name="T:Converters.Function">
+            <summary>
+            any function from a language
+            </summary>
+        </member>
+        <member name="M:Converters.Function.#ctor">
+            <summary>
+            construct a new function
+            </summary>
+        </member>
+        <member name="M:Converters.Function.Clear">
+            <summary>
+            Make function info empty
+            Ideal for renewing the function
+            </summary>
+        </member>
+        <member name="M:Converters.Function.AddToSource(System.String)">
+            <summary>
+            Inserts a new statement in the function body
+            </summary>
+            <param name="source">source</param>
+        </member>
+        <member name="M:Converters.Function.PropagateControlFlow(Converters.IFunction)">
+            <summary>
+            Keeps control flow among multiple functions
+            </summary>
+            <param name="f">current function</param>
+        </member>
+        <member name="M:Converters.Function.ForwardControlFlowInLoop">
+            <summary>
+            Assumes to be in a loop
+            </summary>
+        </member>
+        <member name="M:Converters.Function.ForwardControlFlowAfterLoop">
+            <summary>
+            Assumes to be after a loop
+            </summary>
+        </member>
+        <member name="M:Converters.Function.ForwardControlFlowSub">
+            <summary>
+            Assumes to start a function
+            </summary>
+        </member>
+        <member name="M:Converters.Function.BackwardControlFlowSub">
+            <summary>
+            Assumes to end a function
+            </summary>
+        </member>
+        <member name="M:Converters.Function.ForwardControlFlowInIf">
+            <summary>
+            Assumes to be in a condition
+            </summary>
+        </member>
+        <member name="M:Converters.Function.ForwardControlFlowAfterIf">
+            <summary>
+            Assumes to be after a condition
+            </summary>
+        </member>
+        <member name="M:Converters.Function.Equals(Converters.IFunction)">
+            <summary>
+            Check equality between 2 functions
+            Must have same parameters
+            Must have same local variables
+            </summary>
+            <param name="other">other function</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:Converters.Function.IndentSize">
+            <summary>
+            Number of indentation in the source code
+            </summary>
+        </member>
+        <member name="P:Converters.Function.ControlFlow">
+            <summary>
+            Gives the current control flow
+            </summary>
+        </member>
+        <member name="P:Converters.Function.IsStaticControlFlow">
+            <summary>
+            Is true when the current control flow
+            is none or at the root of a function
+            </summary>
+        </member>
+        <member name="P:Converters.Function.Name">
+            <summary>
+            Gets the name of the function
+            </summary>
+        </member>
+        <member name="P:Converters.Function.StrictName">
+            <summary>
+            Gets or sets strictly the name
+            </summary>
+        </member>
+        <member name="P:Converters.Function.IsJob">
+            <summary>
+            Gets or sets if function as a job
+            </summary>
+        </member>
+        <member name="P:Converters.Function.IsMacro">
+            <summary>
+            Gets or sets if function as a macro
+            </summary>
+        </member>
+        <member name="P:Converters.Function.IsVisible">
+            <summary>
+            Gets or sets when a function is visible
+            </summary>
+        </member>
+        <member name="P:Converters.Function.InstanceNumber">
+            <summary>
+            Gets or sets an instance number
+            This counts the number of functions with the same name
+            </summary>
+        </member>
+        <member name="P:Converters.Function.PrivateVariableCounter">
+            <summary>
+            Gets or sets the numerous of private variables
+            This allows to create automatic variable
+            that are different of user variables
+            </summary>
+        </member>
+        <member name="P:Converters.Function.Parameters">
+            <summary>
+            Gets the function parameters
+            </summary>
+        </member>
+        <member name="P:Converters.Function.LocalVariables">
+            <summary>
+            Gets local variables
+            </summary>
+        </member>
+        <member name="P:Converters.Function.InstancesStructure">
+            <summary>
+            Gets local variables
+            </summary>
+        </member>
+        <member name="P:Converters.Function.UsedVariables">
+            <summary>
+            Gets used variables
+            This tells what variables are used
+            </summary>
+        </member>
+        <member name="P:Converters.Function.Source">
+            <summary>
+            Gets or sets the entire function body
+            </summary>
+        </member>
+        <member name="P:Converters.Function.CacheSource">
+            <summary>
+            Gets or sets the expression string converted on the fly
+            </summary>
+        </member>
+        <member name="P:Converters.Function.DataTypeResult">
+            <summary>
+            Gets or sets known data type (of any programming language)
+            </summary>
+        </member>
+        <member name="P:Converters.Function.IsByReferenceReturn">
+            <summary>
+            Gets or sets if the expression must return by reference
+            </summary>
+        </member>
+        <member name="P:Converters.Function.IsComputableExpression">
+            <summary>
+            Gets or sets if the current evaluated expression
+            is computable
+            </summary>
+        </member>
+        <member name="P:Converters.Function.AdditionalSource">
+            <summary>
+            Gets or sets intermediate statements
+            </summary>
+        </member>
+        <member name="T:Converters.Parameter">
+            <summary>
+            Parameter class implementation
+            </summary>
+        </member>
+        <member name="M:Converters.Parameter.Commit">
+            <summary>
+            Commit
+            </summary>
+        </member>
+        <member name="M:Converters.Parameter.Clone">
+            <summary>
+            Clone it
+            </summary>
+            <returns>cloned object</returns>
+        </member>
+        <member name="P:Converters.Parameter.VariableName">
+            <summary>
+            Gets or sets the variable name
+            Exact name (associated on a variable) of the effective parameter
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.FormalParameter">
+            <summary>
+            Gets or sets the formal parameter name
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.EffectiveParameter">
+            <summary>
+            Gets or sets the effective parameter name (from a template)
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.ReplacementParameter">
+            <summary>
+            Gets or sets the replacement parameter name (from a mop)
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.IsDirty">
+            <summary>
+            Gets or sets if parameter has changed
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.DataType">
+            <summary>
+            Gets or sets the simple data type (in any language)
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.Order">
+            <summary>
+            Gets or sets the parameter order
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.IsMutableParameter">
+            <summary>
+            Gets or sets if the parameter is mutable
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.IsComputable">
+            <summary>
+            Gets or sets if the parameter is computable
+            </summary>
+        </member>
+        <member name="P:Converters.Parameter.StructureReferences">
+            <summary>
+            Gets the encapsulated structure reference of this parameter
+            </summary>
+        </member>
+        <member name="T:Converters.VBScriptConverter">
+            <summary>
+            VBScript converter
+            </summary>
+        </member>
+        <member name="F:Converters.VBScriptConverter.rootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="F:Converters.VBScriptConverter.rootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="M:Converters.VBScriptConverter.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Converters.VBScriptConverter.SetCurrentFunction(Converters.IFunction)">
+            <summary>
+            Change the current function
+            (if the function is blinding then keeps the current function name)
+            </summary>
+            <param name="func">function</param>
+            <returns>the previous function to store</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.ReturnVarName(o2Mate.IData)">
+            <summary>
+            This function serves to return the name of a variable
+            dependent if the language is a strongly typed language
+            </summary>
+            <param name="var">the variable object</param>
+            <returns>the adequate name of the variable</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.Convert(Converters.ILanguageConverter)">
+            <summary>
+            the principal method during conversion
+            </summary>
+            <param name="obj">object</param>
+        </member>
+        <member name="M:Converters.VBScriptConverter.CompileAndExecute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compile the final converted files and run the executable file
+            </summary>
+            <param name="solutionFileName">file name of the solution</param>
+            <param name="projectFileName">file name of the project</param>
+            <param name="executableFileName">file name of the executable</param>
+            <param name="executingAuthorization">true if accepts the execution, else false</param>
+            <returns>true if succeeded</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.PushFunction(Converters.IFunction)">
+            <summary>
+            Push a function in a stack
+            </summary>
+            <param name="function">given function</param>
+        </member>
+        <member name="M:Converters.VBScriptConverter.PopFunction">
+            <summary>
+            Pop the function on the top of the stack
+            </summary>
+            <returns>function on the top of the stack</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.SearchVariable(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{Converters.IParameter},System.Collections.Generic.List{Converters.IStructure})">
+            <summary>
+            Returns a structure info found in parameters or local variables
+            </summary>
+            <param name="varName">variable name to search</param>
+            <param name="instances">structure instance list</param>
+            <param name="pars">parameters list</param>
+            <param name="declared">local variables list</param>
+            <returns>a structure or null if not found</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.CreateNewField(System.String,o2Mate.EnumDataType,System.String,System.Boolean)">
+            <summary>
+            Create a new sub field and alias the data type, the prefix and the name
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="dataType">data type</param>
+            <param name="fieldName">variable name</param>
+            <param name="isMutable">mutable parameter</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.CreateNewField(System.String,o2Mate.IData,System.Boolean)">
+            <summary>
+            Create a new sub field and alias a variable in scope
+            </summary>
+            <param name="instanceName">name of the structure instance (throw exception if not exists)</param>
+            <param name="field">an existing variable object (from scope)</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.CreateNewField(System.String,System.String,System.Boolean)">
+            <summary>
+            Create a new structure name with a structure data type
+            </summary>
+            <param name="structDataType">a structure data type name</param>
+            <param name="structName">a structure name</param>
+            <param name="isMutable">mutable switch</param>
+            <returns>a structure object</returns>
+        </member>
+        <member name="M:Converters.VBScriptConverter.WriteToFile(System.String,System.String)">
+            <summary>
+            Principal method for writing all files
+            </summary>
+            <param name="fileDict">dictionary file</param>
+            <param name="fileName">final file</param>
+        </member>
+        <member name="P:Converters.VBScriptConverter.LanguageName">
+            <summary>
+            Language name
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.IsStronglyTyped">
+            <summary>
+            True if strongly typed language
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.FunctionsFileName">
+            <summary>
+            Gets or sets the output file name where to write all functions
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.PrincipalFileName">
+            <summary>
+            Get or sets the output file name where to write the main function
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.RootStructureType">
+            <summary>
+            Indicates the first structure type
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.RootStructureInstance">
+            <summary>
+            Indicates the first instance
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.ImplementedFunctions">
+            <summary>
+            List of implemented functions
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.CallingFunctions">
+            <summary>
+            List of calling functions
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.StructureNames">
+            <summary>
+            Gets the list of all structure names
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.Main">
+            <summary>
+            main Function
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.CurrentFunction">
+            <summary>
+            Current function during conversion
+            </summary>
+        </member>
+        <member name="P:Converters.VBScriptConverter.ProcessAsFunction">
+            <summary>
+            Gives the appropriate latest function name
+            </summary>
+        </member>
+    </members>
+</doc>

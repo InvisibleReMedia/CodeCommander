@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{060DBC9B-0123-4C20-916E-5E657F45A77C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>o2Mate</RootNamespace>
+    <AssemblyName>o2MateCompil</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>o2Mate.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\Docs\o2MateCompil.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Affectation.cs" />
+    <Compile Include="AffectationChaine.cs" />
+    <Compile Include="AffectationChamp.cs" />
+    <Compile Include="BeginProcess.cs" />
+    <Compile Include="BeginSkeleton.cs" />
+    <Compile Include="Br.cs" />
+    <Compile Include="Call.cs" />
+    <Compile Include="CallSkeleton.cs" />
+    <Compile Include="Champ.cs" />
+    <Compile Include="Coding.cs" />
+    <Compile Include="Compilateur.cs" />
+    <Compile Include="CallJob.cs" />
+    <Compile Include="EndJobs.cs" />
+    <Compile Include="ICompiler.cs" />
+    <Compile Include="Condition.cs" />
+    <Compile Include="DisplayElement.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="BeginJobs.cs" />
+    <Compile Include="Projects.cs" />
+    <Compile Include="Unindent.cs" />
+    <Compile Include="CreateMOP.cs" />
+    <Compile Include="CreateProject.cs" />
+    <Compile Include="CreateWriter.cs" />
+    <Compile Include="DefaultWriter.cs" />
+    <Compile Include="EndProcess.cs" />
+    <Compile Include="EndSkeleton.cs" />
+    <Compile Include="FinalFile.cs" />
+    <Compile Include="Handler.cs" />
+    <Compile Include="Indent.cs" />
+    <Compile Include="Injector.cs" />
+    <Compile Include="Label.cs" />
+    <Compile Include="Locale.cs" />
+    <Compile Include="Parallel.cs" />
+    <Compile Include="Process.cs" />
+    <Compile Include="ProjectItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skeleton.cs" />
+    <Compile Include="Syntax.cs" />
+    <Compile Include="Taille.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="Texte.cs" />
+    <Compile Include="Tree.cs" />
+    <Compile Include="UseMOP.cs" />
+    <Compile Include="UseTemplate.cs" />
+    <Compile Include="Variabble.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converters\Converters.csproj">
+      <Project>{01E28060-267A-4FA7-975E-CE56745D8930}</Project>
+      <Name>Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Documents\Documents.csproj">
+      <Project>{F64D4344-0249-4E93-8642-60025AC53F34}</Project>
+      <Name>Documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NotifyProgress\NotifyProgress.csproj">
+      <Project>{716B66B4-B7EE-4711-908F-E6BF56068B3B}</Project>
+      <Name>NotifyProgress</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\o2MateDict\o2MateDict.csproj">
+      <Project>{A0C34188-B17A-45E5-B225-2CE10BC8AF31}</Project>
+      <Name>o2MateDict</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\o2MateExpression\o2MateExpression.csproj">
+      <Project>{D39E3683-B46C-4F8A-B6E6-4C8867008E00}</Project>
+      <Name>o2MateExpression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\o2MateLegende\o2MateLegende.csproj">
+      <Project>{ABC56E67-40AB-4C10-B835-CC57C8B297F1}</Project>
+      <Name>o2MateLegende</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\o2MateLocale\o2MateLocale.csproj">
+      <Project>{04B62962-FF3A-4B80-A03B-FC33EE9D2F67}</Project>
+      <Name>o2MateLocale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\o2MateScope\o2MateScope.csproj">
+      <Project>{DFC51D75-D2E6-45E1-B045-7298488BFB96}</Project>
+      <Name>o2MateScope</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\o2MateVersion\o2MateVersion.csproj">
+      <Project>{8530a93d-d21e-4315-a4fb-ec8fc9e46b59}</Project>
+      <Name>o2MateVersion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniqueNames\UniqueNames.csproj">
+      <Project>{8c1eb648-596b-4078-b1b9-a053edd332c5}</Project>
+      <Name>UniqueNames</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="o2Mate.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="computableVariables.txt" />
+    <Content Include="powershellJob.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
